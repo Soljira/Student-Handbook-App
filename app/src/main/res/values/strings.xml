@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">ITE393Exam</string>
+    <string-array name="campus_array">
+        <item>PHINMA Araullo University Main</item>
+        <item>PHINMA Araullo University South</item>
+        <item>PHINMA Araullo University San Jose</item>
+        <item>PHINMA Cagayan de Oro College Main</item>
+        <item>PHINMA Cagayan de Oro College Puerto</item>
+        <item>PHINMA Cagayan de Oro College Iligan</item>
+        <item>PHINMA University of Pangasinan Main</item>
+        <item>PHINMA University of Pangasinan College</item>
+        <item>Phinma Upang College Urdaneta</item>
+        <item>PHINMA University of Iloilo</item>
+        <item>Southwestern University PHINMA</item>
+        <item>PHINMA Saint Jude College</item>
+        <item>PHINMA Republican College</item>
+        <item>PHINMA Rizal College of Laguna</item>
+        <item>PHINMA Union College of Laguna</item>
+        <item>Horizon university</item>
+    </string-array>
+    <string-array name="course_array">
+        <item>AB English Language</item>
+        <item>BS Medical Laboratory Science</item>
+        <item>BS Criminology</item>
+        <item>BS Computer Science</item>
+        <item>BS Entrepreneurship</item>
+        <item>BS Accounting Information System</item>
+        <item>BS Civil Engineering</item>
+        <item>BS Architecture</item>
+        <item>BS Accountacy</item>
+        <item>BS Tourism Management</item>
+    </string-array>
 </resources>
