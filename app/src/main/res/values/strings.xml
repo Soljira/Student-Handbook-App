@@ -30,4 +30,33 @@
         <item>BS Accountacy</item>
         <item>BS Tourism Management</item>
     </string-array>
+
+    <!-- scholarships -->
+
+    <string name="scholarship_description">
+        "Most importantly, our education is affordable. We do not charge any hidden or unnecessary fees. \n\n"
+        "We support deserving students throughout their tertiary learning years by offering scholarship programs. \n\n"
+        "Our Hawak Kamay Scholarship Program provides 50% to 75% discount on tuition &amp; miscellaneous fees for our more financially-challenged students."</string>
+    <string name="scholarships_title"><u>SCHOLARSHIPS</u></string>
+    <string name="title_activity_scholarship_page2">ScholarshipPage2</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_PHINMAScholarship">PHINMA Scholarship \n(formerly Presidential \nScholarship)</string>
+    <string name="sch_descriptionScholarshipsList">Check our complete list of scholarships below:</string>
+    <string name="sch_nextPage">nextpage</string>
+
+    <string-array name="scholarship_titles">
+        <item>PHINMA Scholarship (formerly Presidential Scholarship)</item>
+        <item>Student Assistance Scholarship</item>
+        <item>Valedictorian &amp; Salutatorian Scholarship</item>
+        <item>Dean\'s List Scholarship</item>
+        <item>With Highest Honor</item>
+        <item>PHINMA UPang Direct Dependent Scholarship</item>
+        <item>Hawak Kamay Scholarship</item>
+        <item>Victory Liner, 5-Star, and Transasia Oil Employee &amp; Direct Dependent Scholarship</item>
+        <item>The Medical City Employee &amp; Direct Dependent Scholarship</item>
+        <item>Kapamilya @ PHINMA UPang Scholarship</item>
+        <item>PHINMA UPang Alumni Scholarship</item>
+    </string-array>
+
+
 </resources>
