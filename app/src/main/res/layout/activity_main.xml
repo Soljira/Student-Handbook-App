@@ -39,7 +39,7 @@
         android:layout_width="147dp"
         android:layout_height="21dp"
         android:layout_marginTop="1dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="sans-serif-black"
         android:text="Upang Urdaneta"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -53,6 +53,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:text="BSCS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,14 +71,14 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.931" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="330dp"
+        android:layout_width="340dp"
         android:layout_height="295dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,33 +118,30 @@
                 android:text="Campus"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText2"
+            <Spinner
+                android:id="@+id/spinnerCampus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:enabled="false"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="text"
-                android:text="Upang Urdaneta" />
+                android:entries="@array/campus_array"
+                android:fontFamily="sans-serif-medium" />
+
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="78dp"
-                android:layout_height="32dp"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:text="Course"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText3"
+            <Spinner
+                android:id="@+id/spinnerCourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:enabled="false"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="text"
-                android:text="Bs Computer Science" />
+                android:entries="@array/course_array"
+                android:fontFamily="sans-serif-medium" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -162,6 +160,43 @@
                 android:fontFamily="sans-serif-medium"
                 android:inputType="text"
                 android:text="lepa.lacorte.up@phinmaed.com" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Contact Number"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="text"
+                android:text="Phone Number" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="78dp"
+                android:layout_height="32dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Birthdate"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editTextBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:enabled="false"
+                android:focusable="false"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Select Date"
+                android:inputType="none" />
 
         </LinearLayout>
     </ScrollView>
