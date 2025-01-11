@@ -49,12 +49,10 @@ class MainActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             courseSpinner.adapter = adapter
         }
-
         campusSpinner.isEnabled = false
         courseSpinner.isEnabled = false
         birthdateField.isEnabled = false
 
-        // Toggle Editable Mode
         editButton.setOnClickListener {
             isEditable = !isEditable
 
@@ -68,7 +66,6 @@ class MainActivity : AppCompatActivity() {
             editButton.setImageResource(if (isEditable) R.drawable.ch else R.drawable.edit)
         }
 
-        // Handle Birthdate Field with DatePickerDialog
         birthdateField.setOnClickListener {
             if (isEditable) {
                 val calendar = Calendar.getInstance()
@@ -79,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 val datePickerDialog = DatePickerDialog(
                     this,
                     { _, selectedYear, selectedMonth, selectedDay ->
-                        // Ensure the field is editable and properly formatted
+
                         val formattedDate = "${selectedMonth + 1}/$selectedDay/$selectedYear"
                         birthdateField.setText(formattedDate)
                     },
@@ -91,7 +88,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Handle Spinner Selection
         campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedCampus = parent?.getItemAtPosition(position).toString()
