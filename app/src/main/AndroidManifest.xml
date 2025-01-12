@@ -26,6 +26,13 @@
         </activity>
         <activity android:name=".map.MapActivity" />
         <activity android:name=".map.MapMenuActivity" />
+        <activity android:name=".UrdanetaCampus" />
+        <activity android:name=".courses.AlliedHealthActivity" />
+        <activity android:name=".courses.CriminalJusticeActivity" />
+        <activity android:name=".courses.EngineeringActivity" />
+        <activity android:name=".courses.EnglishActivity" />
+        <activity android:name=".courses.ManagementActivity" />
+        <activity android:name=".courses.ScienceActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

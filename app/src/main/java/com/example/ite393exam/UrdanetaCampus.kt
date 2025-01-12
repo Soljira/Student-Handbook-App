@@ -1,5 +1,6 @@
 package com.example.ite393exam
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,12 +11,22 @@ import com.example.ite393exam.courses.EngineeringActivity
 import com.example.ite393exam.courses.EnglishActivity
 import com.example.ite393exam.courses.ManagementActivity
 import com.example.ite393exam.courses.ScienceActivity
+import com.example.ite393exam.helpers.BottomNavigationHelper
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class UrdanetaCampus : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urdaneta)
+
+        // Bottom Navigation Bar DO NOT TOUCH
+        // Copy these 3 lines for each activity
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_modalities
+
 
         val buttonAlliedHealth: Button = findViewById(R.id.button_allied_health)
         val buttonManagement: Button = findViewById(R.id.button_management)

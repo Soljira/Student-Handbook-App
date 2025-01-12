@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ite393exam.R
+import com.example.ite393exam.helpers.BottomNavigationHelper
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScholarshipPage2 : AppCompatActivity() {
 
@@ -19,6 +21,12 @@ class ScholarshipPage2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_scholarship_page2)
+
+        // Bottom Navigation Bar DO NOT TOUCH
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_scholarship)
+        menuItem.isChecked = true  // ensures that scholarship button thingy stays checked
 
         heading = arrayOf(
             "1. PHINMA Scholarship (formerly Presidential Scholarship)",

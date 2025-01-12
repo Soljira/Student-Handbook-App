@@ -97,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/black"
                     android:gravity="start"
                     android:padding="30dp"
                     android:text="@string/scholarship_1"

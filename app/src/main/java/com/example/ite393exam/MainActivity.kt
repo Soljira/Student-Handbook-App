@@ -9,30 +9,36 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ite393exam.helpers.BottomNavigationHelper
 import com.example.ite393exam.map.MapActivity
 import com.example.ite393exam.map.MapMenuActivity
 import com.example.ite393exam.scholarships.ScholarshipPage1
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var isEditable = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-//
-//        // Intent Declarations
-//        val intentMapActivity = Intent(this, MapActivity::class.java)
-//        val intentMapMenuActivity = Intent(this, MapMenuActivity::class.java)
-//        startActivity(intentMapMenuActivity)
 
-        val scholarshipBtn =
-            findViewById<ImageButton>(R.id.btn_scholarship)         // TODO scholarship button intent
+
+        // Bottom Navigation Bar DO NOT TOUCH
+        // Copy these 3 lines for each activity
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_profile
+
+
+//
+//        val intentModality = Intent(this, UrdanetaCampus::class.java)
+//        startActivity(intentModality)
+
+
+//        val scholarshipBtn =
+//            findViewById<ImageButton>(R.id.btn_scholarship)         // TODO scholarship button intent
         val nameField = findViewById<EditText>(R.id.editTextText)
         val emailField = findViewById<EditText>(R.id.editTextText4)
         val phoneField = findViewById<EditText>(R.id.editTextText5)
@@ -114,10 +120,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-
-        scholarshipBtn.setOnClickListener { //TODO scholarship button intent
-            val intent = Intent(this, ScholarshipPage1::class.java)
-            startActivity(intent)
-        }
+//
+//        scholarshipBtn.setOnClickListener { //TODO scholarship button intent
+//            val intent = Intent(this, ScholarshipPage1::class.java)
+//            startActivity(intent)
+//        }
     }
 }

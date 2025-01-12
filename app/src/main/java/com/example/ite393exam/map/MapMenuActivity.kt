@@ -6,6 +6,8 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.ite393exam.R
+import com.example.ite393exam.helpers.BottomNavigationHelper
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MapMenuActivity : AppCompatActivity() {
 
@@ -19,6 +21,11 @@ class MapMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_menu)
+
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_map)
+        menuItem.isChecked = true  // ensures that scholarship button thingy stays checked
 
         btnGroundFloor = findViewById(R.id.btnGroundFloor)
         btnSecondFloor = findViewById(R.id.btnSecondFloor)

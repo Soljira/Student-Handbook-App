@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ite393exam.R
+import com.example.ite393exam.helpers.BottomNavigationHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     @SuppressLint("NewApi")
@@ -18,8 +20,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_map
+
+
         val intentMapMenuActivity = Intent(this, MapMenuActivity::class.java)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
+
 
         mapFragment?.getMapAsync(this)
 

@@ -37,6 +37,7 @@
                 android:clickable="false"
                 android:gravity="center"
                 android:text="PHINMA SCHOLARSHIP"
+                android:fontFamily="@font/josefin_sans_bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText,TextSizeCheck" />

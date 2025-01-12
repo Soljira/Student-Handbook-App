@@ -3,19 +3,19 @@
 
     <item
         android:title="Profile"
-        android:id="@+id/profile"
+        android:id="@+id/nav_profile"
         android:icon="@drawable/navbar_profile"/>
     <item
         android:title="Map"
-        android:id="@+id/map"
+        android:id="@+id/nav_map"
         android:icon="@drawable/navbar_map"/>
     <item
         android:title="Modalities"
-        android:id="@+id/modalities"
+        android:id="@+id/nav_modalities"
         android:icon="@drawable/navbar_modalities"/>
     <item
         android:title="Scholarship"
-        android:id="@+id/scholarship"
+        android:id="@+id/nav_scholarship"
         android:icon="@drawable/navbar_scholarship"/>
 
 </menu>

@@ -191,61 +191,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="52dp"
-        android:layout_height="41dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962"
-        app:srcCompat="@drawable/pro" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="52dp"
-        android:layout_height="41dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.373"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962"
-        app:srcCompat="@drawable/address" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="52dp"
-        android:layout_height="41dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962"
-        app:srcCompat="@drawable/modal" />
-
-    <ImageButton
-        android:id="@+id/btn_scholarship"
-        android:layout_width="52dp"
-        android:layout_height="41dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962"
-        app:srcCompat="@drawable/graduate" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -261,58 +206,25 @@
         app:layout_constraintVertical_bias="0.066"
         app:srcCompat="@drawable/editv3" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="51dp"
-        android:layout_height="18dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Profile"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Map"
+        android:background="?android:attr/windowBackground"
+        app:itemActiveIndicatorStyle="@style/ShapeAppearance.Material3.Corner.None"
+        app:itemBackground="@color/phinmaGreen"
+        app:itemIconTint="@color/navbar_icon_colors"
+        app:itemRippleColor="@color/phinmaYellow"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Modalities"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.639"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Scholarship"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav"
+        style="@style/CustomBottomNavigationView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
