@@ -82,19 +82,11 @@ class MainActivity : AppCompatActivity() {
         }
         campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedCampus = parent?.getItemAtPosition(position).toString()
-                if (isEditable) {
-                    Toast.makeText(this@MainActivity, "Selected Campus: $selectedCampus", Toast.LENGTH_SHORT).show()
-                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
         courseSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedCourse = parent?.getItemAtPosition(position).toString()
-                if (isEditable) {
-                    Toast.makeText(this@MainActivity, "Selected Course: $selectedCourse", Toast.LENGTH_SHORT).show()
-                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
