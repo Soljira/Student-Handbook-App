@@ -46,7 +46,7 @@
                 app:layout_constraintVertical_bias="0.5" />
 
 
-            <!--     INVISIBILE BUTTONS!!!!       -->
+            <!--     INVISIBLE BUTTONS!!!!       -->
             <Button
                 android:id="@+id/btnCanteen"
                 android:layout_width="64dp"
