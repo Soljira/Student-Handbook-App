@@ -5,7 +5,8 @@
     <color name="colorPrimary">#820000</color>
     <color name="colorPrimaryDark">#2B2B2B</color>
     <color name="colorAccent">#FF6464</color>
-    <color name="offwhite">#FFFDF6</color>
+    <color name="offwhite">#E4E3DF</color>
+<!--    <color name="offwhite">#FFFDF6</color>-->
     <color name="phinmaGreen">#3A4F24</color>
     <color name="phinmaYellow">#FFD000</color>
     <color name="light_font">#FBFBFB</color>

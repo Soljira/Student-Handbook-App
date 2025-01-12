@@ -24,9 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".modalities.ModalitiesActivity" />
+        <activity android:name=".modalities.UrdanetaCampus" />
         <activity android:name=".map.MapActivity" />
         <activity android:name=".map.MapMenuActivity" />
-        <activity android:name=".UrdanetaCampus" />
         <activity android:name=".courses.AlliedHealthActivity" />
         <activity android:name=".courses.CriminalJusticeActivity" />
         <activity android:name=".courses.EngineeringActivity" />

@@ -10,7 +10,7 @@
 
 
 
-    <!--  Did some layout magic (aka using constraintHeight)  -->
+    <!--  Did some layout magic (aka using constrainedHeight)  -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

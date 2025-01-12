@@ -26,33 +26,25 @@ class MainActivity : AppCompatActivity() {
 
 
         // Bottom Navigation Bar DO NOT TOUCH
-        // Copy these 3 lines for each activity
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.nav_profile
 
-
-//
-//        val intentModality = Intent(this, UrdanetaCampus::class.java)
-//        startActivity(intentModality)
-
-
-//        val scholarshipBtn =
-//            findViewById<ImageButton>(R.id.btn_scholarship)         // TODO scholarship button intent
         val nameField = findViewById<EditText>(R.id.editTextText)
         val emailField = findViewById<EditText>(R.id.editTextText4)
         val phoneField = findViewById<EditText>(R.id.editTextText5)
         val birthdateField = findViewById<EditText>(R.id.editTextBirthdate)
-        val campusSpinner = findViewById<Spinner>(R.id.spinnerCampus)
+//        val campusSpinner = findViewById<Spinner>(R.id.spinnerCampus)
         val courseSpinner = findViewById<Spinner>(R.id.spinnerCourse)
         val editButton = findViewById<ImageButton>(R.id.imageButton5)
+
         ArrayAdapter.createFromResource(
             this,
             R.array.campus_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            campusSpinner.adapter = adapter
+//            campusSpinner.adapter = adapter
         }
         ArrayAdapter.createFromResource(
             this,
@@ -61,10 +53,14 @@ class MainActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             courseSpinner.adapter = adapter
+
+            // pre-selects leeian's course
+            courseSpinner.setSelection(3)
         }
-        campusSpinner.isEnabled = false
+//        campusSpinner.isEnabled = false
         courseSpinner.isEnabled = false
         birthdateField.isEnabled = false
+
 
         editButton.setOnClickListener {
             isEditable = !isEditable
@@ -72,7 +68,8 @@ class MainActivity : AppCompatActivity() {
             nameField.isEnabled = isEditable
             emailField.isEnabled = isEditable
             phoneField.isEnabled = isEditable
-            campusSpinner.isEnabled = isEditable
+            // WALA KASI NASA LANDING PAGE PALA UNG PAGPILI NG SCHOOL SORRY
+//            campusSpinner.isEnabled = isEditable
             courseSpinner.isEnabled = isEditable
             birthdateField.isEnabled = isEditable
 
@@ -98,17 +95,17 @@ class MainActivity : AppCompatActivity() {
                 datePickerDialog.show()
             }
         }
-        campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
+//        campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {}
+//        }
         courseSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -120,10 +117,5 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-//
-//        scholarshipBtn.setOnClickListener { //TODO scholarship button intent
-//            val intent = Intent(this, ScholarshipPage1::class.java)
-//            startActivity(intent)
-//        }
     }
 }

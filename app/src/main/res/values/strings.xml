@@ -1,5 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ITE393Exam</string>
+
+    <string name="leeian_name"><u>LEEIAN MATTHEW P. LACORTE</u></string>
+
     <string-array name="campus_array">
         <item>PHINMA Araullo University Main</item>
         <item>PHINMA Araullo University South</item>
@@ -57,6 +60,12 @@
         <item>Kapamilya @ PHINMA UPang Scholarship</item>
         <item>PHINMA UPang Alumni Scholarship</item>
     </string-array>
+
+    <string name="flex24_description" tools:ignore="PluralsCandidate">
+        • A combination of studying in school and studying at home.\n\n
+        • 2 days face-to-face and 4 days remote learning.\n\n
+        • Teacher support will be via text, call and social media during the remote coaching.
+    </string>
 
     <string name="scholarship_1" tools:ignore="PluralsCandidate">
         <b>Benefits:</b>\n

@@ -4,8 +4,9 @@ import android.content.Intent
 import com.example.ite393exam.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.ite393exam.R
-import com.example.ite393exam.UrdanetaCampus
+import com.example.ite393exam.modalities.UrdanetaCampus
 import com.example.ite393exam.map.MapActivity
+import com.example.ite393exam.modalities.ModalitiesActivity
 import com.example.ite393exam.scholarships.ScholarshipPage1
 
 /*
@@ -29,8 +30,8 @@ object BottomNavigationHelper {
                     true
                 }
                 R.id.nav_modalities -> {
-                    if (activity !is UrdanetaCampus) {
-                        activity.startActivity(Intent(activity, UrdanetaCampus::class.java))
+                    if (activity !is ModalitiesActivity) {
+                        activity.startActivity(Intent(activity, ModalitiesActivity::class.java))
                     }
                     true
                 }
