@@ -54,8 +54,7 @@ class MapCustomDialogFragment : DialogFragment() {
 
         return builder.create()
     }
-
-
+    
     // CHANGES THE TEXT AND IMAGE FOR THE DIALOG DEPENDING ON THE BUTTON PRESSED
     companion object {
         fun newInstance(title: String, imageResId: Int): MapCustomDialogFragment {
