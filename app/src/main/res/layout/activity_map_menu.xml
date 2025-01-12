@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map_upang_interior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:divider="@drawable/empty_tall_divider"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <ImageButton
+                        android:id="@+id/btnFifthFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/map_button_fifth_floor" />
+
+                    <ImageButton
+                        android:id="@+id/btnFourthFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/map_button_fourth_floor" />
+
+                    <ImageButton
+                        android:id="@+id/btnThirdFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/map_button_third_floor" />
+
+                    <ImageButton
+                        android:id="@+id/btnSecondFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/map_button_second_floor" />
+
+                    <ImageButton
+                        android:id="@+id/btnGroundFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/map_button_ground_floor" />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <FrameLayout
+                android:id="@+id/flFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+        </FrameLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="?android:attr/windowBackground"
+            app:itemActiveIndicatorStyle="@style/ShapeAppearance.Material3.Corner.None"
+            app:itemBackground="@color/phinmaGreen"
+            app:itemIconSize="60dp"
+            app:itemIconTint="@color/navbar_icon_colors"
+            app:itemRippleColor="@color/phinmaYellow"
+            app:itemTextColor="@color/white"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_nav" />
+    </LinearLayout>
+</FrameLayout>

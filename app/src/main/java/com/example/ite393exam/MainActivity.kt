@@ -1,7 +1,7 @@
 package com.example.ite393exam
 
-import android.app.DatePickerDialog
 import android.content.Intent
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -9,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ite393exam.map.MapActivity
+import com.example.ite393exam.map.MapMenuActivity
 import com.example.ite393exam.scholarships.ScholarshipPage1
 import java.util.*
 
@@ -23,6 +25,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+//
+//        // Intent Declarations
+//        val intentMapActivity = Intent(this, MapActivity::class.java)
+//        val intentMapMenuActivity = Intent(this, MapMenuActivity::class.java)
+//        startActivity(intentMapMenuActivity)
+
         val scholarshipBtn =
             findViewById<ImageButton>(R.id.btn_scholarship)         // TODO scholarship button intent
         val nameField = findViewById<EditText>(R.id.editTextText)

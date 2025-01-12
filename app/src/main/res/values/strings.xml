@@ -201,8 +201,30 @@
         <u>MAP</u>
     </string>
 
+    <string name="groundFloor">
+        <u>GROUND FLOOR</u>
+    </string>
+
+    <string name="secondFloor">
+        <u>SECOND FLOOR</u>
+    </string>
+
+    <string name="thirdFloor">
+        <u>THIRD FLOOR</u>
+    </string>
+
+    <string name="fourthFloor">
+        <u>FOURTH FLOOR</u>
+    </string>
+
+    <string name="fifthFloor">
+        <u>FIFTH FLOOR</u>
+    </string>
+
     <string name="schoolAddress">
         McArthur Highway, Urdaneta City, 2428, Pangasinan
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
