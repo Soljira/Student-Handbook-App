@@ -67,6 +67,13 @@
         • Teacher support will be via text, call and social media during the remote coaching.
     </string>
 
+    <string name="flex_remote_description" tools:ignore="PluralsCandidate">
+        • Largely home-based learning;\n\n
+        • Suited for regular students who live far away and have difficulties traveling to come to school.\n\n
+        • Learn online together with your classmates.\n\n
+        • Teacher support will be via text, call and social media during the remote coaching.
+    </string>
+
     <string name="scholarship_1" tools:ignore="PluralsCandidate">
         <b>Benefits:</b>\n
         • 100% discount on tuition &amp; miscellaneous fees for 4 or 5 years\n

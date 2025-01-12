@@ -35,7 +35,7 @@ class ModalitiesActivity : AppCompatActivity() {
 
         // Fragment Initializations
         val flex24Fragment = Flex24Fragment()
-//        val flexRemoteFragment = FlexRemoteFragment()
+        val flexRemoteFragment = FlexRemoteFragment()
 
         btnFlex24.setOnClickListener {
             fragmentBeginTransaction(flex24Fragment)
@@ -43,7 +43,7 @@ class ModalitiesActivity : AppCompatActivity() {
         }
 
         btnFlexRemote.setOnClickListener {
-            // Handle the click event for btnFlexRemote
+            fragmentBeginTransaction(flexRemoteFragment)
         }
 
 
