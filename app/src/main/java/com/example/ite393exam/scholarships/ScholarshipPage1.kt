@@ -1,4 +1,4 @@
-package com.example.ite393exam.scholarships
+package com.example.ite393exam
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
