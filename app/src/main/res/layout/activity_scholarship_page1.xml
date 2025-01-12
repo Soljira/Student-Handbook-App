@@ -69,14 +69,15 @@
             android:textSize="20sp"
             tools:ignore="TextSizeCheck" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_scholarshipslist"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:contentDescription="button for lists of scholarships"
+            android:id="@+id/btn_scholarship_lists"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#FFD000"
-            android:contentDescription="@string/sch_nextPage"
-            android:src="@drawable/sch_ic_downward" />
+            android:background="#00FFFFFF"
+            android:src="@drawable/arrow_down"
+            tools:ignore="HardcodedText" />
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

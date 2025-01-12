@@ -1,6 +1,7 @@
 package com.example.ite393exam
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ite393exam.scholarships.ScholarshipPage1
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val scholarshipBtn =
+            findViewById<ImageButton>(R.id.btn_scholarship)         // TODO scholarship button intent
         val nameField = findViewById<EditText>(R.id.editTextText)
         val emailField = findViewById<EditText>(R.id.editTextText4)
         val phoneField = findViewById<EditText>(R.id.editTextText5)
@@ -81,14 +85,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
         campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
         courseSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        scholarshipBtn.setOnClickListener { //TODO scholarship button intent
+            val intent = Intent(this, ScholarshipPage1::class.java)
+            startActivity(intent)
         }
     }
 }

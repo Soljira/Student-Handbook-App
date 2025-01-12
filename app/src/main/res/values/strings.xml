@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ITE393Exam</string>
     <string-array name="campus_array">
         <item>PHINMA Araullo University Main</item>
@@ -57,6 +57,143 @@
         <item>Kapamilya @ PHINMA UPang Scholarship</item>
         <item>PHINMA UPang Alumni Scholarship</item>
     </string-array>
+
+    <string name="scholarship_1" tools:ignore="PluralsCandidate">
+        <b>Benefits:</b>\n
+        • 100% discount on tuition &amp; miscellaneous fees for 4 or 5 years\n
+        • ₱4,000 monthly allowance for Honors or Top 10 Grade 12 students who passed the qualifying exam.\n\n
+        <b>Maintenance:</b>\n
+        • Service of 2 hrs/day at assigned department\n
+        • No grade below 2.0\n
+        • Average must be 1.75 or above\n
+        • Applicable during summer if required in the curriculum.\n\n
+        <b>Requirements:</b>\n
+        • Scholarship Acceptance letter from Office of the President\n
+        • Enrollment Registration\n\n
+    </string>
+
+    <string name="scholarship_2">
+        <b>Benefits:</b>\n
+        • 100% off the tuition (21 units only)\n\n
+        <b>Eligibility:</b>\n
+        • Must be in good class standing\n
+        • Service of 4 hrs/day at assigned department\n
+        • Must have passing grades\n
+        • Not applicable during summer.\n\n
+        <b>Requirements:</b>\n
+        • Should pass the examination and interview\n\n
+    </string>
+
+    <string name="scholarship_3">
+        <b>Benefits:</b>\n
+        • 100% (Valedictorian) off the tuition for semester upon entry only.\n
+        • 50% (Salutatorian) off the tuition for semester upon entry only.\n\n
+        <b>Requirements:</b>\n
+        • Certificate from Principal\n
+        • Birth Certificate\n
+        • Enrollment Registration\n\n
+    </string>
+
+    <string name="scholarship_4" tools:ignore="StringFormatInvalid">
+        <b>Benefits:</b>\n
+        • 100% coverage of tuition fees for the top 10 for the semester following the Dean’s List award\n
+        • 50% off the tuition fee for the top 11-25 for the semester following the Dean’s List award\n\n
+        <b>Requirements:</b>\n
+        • Grades (to be applied in the Registrar)\n\n
+    </string>
+
+    <string name="scholarship_5">
+        <b>Benefits:</b>\n
+        • 100% off the tuition for semester upon entry only.\n\n
+        <b>Requirements:</b>\n
+        • Certificate from Principal\n
+        • Birth Certificate\n
+        • Enrollment Registration\n\n
+    </string>
+
+    <string name="scholarship_6">
+        <b>Benefits:</b>\n
+        • 100% (with duty) or 50% off the tuition fee\n\n
+        <b>Eligibility:</b>\n
+        • Must be in good class standing\n
+        • No maintaining grade.\n
+        • Applicable during regular semester and summer.\n\n
+        <b>Requirements:</b>\n
+        • Birth Certificate of the child to be presented to UPang HRD\n
+        • Certification of Employment from UPang HRD\n
+        • Enrollment Registration\n\n
+        <b>Maintenance:</b>\n
+        • The student must be a part of the top 11-25 of the Dean’s List who are not Presidential, Gov. Moreno, OJH, 1 of 100, or College scholar.\n
+        • The student must not have a mark of Incomplete, Dropped or Failed.\n
+        • The student must have a full load or at least 21 units for irregular students.\n
+        • The student must not have any disciplinary sanction.\n\n
+    </string>
+
+    <string name="scholarship_7">
+        <b>Benefits:</b>\n
+        • HK5.5 (₱5,500 per semester)\n
+        • HK7.5 (as low as ₱7,500 per semester)\n
+        • HK10 (as low as ₱10,000 per semester)\n
+        • HK12.5 (as low as ₱12,000 per semester)\n
+        ** Books and uniforms not included\n\n
+        <b>Requirements:</b>\n
+        • Must pass exam given at the Marketing Dept.\n
+        • No maintaining grade\n\n
+    </string>
+
+    <string name="scholarship_8">
+        <b>Benefits:</b>\n
+        • 25% off the tuition fee\n
+        • Renewable as long as the parent is an employee of the above\n\n
+        <b>Eligibility:</b>\n
+        • Must be in good class standing\n
+        • No maintaining grade\n
+        • Not applicable during summer.\n\n
+        <b>Requirements:</b>\n
+        • Certificates of Employment of Parents\n
+        • Employment ID\n
+        • Birth Certificates of Child\n
+        • Enrollment Registration\n\n
+    </string>
+
+    <string name="scholarship_9">
+        <b>Benefits:</b>\n
+        • 50% off the tuition fees\n
+        • Renewable as long as the parent is still connected in the TMC\n\n
+        <b>Eligibility:</b>\n
+        • Must be in good class standing\n
+        • No maintaining grade\n
+        • Applicable during regular semester and summer\n\n
+        <b>Requirements:</b>\n
+        • Certificates of Employment from TMCHR\n
+        • Employment ID\n
+        • Birth Certificates of Child\n
+        • Enrollment Registration\n\n
+    </string>
+
+    <string name="scholarship_10">
+        <b>Benefits:</b>\n
+        • 10% off the tuition for 2 siblings, plus 5% to each additional sibling enrolled in the University (basic education or college)\n\n
+        <b>Eligibility:</b>\n
+        • No maintaining grades\n
+        • Applicable during summer if required in the curriculum\n\n
+        <b>Requirements:</b>\n
+        • Birth Certificates of each sibling\n
+        • Certificate of Matriculation\n\n
+    </string>
+
+    <string name="scholarship_11">
+        <b>Benefits:</b>\n
+        • 10% off the tuition fee for graduates of the University (including Basic Education) and their direct dependents\n\n
+        <b>Eligibility:</b>\n
+        • Must be in good class standing\n
+        • No maintaining grade\n
+        • Not applicable during summer\n\n
+        <b>Requirements:</b>\n
+        • Alumni card from Alumni Office / Parent’s Diploma / OTR\n
+        • Birth Certificate of the Child\n
+        • Enrollment Registration
+    </string>
 
     <!-- Maps page -->
 

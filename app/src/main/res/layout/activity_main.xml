@@ -234,7 +234,7 @@
         app:srcCompat="@drawable/modal" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/btn_scholarship"
         android:layout_width="52dp"
         android:layout_height="41dp"
         android:background="?android:attr/selectableItemBackground"
