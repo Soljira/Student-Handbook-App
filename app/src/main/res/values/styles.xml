@@ -13,4 +13,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@null</item>
+    </array>
+    <style name="rounderImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
