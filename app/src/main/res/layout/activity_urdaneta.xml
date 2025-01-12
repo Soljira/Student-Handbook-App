@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/gray_bg"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:id="@id/main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,141 +19,73 @@
             android:id="@+id/campus_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="30dp"
             android:text="Urdaneta Campus"
             android:textColor="#2E4D1E"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAlignment="center"/>
 
-        
-        <LinearLayout
-            android:id="@+id/dropdown_allied_health"
+        <!-- Button with larger size -->
+        <Button
+            android:id="@+id/button_allied_health"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#F5F5F5"
-            android:padding="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="College of Allied Health Sciences"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/header_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:text="College of Allied Health Sciences"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:padding="8dp" />
-
-            <TextView
-                android:id="@+id/content_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Courses offered: Nursing, Medical Technology, Physical Therapy"
-                android:visibility="gone"
-                android:textColor="#555555"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:id="@+id/dropdown_management"
+        <Button
+            android:id="@+id/button_management"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#F5F5F5"
-            android:padding="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="College of Management and Accountancy"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
-
-            <TextView
-                android:id="@+id/header_management"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:text="College of Management and Accountancy"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:padding="8dp" />
-
-
-            <TextView
-                android:id="@+id/content_management"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Courses offered: Accountancy, Business Administration"
-                android:visibility="gone"
-                android:textColor="#555555"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dropdown_allied_health"
+        <Button
+            android:id="@+id/button_criminal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#F5F5F5"
-            android:padding="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="College of Criminal Justice Education"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/header_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:text="College of Criminal Justice Education"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:padding="8dp" />
-
-            <TextView
-                android:id="@+id/content_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Courses offered: Nursing, Medical Technology, Physical Therapy"
-                android:visibility="gone"
-                android:textColor="#555555"
-                android:textSize="14sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/dropdown_allied_health"
+        <Button
+            android:id="@+id/button_engineering"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#F5F5F5"
-            android:padding="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="College of Engineering and Architecture"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/header_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:text="College of Engineering and Architecture"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:padding="8dp" />
+        <Button
+            android:id="@+id/button_science"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="Bachelor of Science in Computer Science"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/content_allied_health"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Courses offered: Nursing, Medical Technology, Physical Therapy"
-                android:visibility="gone"
-                android:textColor="#555555"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-
+        <Button
+            android:id="@+id/button_english"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="Bachelor of Arts in English Language"
+            android:drawableEnd="@drawable/arrow_right"
+            android:padding="16dp"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>
