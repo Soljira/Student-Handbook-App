@@ -3,6 +3,8 @@ package com.example.ite393exam.map
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import com.example.ite393exam.R
 
 /**
@@ -13,5 +15,15 @@ import com.example.ite393exam.R
 class SecondFloorFragment : Fragment(R.layout.fragment_map_second_floor) {
     override fun onViewCreated(view : View, savedInstanceState: Bundle?) {
         super.onViewCreated(view,savedInstanceState)
+
+        val closeButton: ImageButton = view.findViewById(R.id.btnBack)
+        closeButton.setOnClickListener {
+            dismissFragment()
+        }
+    }
+
+    private fun dismissFragment() {
+        // Remove this fragment
+        parentFragmentManager.beginTransaction().remove(this).commit()
     }
 }
