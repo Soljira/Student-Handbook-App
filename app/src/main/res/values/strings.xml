@@ -58,5 +58,14 @@
         <item>PHINMA UPang Alumni Scholarship</item>
     </string-array>
 
+    <!-- Maps page -->
+
+    <string name="mapsTitle">
+        <u>MAP</u>
+    </string>
+
+    <string name="schoolAddress">
+        McArthur Highway, Urdaneta City, 2428, Pangasinan
+    </string>
 
 </resources>

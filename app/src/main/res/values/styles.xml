@@ -1,11 +1,10 @@
 <resources>
-    <style name="BottomRoundedCard" parent="">
-        <!-- Remove or adjust corner sizes if you still want the card rounded -->
+    <style name="BottomRoundedCard" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerSizeBottomLeft">50dp</item> <!-- Set to 0dp temporarily to test -->
-        <item name="cornerSizeBottomRight">50dp</item> <!-- Set to 0dp temporarily to test -->
+        <item name="cornerSizeBottomLeft">50dp</item>
+        <item name="cornerSizeBottomRight">50dp</item>
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
