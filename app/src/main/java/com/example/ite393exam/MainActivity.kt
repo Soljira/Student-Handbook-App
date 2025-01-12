@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             courseSpinner.isEnabled = isEditable
             birthdateField.isEnabled = isEditable
 
-            editButton.setImageResource(if (isEditable) R.drawable.ch else R.drawable.edit)
+            editButton.setImageResource(if (isEditable) R.drawable.chv2 else R.drawable.editv3)
         }
         birthdateField.setOnClickListener {
             if (isEditable) {
