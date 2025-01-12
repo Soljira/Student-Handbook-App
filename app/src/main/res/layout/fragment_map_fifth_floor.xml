@@ -45,6 +45,99 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
+
+            <!--     INVISIBLE BUTTONS!!!!       -->
+            <Button
+                android:id="@+id/btnRoom505"
+                android:layout_width="66dp"
+                android:layout_height="181dp"
+                android:layout_margin="30dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.979"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.267" />
+
+            <Button
+                android:id="@+id/btnRoom506"
+                android:layout_width="66dp"
+                android:layout_height="176dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.908"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.735" />
+
+            <Button
+                android:id="@+id/btnKitchenLab"
+                android:layout_width="69dp"
+                android:layout_height="177dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.755" />
+
+            <Button
+                android:id="@+id/btnDrawingLab"
+                android:layout_width="68dp"
+                android:layout_height="177dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.101"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.299" />
+
+            <Button
+                android:id="@+id/btnStudioLab"
+                android:layout_width="86dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.044" />
+
+            <Button
+                android:id="@+id/btnCriminologyLab"
+                android:layout_width="86dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.699"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.044" />
+
+            <Button
+                android:id="@+id/btnLibrary"
+                android:layout_width="175dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.97" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
