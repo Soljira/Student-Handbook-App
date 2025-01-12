@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/navbar_profile"/>
+    <item
+        android:title="Map"
+        android:id="@+id/map"
+        android:icon="@drawable/navbar_map"/>
+    <item
+        android:title="Modalities"
+        android:id="@+id/modalities"
+        android:icon="@drawable/navbar_modalities"/>
+    <item
+        android:title="Scholarship"
+        android:id="@+id/scholarship"
+        android:icon="@drawable/navbar_scholarship"/>
+
+</menu>

@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#820000</color>
+    <color name="colorPrimaryDark">#2B2B2B</color>
+    <color name="colorAccent">#FF6464</color>
+    <color name="offwhite">#FFFDF6</color>
+    <color name="phinmaGreen">#3A4F24</color>
+    <color name="phinmaYellow">#FFD000</color>
 </resources>
