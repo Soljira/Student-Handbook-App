@@ -35,6 +35,11 @@
         <activity android:name=".courses.EnglishActivity" />
         <activity android:name=".courses.ManagementActivity" />
         <activity android:name=".courses.ScienceActivity" />
+        
+        <activity android:name=".courses.CrimJusticeRadActivity"/>
+        <activity android:name=".courses.EducAndLibArtsActivity"/>
+        <activity android:name=".courses.InfoTechActivity"/>
+        <activity android:name=".courses.ManagementAccountancyActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -4,7 +4,6 @@ import android.content.Intent
 import com.example.ite393exam.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.ite393exam.R
-import com.example.ite393exam.modalities.UrdanetaCampus
 import com.example.ite393exam.map.MapActivity
 import com.example.ite393exam.modalities.ModalitiesActivity
 import com.example.ite393exam.scholarships.ScholarshipPage1
