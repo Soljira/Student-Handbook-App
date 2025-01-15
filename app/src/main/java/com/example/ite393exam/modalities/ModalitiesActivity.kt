@@ -7,7 +7,6 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
 import com.example.ite393exam.R
 import com.example.ite393exam.helpers.BottomNavigationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,6 +45,13 @@ class ModalitiesActivity : AppCompatActivity() {
             fragmentBeginTransaction(flexRemoteFragment)
         }
 
+        // Fixes my stupid code below that hides the linear layout when the user opens a new fragment
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                // Show the linear layout when the back stack is empty
+                showOtherComponents()
+            }
+        }
 
     }
 
@@ -63,4 +69,9 @@ class ModalitiesActivity : AppCompatActivity() {
     fun hideOtherComponents() {
         linearLayout.visibility = View.GONE
     }
+
+    fun showOtherComponents() {
+        linearLayout.visibility = View.VISIBLE
+    }
 }
+
