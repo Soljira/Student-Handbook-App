@@ -60,7 +60,6 @@ class MapMenuActivity : AppCompatActivity() {
     }
 
 
-
     // Wrote this function to make my code more readable
     fun fragmentBeginTransaction(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
