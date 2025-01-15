@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gray_bg"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    tools:ignore="ExtraText">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="30dp">
+
+
+            <!-- Title Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="College of Education and Liberal Arts"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Bachelor of Arts in Political Science"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="The Bachelor of Arts in Political Science (AB Political Science) is a comprehensive academic program tailored to prepare students for roles in the dynamic field of political science. This program combines theoretical insights with practical applications to impart the necessary knowledge and skills for understanding political systems, policy analysis, and global affairs. With a focus on critical thinking, research, and effective communication, our curriculum equips students to analyze political structures, engage in informed discourse, and contribute meaningfully to the democratic process. Graduates of our program are well-positioned for a range of careers in government, international relations, law, advocacy, and public service."
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
