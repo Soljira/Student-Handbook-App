@@ -22,8 +22,7 @@ class ModalitiesActivity : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.nav_modalities
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_modalities)
 
         val btnFlex24 = findViewById<ImageButton>(R.id.btnFlex24)
         val btnFlexRemote = findViewById<ImageButton>(R.id.btnFlexRemote)

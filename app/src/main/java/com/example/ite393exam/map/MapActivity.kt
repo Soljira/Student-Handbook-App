@@ -21,9 +21,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_map)
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.nav_map
-
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_map)
 
         val intentMapMenuActivity = Intent(this, MapMenuActivity::class.java)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment

@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.nav_profile
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_profile)
 
         val nameField = findViewById<EditText>(R.id.editTextText)
         val emailField = findViewById<EditText>(R.id.editTextText4)
