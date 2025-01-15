@@ -14,6 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class ScholarshipPage1 : AppCompatActivity() {
+    lateinit var bottomNavigationView: BottomNavigationView
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,7 @@ class ScholarshipPage1 : AppCompatActivity() {
         setContentView(R.layout.activity_scholarship_page1)
 
         // Bottom Navigation Bar DO NOT TOUCH
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.nav_scholarship
 
@@ -34,5 +36,10 @@ class ScholarshipPage1 : AppCompatActivity() {
         // Enabling edge-to-edge after setting the content view
         enableEdgeToEdge()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_scholarship
     }
 }

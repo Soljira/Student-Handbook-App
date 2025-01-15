@@ -15,12 +15,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
+    lateinit var bottomNavigationView: BottomNavigationView
+
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.nav_map
 
@@ -41,6 +43,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         val latLng = LatLng(15.969944962416541, 120.57219839114128)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19.5f))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_map
     }
 
 }

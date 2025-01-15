@@ -74,4 +74,9 @@ class ModalitiesActivity : AppCompatActivity() {
     fun showOtherComponents() {
         linearLayout.visibility = View.VISIBLE
     }
+
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_modalities
+    }
 }

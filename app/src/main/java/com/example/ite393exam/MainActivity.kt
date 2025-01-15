@@ -18,15 +18,15 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var isEditable = false
+    lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        //test
         // Bottom Navigation Bar DO NOT TOUCH
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.nav_profile
 
@@ -118,4 +118,15 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
+    // IM SO STUPID
+    // THIS FUNCTION ENSURES THAT THE APPROPRIATE ICON IS CHECKED EVEN WHEN YOU PRESS THE BACK BUTTON
+    // DO NOT COPY THIS FUNCTION TO NESTED ACTIVITIES BECAUSE IT WILL BREAK THE APP
+    // THANKS
+    // I WASTED 3 HOURS ON THIS
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_profile
+    }
+
 }
