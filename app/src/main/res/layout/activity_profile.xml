@@ -71,8 +71,9 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="295dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -114,25 +115,15 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-<!--            <Spinner-->
-<!--                android:id="@+id/spinnerCampus"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:enabled="false"-->
-<!--                android:entries="@array/campus_array"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:fontFamily="sans-serif-medium" />-->
-
-            <EditText
-                android:id="@+id/campusName"
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/spinnerCampus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:enabled="false"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="text"
+                android:entries="@array/campus_array"
+                android:scrollHorizontally="true"
                 android:textColor="@color/black"
-                android:text="PHINMA Upang College Urdaneta" />
+                android:fontFamily="sans-serif-medium" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -188,9 +179,10 @@
                 android:ems="10"
                 android:enabled="false"
                 android:fontFamily="sans-serif-medium"
-                android:inputType="text"
                 android:textColor="@color/black"
-                android:text="XXXX-XXX-XXXX" />
+                android:digits="1234567890 "
+                android:inputType="number"
+                android:text="0999 999 9999" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -212,7 +204,6 @@
                 android:text="5/19/2002"
                 android:textColor="@color/black"
                 android:inputType="none" />
-
         </LinearLayout>
     </ScrollView>
 

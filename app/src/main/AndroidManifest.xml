@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:windowSoftInputMode="adjustPan" />
+<!--        ^ automatically adjusts UI (or pans to the focused EditText) when keyboard is shown/hidden-->
 
         <activity android:name=".map.MapActivity" />
         <activity android:name=".map.MapMenuActivity" />

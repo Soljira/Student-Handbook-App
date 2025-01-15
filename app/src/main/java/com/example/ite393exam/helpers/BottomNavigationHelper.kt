@@ -2,11 +2,11 @@ package com.example.ite393exam.helpers
 import android.app.Activity
 import android.content.Intent
 import com.example.ite393exam.ProfileActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.ite393exam.R
 import com.example.ite393exam.map.MapActivity
 import com.example.ite393exam.modalities.ModalitiesActivity
 import com.example.ite393exam.scholarships.ScholarshipPage1
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /*
     HELPER CLASS SO WE CAN REUSE THIS CODE YES

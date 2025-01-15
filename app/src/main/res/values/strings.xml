@@ -11,15 +11,14 @@
         <item>PHINMA Cagayan de Oro College Puerto</item>
         <item>PHINMA Cagayan de Oro College Iligan</item>
         <item>PHINMA University of Pangasinan Main</item>
-        <item>PHINMA University of Pangasinan College</item>
-        <item>Phinma Upang College Urdaneta</item>
+        <item>PHINMA University of Pangasinan Urdaneta</item>
         <item>PHINMA University of Iloilo</item>
         <item>Southwestern University PHINMA</item>
         <item>PHINMA Saint Jude College</item>
         <item>PHINMA Republican College</item>
         <item>PHINMA Rizal College of Laguna</item>
         <item>PHINMA Union College of Laguna</item>
-        <item>Horizon university</item>
+        <item>Horizon University</item>
     </string-array>
     <string-array name="course_array">
         <item>AB English Language</item>

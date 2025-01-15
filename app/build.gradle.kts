@@ -52,4 +52,7 @@ dependencies {
 
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.13.0-alpha09")
+
+    implementation("com.redmadrobot:input-mask-android:7.2.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin")
 }

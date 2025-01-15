@@ -7,7 +7,6 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
 import com.example.ite393exam.R
 import com.example.ite393exam.helpers.BottomNavigationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView

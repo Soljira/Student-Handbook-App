@@ -1,14 +1,15 @@
 package com.example.ite393exam
 
-import android.content.Intent
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ite393exam.helpers.BottomNavigationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_profile)
 
         // Bottom Navigation Bar DO NOT TOUCH
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
@@ -29,30 +30,44 @@ class ProfileActivity : AppCompatActivity() {
         val emailField = findViewById<EditText>(R.id.editTextText4)
         val phoneField = findViewById<EditText>(R.id.editTextText5)
         val birthdateField = findViewById<EditText>(R.id.editTextBirthdate)
-//        val campusSpinner = findViewById<Spinner>(R.id.spinnerCampus)
+        val campusSpinner = findViewById<Spinner>(R.id.spinnerCampus)
         val courseSpinner = findViewById<Spinner>(R.id.spinnerCourse)
         val editButton = findViewById<ImageButton>(R.id.imageButton5)
+
+        var previousValidSelection = 0 // tracks the previous valid item for campusSpinner
+        // ^ useful for determining which schools are available in the app. For now it's just upang urdaneta
+
+
+        // Refer to https://github.com/RedMadRobot/input-mask-android/wiki/Quick-Start
+        // Adds an input mask to phone field
+        // android:digits should have a space character, otherwise the spacing won't work
+        val listener = MaskedTextChangedListener("09[00] [000] [0000]", phoneField)
+        phoneField.addTextChangedListener(listener)
+        phoneField.onFocusChangeListener = listener
 
         ArrayAdapter.createFromResource(
             this,
             R.array.campus_array,
-            android.R.layout.simple_spinner_item
+            R.layout.custom_spinner_selected_item  // Breiah - made a custom spinner so that the text won't clip
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            campusSpinner.adapter = adapter
+            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item)
+            campusSpinner.adapter = adapter
+
+            // pre-selects leeian's school (which is upang urdaneta)
+            campusSpinner.setSelection(7)
         }
         ArrayAdapter.createFromResource(
             this,
             R.array.course_array,
-            android.R.layout.simple_spinner_item
+            R.layout.custom_spinner_selected_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item)
             courseSpinner.adapter = adapter
 
-            // pre-selects leeian's course
+            // pre-selects leeian's course (which is bs computer science)
             courseSpinner.setSelection(3)
         }
-//        campusSpinner.isEnabled = false
+        campusSpinner.isEnabled = false
         courseSpinner.isEnabled = false
         birthdateField.isEnabled = false
 
@@ -63,8 +78,7 @@ class ProfileActivity : AppCompatActivity() {
             nameField.isEnabled = isEditable
             emailField.isEnabled = isEditable
             phoneField.isEnabled = isEditable
-            // WALA KASI NASA LANDING PAGE PALA UNG PAGPILI NG SCHOOL SORRY
-//            campusSpinner.isEnabled = isEditable
+            campusSpinner.isEnabled = isEditable
             courseSpinner.isEnabled = isEditable
             birthdateField.isEnabled = isEditable
 
@@ -90,17 +104,31 @@ class ProfileActivity : AppCompatActivity() {
                 datePickerDialog.show()
             }
         }
-//        campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) {}
-//        }
+        campusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                // If the selected item is not upang urdaneta, show a toast message
+                if (position != 7) {
+                    // Show a Toast message
+                    Toast.makeText(
+                        this@ProfileActivity,
+                        "This campus is not available yet.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // should go back to upang urdaneta
+                    campusSpinner.setSelection(previousValidSelection)
+                } else {
+                    previousValidSelection = position
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
         courseSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
