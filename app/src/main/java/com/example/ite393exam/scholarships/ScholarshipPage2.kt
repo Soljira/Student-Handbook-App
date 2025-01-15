@@ -24,7 +24,9 @@ class ScholarshipPage2 : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_scholarship)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_scholarship)
+        menuItem.isChecked = true  // ensures that scholarship button thingy stays checked
 
         heading = arrayOf(
             "1. PHINMA Scholarship (formerly Presidential Scholarship)",

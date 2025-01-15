@@ -22,7 +22,9 @@ class RemoteCoursesActivity : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_modalities)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_modalities)
+        menuItem.isChecked = true  // ensures that map button thingy stays checked
 
         val buttonManageAcc: Button = findViewById(R.id.button_management_Acc)
         val buttonCriminalJustice: Button = findViewById(R.id.button_bs_crim)

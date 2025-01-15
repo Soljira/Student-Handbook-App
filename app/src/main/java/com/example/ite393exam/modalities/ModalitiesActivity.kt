@@ -23,7 +23,8 @@ class ModalitiesActivity : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_modalities)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_modalities
 
         val btnFlex24 = findViewById<ImageButton>(R.id.btnFlex24)
         val btnFlexRemote = findViewById<ImageButton>(R.id.btnFlexRemote)
@@ -45,6 +46,13 @@ class ModalitiesActivity : AppCompatActivity() {
             fragmentBeginTransaction(flexRemoteFragment)
         }
 
+        // Fixes my stupid code below that hides the linear layout when the user opens a new fragment
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                // Show the linear layout when the back stack is empty
+                showOtherComponents()
+            }
+        }
 
     }
 
@@ -61,5 +69,9 @@ class ModalitiesActivity : AppCompatActivity() {
 
     fun hideOtherComponents() {
         linearLayout.visibility = View.GONE
+    }
+
+    fun showOtherComponents() {
+        linearLayout.visibility = View.VISIBLE
     }
 }

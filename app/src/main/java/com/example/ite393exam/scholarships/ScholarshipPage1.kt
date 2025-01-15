@@ -22,7 +22,8 @@ class ScholarshipPage1 : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_scholarship)
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_scholarship
 
         val btnScholarshipLists: ImageButton = findViewById(R.id.btn_scholarship_lists)
         btnScholarshipLists.setOnClickListener {
