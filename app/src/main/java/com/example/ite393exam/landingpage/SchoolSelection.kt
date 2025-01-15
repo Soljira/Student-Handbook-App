@@ -1,14 +1,12 @@
 package com.example.ite393exam.landingpage
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import com.example.ite393exam.ProfileActivity
 import com.example.ite393exam.R
 
 class SchoolSelection : AppCompatActivity() {
@@ -40,44 +38,44 @@ class SchoolSelection : AppCompatActivity() {
 
         // THESE SCHOOLS ARE BEYOND OUR SCOPE
         cardAU.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardCOC.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardUI.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardSWU.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardSJC.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardRC.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardRCL.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardUCL.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
         cardHorizon.setOnClickListener {
-            showUnavailableToast()
+            showToast()
         }
 
     }
 
-    fun showUnavailableToast() {
+    fun showToast() {
         Toast.makeText(
             this,
             "Not yet available!",

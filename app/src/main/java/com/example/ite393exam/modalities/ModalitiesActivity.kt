@@ -17,6 +17,8 @@ class ModalitiesActivity : AppCompatActivity() {
     lateinit var flFragmentContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // TODO: Copy what I've done in activity_school_selection.xml in line 12-14 instead of using supportFragmentManager.addOnBackStackChangedListener
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modalities)
 

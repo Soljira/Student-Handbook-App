@@ -39,5 +39,4 @@ class SelectUpangCampusFragment : Fragment(R.layout.fragment_select_upang_campus
                 .show()
         }
     }
-
 }
