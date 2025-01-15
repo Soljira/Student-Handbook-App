@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-
+        //test
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
