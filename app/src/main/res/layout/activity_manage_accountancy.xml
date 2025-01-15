@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="BS Business Administration - Financial/Marketing Management"
+                android:text="BS Business Administration - Financial Management"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
