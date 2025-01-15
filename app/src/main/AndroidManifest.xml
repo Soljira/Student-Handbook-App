@@ -12,34 +12,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ITE393Exam"
         tools:targetApi="31">
-        <activity android:name=".scholarships.SchDescriptionsActivity"/>
-        <activity android:name=".scholarships.ScholarshipPage2"/>
-        <activity android:name=".scholarships.ScholarshipPage1"/>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SchoolSelection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ProfileActivity" />
+
+        <activity android:name=".map.MapActivity" />
+        <activity android:name=".map.MapMenuActivity" />
+
         <activity android:name=".modalities.ModalitiesActivity" />
         <activity android:name=".modalities.UrdanetaCampus" />
         <activity android:name=".modalities.RemoteCoursesActivity" />
-        <activity android:name=".map.MapActivity" />
-        <activity android:name=".map.MapMenuActivity" />
+
+
         <activity android:name=".courses.AlliedHealthActivity" />
         <activity android:name=".courses.CriminalJusticeActivity" />
         <activity android:name=".courses.EngineeringActivity" />
         <activity android:name=".courses.EnglishActivity" />
         <activity android:name=".courses.ManagementActivity" />
         <activity android:name=".courses.ScienceActivity" />
-        
         <activity android:name=".courses.CrimJusticeRadActivity"/>
         <activity android:name=".courses.EducAndLibArtsActivity"/>
         <activity android:name=".courses.InfoTechActivity"/>
         <activity android:name=".courses.ManagementAccountancyActivity"/>
+
+        <activity android:name=".scholarships.SchDescriptionsActivity"/>
+        <activity android:name=".scholarships.ScholarshipPage2"/>
+        <activity android:name=".scholarships.ScholarshipPage1"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

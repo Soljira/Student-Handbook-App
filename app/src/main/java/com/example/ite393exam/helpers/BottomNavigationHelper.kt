@@ -1,7 +1,7 @@
 package com.example.ite393exam.helpers
 import android.app.Activity
 import android.content.Intent
-import com.example.ite393exam.MainActivity
+import com.example.ite393exam.ProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.ite393exam.R
 import com.example.ite393exam.map.MapActivity
@@ -17,8 +17,8 @@ object BottomNavigationHelper {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_profile -> {
-                    if (activity !is MainActivity) {
-                        activity.startActivity(Intent(activity, MainActivity::class.java))
+                    if (activity !is ProfileActivity) {
+                        activity.startActivity(Intent(activity, ProfileActivity::class.java))
                     }
                     true
                 }

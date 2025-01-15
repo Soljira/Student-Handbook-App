@@ -7,16 +7,11 @@ import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ite393exam.helpers.BottomNavigationHelper
-import com.example.ite393exam.map.MapActivity
-import com.example.ite393exam.map.MapMenuActivity
-import com.example.ite393exam.scholarships.ScholarshipPage1
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     private var isEditable = false
     lateinit var bottomNavigationView: BottomNavigationView
 
