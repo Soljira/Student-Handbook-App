@@ -24,10 +24,7 @@ class UrdanetaCampus : AppCompatActivity() {
 
         // Bottom Navigation Bar DO NOT TOUCH
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_modalities)
-        menuItem.isChecked = true  // ensures that map button thingy stays checked
-
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_modalities)
 
         val buttonAlliedHealth: Button = findViewById(R.id.button_allied_health)
         val buttonManagement: Button = findViewById(R.id.button_management)

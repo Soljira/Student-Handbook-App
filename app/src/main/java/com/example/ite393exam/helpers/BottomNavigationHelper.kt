@@ -13,7 +13,7 @@ import com.example.ite393exam.scholarships.ScholarshipPage1
  */
 object BottomNavigationHelper {
 
-    fun setupBottomNavigation(activity: Activity, bottomNavigationView: BottomNavigationView) {
+    fun setupBottomNavigation(activity: Activity, bottomNavigationView: BottomNavigationView, selectedItemId: Int) {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_profile -> {
@@ -43,5 +43,18 @@ object BottomNavigationHelper {
                 else -> false
             }
         }
+
+        // Set the selected item for the bottom navigation
+        bottomNavigationView.selectedItemId = selectedItemId
+        updateSelectedItem(bottomNavigationView, selectedItemId)
+    }
+
+
+    // YAY FOR REPEATABLE CODE HALLELUJAH
+    fun updateSelectedItem(bottomNavigationView: BottomNavigationView, selectedItemId: Int) {
+        // Updates the selected icon sa baba
+        bottomNavigationView.selectedItemId = selectedItemId
+        // ensures that button thingy stays checked according to the page
+        bottomNavigationView.menu.findItem(selectedItemId)?.isChecked = true
     }
 }

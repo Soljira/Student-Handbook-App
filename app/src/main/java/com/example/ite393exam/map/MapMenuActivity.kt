@@ -23,9 +23,7 @@ class MapMenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_map_menu)
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_map)
-        menuItem.isChecked = true  // ensures that map button thingy stays checked
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView, R.id.nav_map)
 
         btnGroundFloor = findViewById(R.id.btnGroundFloor)
         btnSecondFloor = findViewById(R.id.btnSecondFloor)
