@@ -78,7 +78,7 @@
             android:layout_gravity="center"
             android:background="#00FFFFFF"
             android:contentDescription="button for lists of scholarships"
-            android:src="@drawable/arrow_down"
+            android:src="@drawable/arrow_right2"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
