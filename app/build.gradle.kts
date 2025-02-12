@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.map.secret)
 
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -55,4 +56,10 @@ dependencies {
 
     implementation("com.redmadrobot:input-mask-android:7.2.4")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin")
+
+    // Firebase stuff
+    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation("com.google.firebase:firebase-analytics")  // note: remove this later if hindi na need based sa requirements ni sir
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
 }

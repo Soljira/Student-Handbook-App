@@ -19,10 +19,12 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         loginButton = findViewById<Button>(R.id.btnLogin)
         emailEditText = findViewById<EditText>(R.id.emailEditText)
         passwordEditText = findViewById<EditText>(R.id.passwordEditText)
 
+        // TODO: Firebase Authentication
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
