@@ -51,8 +51,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="The Bachelor of Science in Accountancy program is a four-year course that prepares students for a professional career in Accountancy, particularly in Public Accounting. The program aims to guide students by providing them technical knowledge, skills and abilities required in the accountancy profession. We also help them develop the values of integrity, independence and skepticism necessary for making professional judgments. Our program uses a competency framework for professional accountants from the International Federation of Accountants, so that graduates may take certifications in Accountancy by the Philippine Professional Regulatory Commission and other international certifying bodies."
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textSize="13sp" />
 
 
 

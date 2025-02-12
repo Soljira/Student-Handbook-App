@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ite393exam"
+    namespace = "com.example.studenthandbookapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.ite393exam"
+        applicationId = "com.example.studenthandbookapp"
         minSdk = 24
         //noinspection OldTargetApi
         targetSdk = 34

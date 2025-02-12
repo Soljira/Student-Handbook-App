@@ -20,6 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ITE393Exam"
+rootProject.name = "studenthandbookapp"
 include(":app")
  
