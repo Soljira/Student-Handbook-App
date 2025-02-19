@@ -53,6 +53,10 @@
         <activity android:name=".scholarships.ScholarshipPage2"/>
         <activity android:name=".scholarships.ScholarshipPage1"/>
 
+        <activity android:name=".event.EventList"/>
+        <activity android:name=".event.AllEvents"/>
+        <activity android:name=".event.EventDetails"/>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_KEY}" />
