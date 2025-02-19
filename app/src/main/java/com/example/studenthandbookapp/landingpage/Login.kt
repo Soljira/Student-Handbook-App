@@ -18,6 +18,8 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        // Temporarily bypass login para hnd paulit ulit naglologin (habang wala pa firebase auth)
+        startActivity(Intent(this, SchoolSelection::class.java))
 
 
         loginButton = findViewById<Button>(R.id.btnLogin)
