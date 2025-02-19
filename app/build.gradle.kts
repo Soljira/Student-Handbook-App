@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.map.secret)
 
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
 }
 
 android {
@@ -21,6 +22,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+        compose = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -34,6 +40,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -62,4 +73,18 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")  // note: remove this later if hindi na need based sa requirements ni sir
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
+
+    // Jetpack Compose stuff
+    // Specify the Compose BOM with a version definition
+    val composeBom = platform("androidx.compose:compose-bom:2025.01.01")
+    implementation(composeBom)
+    implementation("androidx.activity:activity-compose")
+    //This dependency includes the fundamental UI elements and features provided by Jetpack Compose.
+    implementation("androidx.compose.ui:ui")
+    //This includes tooling and preview functionalities for Compose, assisting with development and debugging UI components.
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    //This dependency includes the Material Design 3 components and styles adapted for Jetpack Compose, allowing the implementation of Material Design principles in your app's UI
+    implementation("androidx.compose.material3:material3")
+    debugImplementation(libs.androidx.ui.tooling)
+//    implementation("androidx.compose.compiler")
 }
