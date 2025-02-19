@@ -53,6 +53,8 @@
         <activity android:name=".scholarships.ScholarshipPage2"/>
         <activity android:name=".scholarships.ScholarshipPage1"/>
 
+        <activity android:name=".home.Home"/>
+
         <activity android:name=".event.EventList"/>
         <activity android:name=".event.AllEvents"/>
         <activity android:name=".event.EventDetails"/>
