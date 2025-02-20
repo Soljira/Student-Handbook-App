@@ -55,6 +55,10 @@
 
         <activity android:name=".home.Home"/>
 
+        <activity android:name=".calendar.CalendarActivity"/>
+        <activity android:name=".manual.Manual"/>
+        <activity android:name=".support.Support"/>
+
         <activity android:name=".event.EventList"/>
         <activity android:name=".event.AllEvents"/>
         <activity android:name=".event.EventDetails"/>
