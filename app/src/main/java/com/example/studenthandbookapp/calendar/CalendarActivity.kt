@@ -3,9 +3,16 @@ package com.example.studenthandbookapp.calendar
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import java.util.Calendar
 import java.util.Locale
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class CalendarActivity : AppCompatActivity() {
 
@@ -18,6 +25,11 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var txtMonth: TextView
     private lateinit var calendarGrid: GridView
 
+    lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
+
     private val calendar: Calendar = Calendar.getInstance()
 
     private var selectedDay: Int = calendar.get(Calendar.DAY_OF_MONTH)
@@ -25,6 +37,7 @@ class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
+        initializeNavigationStuff()
 
         btnMonth = findViewById(R.id.btnMonth)
         btnDay = findViewById(R.id.btnDay)
@@ -57,6 +70,11 @@ class CalendarActivity : AppCompatActivity() {
             Toast.makeText(this, "Month View", Toast.LENGTH_SHORT).show()
             updateCalendar()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_calendar
     }
 
 
@@ -94,6 +112,20 @@ class CalendarActivity : AppCompatActivity() {
         val totalHeight = rows * itemHeight
         gridView.layoutParams.height = totalHeight
         gridView.requestLayout()
+    }
+
+    // LAHAT NG RELATED TO NAVIGATION NANDITO OKAY????
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Calendar")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+        bottomNavigationView.selectedItemId = R.id.nav_calendar
     }
 }
 
