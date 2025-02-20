@@ -1,10 +1,14 @@
 package com.example.studenthandbookapp.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 import com.example.studenthandbookapp.dataclasses.Event
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.DocumentSnapshot
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 // ALL FIREBASE-RELATED REUSABLE CODE IN ONE PLACE BERI NICE
@@ -90,6 +94,29 @@ object FirestoreFunctions {
                 println("Event not found or an error occurred.")
                 onComplete(null)
             }
+        }
+    }
+
+    // Converts timestamp (from firestore) to String; THIS SHOULD RETURN A STRING
+    /*
+        HOW TO USE (assuming `date` is a textview)
+        FirestoreFunctions.getEventById("event_school", eventId) { event ->
+            if (event != null) {
+                val formattedDate = FirestoreFunctions.formatTimestampToDateString(event.date)
+                date.text = formattedDate
+            } else {
+                println("Event not found.")
+            }
+        }
+     */
+    @SuppressLint("SimpleDateFormat")
+    fun formatTimestampToDateString(timestamp: Timestamp?): String {
+        return if (timestamp != null) {
+            val sdf = SimpleDateFormat("MMM dd, yyyy - hh:mm a", Locale.getDefault())
+            val date = timestamp.toDate()
+            sdf.format(date)
+        } else {
+            "No date available"
         }
     }
 

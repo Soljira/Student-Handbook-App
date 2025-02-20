@@ -49,21 +49,18 @@ class EventDetails : AppCompatActivity() {
 //            println("Title: ${eventTest?.title}")
             if (event != null) {
                 eventTest = event
-                title.text = event.title  // Update UI inside the async callback
-                println("Title: ${event.title}")
+                val formattedDate = FirestoreFunctions.formatTimestampToDateString(eventTest.date)
+//                title.text = event.title
+                title.text = formattedDate
             } else {
                 println("Event not found or an error occurred.")
             }
-
             // For error checking only; uncomment if kailangan icheck
 //            println("Title: ${eventTest?.title}")
 //            println("Date: ${eventTest?.date}")
 //            println("Description: ${eventTest?.description}")
 //            println("Location: ${eventTest?.location}")
         }
-
-
-        // todo convert timestamp (firestore) to string somehow
 
 
 
