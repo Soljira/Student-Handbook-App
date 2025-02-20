@@ -1,6 +1,8 @@
 package com.example.studenthandbookapp.event
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -28,6 +30,20 @@ class AddUserEvent : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_user_event)
         initializeNavigationStuff()
+
+        val btnClear = findViewById<Button>(R.id.clearBtn)
+
+        btnClear.setOnClickListener {
+            val titleEditText = findViewById<EditText>(R.id.title)
+            val descriptionEditText = findViewById<EditText>(R.id.eventDesc)
+            val dateEditText = findViewById<EditText>(R.id.addDate)
+            val locationEditText = findViewById<EditText>(R.id.location)
+
+            titleEditText.text.clear()
+            descriptionEditText.text.clear()
+            dateEditText.text.clear()
+            locationEditText.text.clear()
+        }
 
         // TODO: Bale gagawin mo, kukunin mo ng laman ng mga text sa lahat ng edittext
         // TODO: Gumawa na ako ng script para i-add na sa firestore ung entered data. palitan mo nalng ung ipopoint ko
