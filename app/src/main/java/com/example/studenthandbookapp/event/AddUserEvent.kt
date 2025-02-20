@@ -34,7 +34,7 @@ class AddUserEvent : AppCompatActivity() {
 
 
         val event = Event(
-            title = "Sample Event",
+            title = "Orayt",
             date = Timestamp(Date()),
             description = "Sample Description",
             location = "Sample Location"
