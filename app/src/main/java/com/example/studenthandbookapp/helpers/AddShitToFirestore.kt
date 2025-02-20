@@ -3,6 +3,7 @@ package com.example.studenthandbookapp.helpers
 import android.content.Context
 import android.util.Log
 import com.example.studenthandbookapp.dataclasses.Event
+import com.example.studenthandbookapp.dataclasses.StudentManual
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.BufferedReader
@@ -76,7 +77,56 @@ object AddShitToFirestore {
         }
     }
 
-    fun addStudentManualFromFile(context: Context, fileName: String, collectionName: String = "manual") {
 
+
+
+    fun addStudentManualFromFile(context: Context, fileName: String, collectionName: String = "manual") {
+        val db = FirebaseFirestore.getInstance()
+        val assetsList = context.assets.list("")?.joinToString(", ") ?: "No files"
+        Log.d(TAG, "Assets folder contains: $assetsList")
+
+        try {
+            val inputStream = context.assets.open(fileName)
+            val reader = BufferedReader(InputStreamReader(inputStream))
+
+            reader.forEachLine { line ->
+                // Regex to match: Heading,Subheading,"Content with, commas",PageNum
+                val regex = """([^,]+),([^,]+),"([^"]+)",(\d+)""".toRegex()
+                val matchResult = regex.find(line)
+
+                if (matchResult != null) {
+                    val (heading, subheading, content, pageNumStr) = matchResult.destructured
+                    val pageNum = pageNumStr.toIntOrNull() ?: -1
+
+                    if (pageNum >= 0) {
+                        val bookPage = StudentManual(
+                            heading = heading.trim(),
+                            subheading = subheading.trim(),
+                            content = content.trim(),
+                            pageNum = pageNum
+                        )
+
+                        db.collection(collectionName)
+                            .add(bookPage)
+                            .addOnSuccessListener { documentReference ->
+                                Log.d(TAG, "Book page added with ID: ${documentReference.id}")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e(TAG, "Error adding book page: ${e.message}")
+                            }
+                    } else {
+                        Log.w(TAG, "Invalid page number in line: $line")
+                    }
+                } else {
+                    Log.w(TAG, "Invalid line format: $line")
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error reading file: ${e.message}")
+        }
     }
+
+
+
 }
