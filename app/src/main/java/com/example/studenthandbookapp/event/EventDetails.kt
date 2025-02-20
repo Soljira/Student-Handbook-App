@@ -62,6 +62,24 @@ class EventDetails : AppCompatActivity() {
 //            println("Location: ${eventTest?.location}")
         }
 
+        var listTest : List<Event>
+
+        FirestoreFunctions.getAllDocumentsFromCollection(eventType, Event::class.java) { eventsList ->
+            if (eventsList != null) {
+                // Process the list of events
+                for (event in eventsList) {
+                    println("Event title: ${event.title}")
+                }
+                listTest = eventsList
+                println(listTest)
+            } else {
+                println("Failed to retrieve events or collection doesn't exist")
+            }
+        }
+
+
+        // TODO: kt script to add data to firestore para hnd mano-mano
+
 
 
 
