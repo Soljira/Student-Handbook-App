@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -58,10 +55,6 @@
 
         <activity android:name=".home.Home"/>
 
-        <activity android:name=".calendar.CalendarActivity"/>
-        <activity android:name=".manual.Manual"/>
-        <activity android:name=".support.Support"/>
-
         <activity android:name=".event.EventList"/>
         <activity android:name=".event.AllEvents"/>
         <activity android:name=".event.EventDetails"/>
@@ -70,9 +63,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_KEY}" />
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
