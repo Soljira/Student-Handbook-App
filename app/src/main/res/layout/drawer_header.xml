@@ -9,14 +9,15 @@
         android:id="@+id/profile_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/navbar_profile"
+        android:src="@drawable/faceset_leeian"
         android:contentDescription="Profile Image" />
 
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, User!"
+        android:text="Welcome, Leeian!"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/josefinsans_regular"
         android:textSize="18sp" />
 </LinearLayout>
