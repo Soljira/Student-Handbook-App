@@ -35,6 +35,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
             android:orientation="vertical"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,49 +51,62 @@
                 android:layout_height="32dp"
                 android:text="New Event"
                 android:textSize="24sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Title" />
 
             <EditText
                 android:id="@+id/title"
-                android:layout_width="123dp"
-                android:layout_height="31dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"/>
+                android:text="Description"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/eventDesc"
-                android:layout_width="123dp"
-                android:layout_height="31dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"/>
+                android:text="Date"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/addDate"
-                android:layout_width="123dp"
-                android:layout_height="31dp"
-                android:inputType="date"
-                android:hint="MM/DD/YYYY" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="YYYY-MM-DD"
+                android:gravity="center"
+                android:textColorHint="@color/custom_gray"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:clickable="true" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location" />
+                android:text="Location"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/location"
-                android:layout_width="123dp"
-                android:layout_height="31dp" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,17 +115,20 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/subBtn"
+                    android:id="@+id/saveBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Submit" />
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Save"
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/clearBtn"
+                    android:layout_marginHorizontal="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clear" />
-
+                    android:text="Clear"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

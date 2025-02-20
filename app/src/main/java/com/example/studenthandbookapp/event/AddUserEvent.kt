@@ -1,8 +1,10 @@
 package com.example.studenthandbookapp.event
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +19,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Timestamp
+import java.util.Calendar
 import java.util.Date
 
 class AddUserEvent : AppCompatActivity() {
@@ -31,38 +34,82 @@ class AddUserEvent : AppCompatActivity() {
         setContentView(R.layout.activity_add_user_event)
         initializeNavigationStuff()
 
+
+        // TODO: Bale gagawin mo, kukunin mo ng laman ng mga text sa lahat ng edittext
+        // TODO: Gumawa na ako ng script para i-add na sa firestore ung entered data. palitan mo nalng ung ipopoint ko
+
+
         val btnClear = findViewById<Button>(R.id.clearBtn)
+        val btnSave = findViewById<Button>(R.id.saveBtn)
+
+        val titleEditText = findViewById<EditText>(R.id.title)
+        val descriptionEditText = findViewById<EditText>(R.id.eventDesc)
+        val dateEditText = findViewById<EditText>(R.id.addDate)
+        val locationEditText = findViewById<EditText>(R.id.location)
+
+
+        dateEditText.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                // Format the date as YYYY-MM-DD
+                val formattedDate = String.format("%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay)
+                dateEditText.setText(formattedDate)
+            }, year, month, day)
+
+            datePickerDialog.show()
+        }
+
 
         btnClear.setOnClickListener {
-            val titleEditText = findViewById<EditText>(R.id.title)
-            val descriptionEditText = findViewById<EditText>(R.id.eventDesc)
-            val dateEditText = findViewById<EditText>(R.id.addDate)
-            val locationEditText = findViewById<EditText>(R.id.location)
-
             titleEditText.text.clear()
             descriptionEditText.text.clear()
             dateEditText.text.clear()
             locationEditText.text.clear()
         }
 
-        // TODO: Bale gagawin mo, kukunin mo ng laman ng mga text sa lahat ng edittext
-        // TODO: Gumawa na ako ng script para i-add na sa firestore ung entered data. palitan mo nalng ung ipopoint ko
 
+        btnSave.setOnClickListener {
+            val title = titleEditText.text.toString().trim()
+            val description = descriptionEditText.text.toString().trim()
+            val dateString = dateEditText.text.toString().trim()
+            val location = locationEditText.text.toString().trim()
 
-        val event = Event(
-            title = "Orayt",
-            date = Timestamp(Date()),
-            description = "Sample Description",
-            location = "Sample Location"
-        )
-        // kung may textview ka na title ung id, para maset ung event title, gawin mo lang to
-        // event.title = titleTextView.text.toString()
+            if (title.isEmpty() || description.isEmpty() || dateString.isEmpty() || location.isEmpty()) {
+                Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        FirestoreFunctions.saveEventToFirestore(this, "events_user", event)
+            // converts the date string to a Timestamp (firestore)
+            val dateParts = dateString.split("-")
+            val calendar = Calendar.getInstance()
+            try {
+                calendar.set(dateParts[0].toInt(), dateParts[1].toInt() - 1, dateParts[2].toInt())
+                val eventDate = Timestamp(Date(calendar.timeInMillis))
 
+                val event = Event(
+                    title = title,
+                    date = eventDate,
+                    description = description,
+                    location = location
+                )
 
+                FirestoreFunctions.saveEventToFirestore(this, "events_user", event)
+                Toast.makeText(this, "Event saved successfully!", Toast.LENGTH_SHORT).show()
+
+                titleEditText.text.clear()
+                descriptionEditText.text.clear()
+                dateEditText.text.clear()
+                locationEditText.text.clear()
+
+            } catch (e: Exception) {
+                Toast.makeText(this, "Invalid date. Please try again.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
-
 
 
 
