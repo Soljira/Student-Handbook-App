@@ -35,14 +35,25 @@ class EventDetails : AppCompatActivity() {
         var title = findViewById<TextView>(R.id.title)
 
         // todo: firebase function for fetching eventid list
-        val eventId = "R4VJcVQob40lJNjX6wOT"
+        val eventId = "e1oXYv4zFZXHGUTCZAj3" // school
+//        val eventId = "5vHyDyenbUECUDdFyovW" // user
+//        val eventId = "cisaBP2NtuToob8gDzDw"   // national
+        val eventType = "events_school"
         // todo: create eventtest array based on the number of eventIDs
         var eventTest: Event? = Event()
 
 
-        FirestoreFunctions.setEventObjectById(eventId) { event ->
-            eventTest = event  // eventTest is your empty Event object
-            title.text = eventTest?.title  // based sa findings ko above, its important na nandito mismo ung pagpalit ng title, kasi async nga
+        FirestoreFunctions.setEventObjectById(eventType, eventId) { event ->
+//            eventTest = event  // eventTest is your empty Event object
+//            title.text = eventTest?.title  // based sa findings ko above, its important na nandito mismo ung pagpalit ng title, kasi async nga
+//            println("Title: ${eventTest?.title}")
+            if (event != null) {
+                eventTest = event
+                title.text = event.title  // Update UI inside the async callback
+                println("Title: ${event.title}")
+            } else {
+                println("Event not found or an error occurred.")
+            }
 
             // For error checking only; uncomment if kailangan icheck
 //            println("Title: ${eventTest?.title}")

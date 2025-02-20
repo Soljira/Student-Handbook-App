@@ -14,6 +14,8 @@ import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.FirebaseApp
+
 
 class EventList : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
@@ -26,6 +28,7 @@ class EventList : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.event_list)
         initializeNavigationStuff()
+        FirebaseApp.initializeApp(this)
 
         val spinner: Spinner = findViewById(R.id.spinner)
         val options = listOf("Show: Upcoming", "Show: Past")

@@ -74,6 +74,10 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
 
+//    implementation("com.google.gms:google-services:4.4.2")
+//    implementation("com.google.android.gms:play-services-base")
+
+
     // Jetpack Compose stuff
     // Specify the Compose BOM with a version definition
     val composeBom = platform("androidx.compose:compose-bom:2025.01.01")
