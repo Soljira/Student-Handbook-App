@@ -13,6 +13,8 @@ import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBot
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
+import com.example.studenthandbookapp.helpers.AddEventsToFirestore
+
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -30,7 +32,9 @@ class EventDetails : AppCompatActivity() {
         setContentView(R.layout.activity_event_details)
         initializeNavigationStuff()
 
-        // TODO: RECYCLER VIEW SHIT
+        // hnd na to need vv
+//        AddEventsToFirestore.addEventsFromFile(this, "holidays_events.txt")
+        // TODO: RECYCLER VIEW
 
         var title = findViewById<TextView>(R.id.title)
 
@@ -76,12 +80,6 @@ class EventDetails : AppCompatActivity() {
                 println("Failed to retrieve events or collection doesn't exist")
             }
         }
-
-
-        // TODO: kt script to add data to firestore para hnd mano-mano
-
-
-
 
     }
 
