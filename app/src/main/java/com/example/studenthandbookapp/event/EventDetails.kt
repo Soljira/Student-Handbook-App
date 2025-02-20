@@ -13,7 +13,7 @@ import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBot
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
-import com.example.studenthandbookapp.helpers.AddEventsToFirestore
+import com.example.studenthandbookapp.helpers.AddShitToFirestore
 
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
