@@ -1,5 +1,6 @@
 package com.example.studenthandbookapp.event
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -23,6 +24,7 @@ class EventList : AppCompatActivity() {
     lateinit var navigationView: NavigationView
     lateinit var topAppBar: MaterialToolbar
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +32,7 @@ class EventList : AppCompatActivity() {
         initializeNavigationStuff()
         FirebaseApp.initializeApp(this)
 
-        val spinner: Spinner = findViewById(R.id.spinner)
+        val spinner: Spinner = findViewById(R.id.spinner_filter)
         val options = listOf("Show: Upcoming", "Show: Past")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, options)
         spinner.adapter = adapter

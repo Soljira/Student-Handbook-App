@@ -32,20 +32,95 @@
             app:titleTextColor="@color/phinmaYellow" />
         <!--      ^^^  FORBIDDEN ZONE^^^^^-->
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="124dp"
+                android:layout_height="32dp"
+                android:text="New Event"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title" />
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="123dp"
+                android:layout_height="31dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"/>
+
+            <EditText
+                android:id="@+id/eventDesc"
+                android:layout_width="123dp"
+                android:layout_height="31dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"/>
+
+            <EditText
+                android:id="@+id/addDate"
+                android:layout_width="123dp"
+                android:layout_height="31dp"
+                android:inputType="date"
+                android:hint="MM/DD/YYYY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location" />
+
+            <EditText
+                android:id="@+id/location"
+                android:layout_width="123dp"
+                android:layout_height="31dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/subBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit" />
+
+                <Button
+                    android:id="@+id/clearBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear" />
 
 
-<!--        DITO KO MAGDESIGN CYRUS-->
-        <!--        DITO LANG SA GITNA OKIE-->
+            </LinearLayout>
 
-
-        <!--        DAPAT LAGING NASA BABA TONG BOTTOM NAVIGATION BAR-->
-
-
-
-
+        </LinearLayout>
 
 
         <!--  vvvvv      FORBIDDEN ZONE   vvvvvvvvvvvv-->
+
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             style="@style/BottomNavigationView"
@@ -59,7 +134,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
