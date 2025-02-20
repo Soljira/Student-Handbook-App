@@ -20,6 +20,7 @@ object FirestoreFunctions {
 
     /**
      * Retrieves all documents from a specified Firestore collection
+     * i.e. nirereturn nya ung a list of all documents in a given collection
      * @param collectionName The name of the collection to retrieve documents from
      * @param onComplete Callback function that receives the list of objects converted to the specified type
      * @return List<T>
