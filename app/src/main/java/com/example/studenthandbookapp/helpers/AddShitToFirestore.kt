@@ -102,7 +102,7 @@ object AddShitToFirestore {
                         val bookPage = StudentManual(
                             heading = heading.trim(),
                             subheading = subheading.trim(),
-                            content = content.trim(),
+                            content = content.trim().replace("\\n", "\n"), // Apply actual newlines
                             pageNum = pageNum
                         )
 
@@ -126,6 +126,7 @@ object AddShitToFirestore {
             Log.e(TAG, "Error reading file: ${e.message}")
         }
     }
+
 
 
 

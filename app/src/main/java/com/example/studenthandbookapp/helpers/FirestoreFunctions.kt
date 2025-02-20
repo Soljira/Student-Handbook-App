@@ -20,8 +20,6 @@ object FirestoreFunctions {
      */
 
 
-    }
-
     /**
      * Retrieves all documents from a specified Firestore collection
      * i.e. nirereturn nya ung a list of all documents in a given collection
@@ -30,36 +28,39 @@ object FirestoreFunctions {
      * @return List<T>
      *
      *     HOW TO USE
-        // Example usage for Event objects (you can change Event with other stuff)
-        FirestoreFunctions.getAllDocumentsFromCollection("events_school", Event::class.java) { eventsList ->
-            if (eventsList != null) {
-                // Process the list of events
-                    for (event in eventsList) {
-                        println("Event title: ${event.title}")
-                        }
-                    } else {
-                println("Failed to retrieve events or collection doesn't exist")
-            }
-        }
+    // Example usage for Event objects (you can change Event with other stuff)
+    FirestoreFunctions.getAllDocumentsFromCollection("events_school", Event::class.java) { eventsList ->
+    if (eventsList != null) {
+    // Process the list of events
+    for (event in eventsList) {
+    println("Event title: ${event.title}")
+    }
+    } else {
+    println("Failed to retrieve events or collection doesn't exist")
+    }
+    }
 
 
-        // FOR DEBUGGING PURPOSES
-        FirestoreFunctions.getAllDocumentsFromCollection(eventType, Event::class.java) { eventsList ->
-            if (eventsList != null) {
-                println("Retrieved ${eventsList.size} events from Firestore")
+    // FOR DEBUGGING PURPOSES
+    FirestoreFunctions.getAllDocumentsFromCollection(eventType, Event::class.java) { eventsList ->
+    if (eventsList != null) {
+    println("Retrieved ${eventsList.size} events from Firestore")
 
-                eventsList.forEachIndexed { index, event ->
-                    println("Event #${index + 1} - Title: ${event.title}, Date: ${event.date}")
-                    }
-                } else {
-                println("Failed to retrieve events or collection doesn't exist")
-            }
-        }
+    eventsList.forEachIndexed { index, event ->
+    println("Event #${index + 1} - Title: ${event.title}, Date: ${event.date}")
+    }
+    } else {
+    println("Failed to retrieve events or collection doesn't exist")
+    }
+    }
      */
 
 
-
-    fun <T> getAllDocumentsFromCollection(collectionName: String, objectClass: Class<T>, onComplete: (List<T>?) -> Unit) {
+    fun <T> getAllDocumentsFromCollection(
+        collectionName: String,
+        objectClass: Class<T>,
+        onComplete: (List<T>?) -> Unit
+    ) {
         val db = FirebaseFirestore.getInstance()
 
         db.collection(collectionName)
@@ -82,8 +83,6 @@ object FirestoreFunctions {
     }
 
 
-
-
     /**
      * Retrieves all documents with their IDs from a specified Firestore collection
      * @param collectionName The name of the collection to retrieve documents from
@@ -91,38 +90,42 @@ object FirestoreFunctions {
      * @param onComplete Callback function that receives pairs of document IDs and converted objects
      *
      * HOW TO RETRIEVE ID FROM THE RETURNED OBJECT
-            FirestoreFunctions.getAllDocumentsWithIds("events_school", Event::class.java) { eventPairsList ->
-            if (eventPairsList != null) {
-                for (pair in eventPairsList) {
-                    val documentId = pair.first  // This is the document ID
-                    val event = pair.second      // This is the Event object
+    FirestoreFunctions.getAllDocumentsWithIds("events_school", Event::class.java) { eventPairsList ->
+    if (eventPairsList != null) {
+    for (pair in eventPairsList) {
+    val documentId = pair.first  // This is the document ID
+    val event = pair.second      // This is the Event object
 
-                    println("Document ID: $documentId")
-                    println("Event title: ${event.title}")
+    println("Document ID: $documentId")
+    println("Event title: ${event.title}")
 
-                    // You can use the ID and object separately
-                    showEventDetails(documentId, event)
-                    }
-                } else {
-                println("Failed to retrieve events or collection doesn't exist")
-            }
-        }
+    // You can use the ID and object separately
+    showEventDetails(documentId, event)
+    }
+    } else {
+    println("Failed to retrieve events or collection doesn't exist")
+    }
+    }
 
-        If you need to create a list of just the IDs, you can map the results:
-            FirestoreFunctions.getAllDocumentsWithIds("events_school", Event::class.java) { eventPairsList ->
-                if (eventPairsList != null) {
-                // Extract just the document IDs into a separate list
-                val allDocumentIds = eventPairsList.map { it.first }
+    If you need to create a list of just the IDs, you can map the results:
+    FirestoreFunctions.getAllDocumentsWithIds("events_school", Event::class.java) { eventPairsList ->
+    if (eventPairsList != null) {
+    // Extract just the document IDs into a separate list
+    val allDocumentIds = eventPairsList.map { it.first }
 
-                // Extract just the Event objects into a separate list
-                val allEvents = eventPairsList.map { it.second }
+    // Extract just the Event objects into a separate list
+    val allEvents = eventPairsList.map { it.second }
 
-                // Do something with the lists
-                println("All document IDs: $allDocumentIds")
-                }
-            }
+    // Do something with the lists
+    println("All document IDs: $allDocumentIds")
+    }
+    }
      */
-    fun <T> getAllDocumentsWithIds(collectionName: String, objectClass: Class<T>, onComplete: (List<Pair<String, T>>?) -> Unit) {
+    fun <T> getAllDocumentsWithIds(
+        collectionName: String,
+        objectClass: Class<T>,
+        onComplete: (List<Pair<String, T>>?) -> Unit
+    ) {
         val db = FirebaseFirestore.getInstance()
 
         db.collection(collectionName)
@@ -155,18 +158,23 @@ object FirestoreFunctions {
     // - events_school
     // - events_holidays
     /**
-      HOW TO USE
+    HOW TO USE
 
      */
-    fun saveEventToFirestore(context : Context, eventType: String, event: Event) {
+    fun saveEventToFirestore(context: Context, eventType: String, event: Event) {
         val db = FirebaseFirestore.getInstance()
         db.collection(eventType)
             .add(event)
             .addOnSuccessListener { documentReference ->
-                Toast.makeText(context, "Event added with ID: ${documentReference.id}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Event added with ID: ${documentReference.id}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(context, "Error adding event: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error adding event: ${e.message}", Toast.LENGTH_SHORT)
+                    .show()
             }
     }
 
@@ -177,7 +185,7 @@ object FirestoreFunctions {
     // - events_user
     // - events_school
     // - events_holidays
-    fun getEventById(eventType : String, eventId: String, onComplete: (Event?) -> Unit) {
+    fun getEventById(eventType: String, eventId: String, onComplete: (Event?) -> Unit) {
         val db = FirebaseFirestore.getInstance()
 
         db.collection(eventType).document(eventId)
@@ -256,7 +264,6 @@ object FirestoreFunctions {
     }
 
 
-
     // fancy divider lol
     /***********************************************
      ***********************************************
@@ -294,3 +301,4 @@ object FirestoreFunctions {
 
     I KENAT may  exam pa kami ng 9 -GAB
 */
+}
