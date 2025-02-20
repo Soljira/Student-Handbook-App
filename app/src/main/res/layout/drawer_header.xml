@@ -3,7 +3,7 @@
     android:layout_height="160dp"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="?attr/colorPrimary">
+    android:background="@color/phinmaGreen">
 
     <ImageView
         android:id="@+id/profile_image"
