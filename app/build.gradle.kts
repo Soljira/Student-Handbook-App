@@ -22,6 +22,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs("src/main/assets")
+        }
+    }
+
     buildFeatures {
         buildConfig = true
         compose = true
@@ -73,6 +79,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")  // note: remove this later if hindi na need based sa requirements ni sir
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-appcheck-ktx")
 
 //    implementation("com.google.gms:google-services:4.4.2")
 //    implementation("com.google.android.gms:play-services-base")

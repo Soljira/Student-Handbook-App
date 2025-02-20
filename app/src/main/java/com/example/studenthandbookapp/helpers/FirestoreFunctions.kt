@@ -143,7 +143,11 @@ object FirestoreFunctions {
     // eventType is either
     // - events_user
     // - events_school
-    // - events_national
+    // - events_holidays
+    /**
+      HOW TO USE
+
+     */
     fun saveEventToFirestore(context : Context, eventType: String, event: Event) {
         val db = FirebaseFirestore.getInstance()
         db.collection(eventType)
@@ -162,7 +166,7 @@ object FirestoreFunctions {
     // eventType is either
     // - events_user
     // - events_school
-    // - events_national
+    // - events_holidays
     fun getEventById(eventType : String, eventId: String, onComplete: (Event?) -> Unit) {
         val db = FirebaseFirestore.getInstance()
 
@@ -188,7 +192,7 @@ object FirestoreFunctions {
     // eventType is either
     // - events_user
     // - events_school
-    // - events_national
+    // - events_holidays
     /*
         HOW TO USE SA ACTIVIITIES:
         FirestoreFunctions.setEventObjectById("events_school", eventId) { event ->
