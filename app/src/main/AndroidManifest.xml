@@ -12,55 +12,57 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.studenthandbookapp"
         tools:targetApi="31">
-        <activity
-            android:name=".event_page2"
-            android:exported="false" />
-        <activity
-            android:name=".event1"
-            android:exported="false" />
-        <activity
-            android:name=".event_page1"
-            android:exported="false" />
+
         <activity
             android:name=".landingpage.Login"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".landingpage.SchoolSelection" />
+
         <activity
             android:name=".ProfileActivity"
-            android:windowSoftInputMode="adjustPan" /> <!-- ^ automatically adjusts UI (or pans to the focused EditText) when keyboard is shown/hidden -->
+            android:windowSoftInputMode="adjustPan" />
+<!--        ^ automatically adjusts UI (or pans to the focused EditText) when keyboard is shown/hidden-->
+
         <activity android:name=".map.MapActivity" />
         <activity android:name=".map.MapMenuActivity" />
+
         <activity android:name=".modalities.ModalitiesActivity" />
         <activity android:name=".modalities.UrdanetaCampus" />
         <activity android:name=".modalities.RemoteCoursesActivity" />
+
+
         <activity android:name=".courses.AlliedHealthActivity" />
         <activity android:name=".courses.CriminalJusticeActivity" />
         <activity android:name=".courses.EngineeringActivity" />
         <activity android:name=".courses.EnglishActivity" />
         <activity android:name=".courses.ManagementActivity" />
         <activity android:name=".courses.ScienceActivity" />
-        <activity android:name=".courses.CrimJusticeRadActivity" />
-        <activity android:name=".courses.EducAndLibArtsActivity" />
-        <activity android:name=".courses.InfoTechActivity" />
-        <activity android:name=".courses.ManagementAccountancyActivity" />
-        <activity android:name=".scholarships.SchDescriptionsActivity" />
-        <activity android:name=".scholarships.ScholarshipPage2" />
-        <activity android:name=".scholarships.ScholarshipPage1" />
-        <activity android:name=".home.Home" />
-        <activity android:name=".event.EventList" />
-        <activity android:name=".event.AllEvents" />
-        <activity android:name=".event.EventDetails" />
+        <activity android:name=".courses.CrimJusticeRadActivity"/>
+        <activity android:name=".courses.EducAndLibArtsActivity"/>
+        <activity android:name=".courses.InfoTechActivity"/>
+        <activity android:name=".courses.ManagementAccountancyActivity"/>
+
+        <activity android:name=".scholarships.SchDescriptionsActivity"/>
+        <activity android:name=".scholarships.ScholarshipPage2"/>
+        <activity android:name=".scholarships.ScholarshipPage1"/>
+
+        <activity android:name=".home.Home"/>
+
+        <activity android:name=".event.EventList"/>
+        <activity android:name=".event.AllEvents"/>
+        <activity android:name=".event.EventDetails"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_KEY}" />
+
     </application>
 
 </manifest>

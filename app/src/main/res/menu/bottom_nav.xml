@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Profile"
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/navbar_profile"/>
+        android:title="Home"
+        android:id="@+id/nav_home"
+        android:icon="@drawable/navbar_home"/>
     <item
         android:title="Map"
         android:id="@+id/nav_map"
         android:icon="@drawable/navbar_map"/>
     <item
-        android:title="Modalities"
-        android:id="@+id/nav_modalities"
-        android:icon="@drawable/navbar_modalities"/>
+        android:title="Calendar"
+        android:id="@+id/nav_calendar"
+        android:icon="@drawable/navbar_calendar"/>
     <item
-        android:title="Scholarship"
-        android:id="@+id/nav_scholarship"
-        android:icon="@drawable/navbar_scholarship"/>
+        android:title="Manual"
+        android:id="@+id/nav_manual"
+        android:icon="@drawable/navbar_manual"/>
 
 </menu>
