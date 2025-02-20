@@ -9,7 +9,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.DocumentSnapshot
 import java.text.SimpleDateFormat
 import java.util.Locale
-
+import java.util.Date
+import java.util.*
 
 // ALL FIREBASE-RELATED REUSABLE CODE IN ONE PLACE BERI NICE
 object FirestoreFunctions {
@@ -17,6 +18,9 @@ object FirestoreFunctions {
     /**
      * General Utility
      */
+
+
+    }
 
     /**
      * Retrieves all documents from a specified Firestore collection
@@ -52,6 +56,9 @@ object FirestoreFunctions {
             }
         }
      */
+
+
+
     fun <T> getAllDocumentsFromCollection(collectionName: String, objectClass: Class<T>, onComplete: (List<T>?) -> Unit) {
         val db = FirebaseFirestore.getInstance()
 
@@ -73,6 +80,9 @@ object FirestoreFunctions {
                 onComplete(null)
             }
     }
+
+
+
 
     /**
      * Retrieves all documents with their IDs from a specified Firestore collection
@@ -257,4 +267,30 @@ object FirestoreFunctions {
      * Calendar functions
      */
 
-}
+    /*fun checkandNotifyTodayEvents(context:Context) {
+        val today=SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())//Get today's date as a string
+        val eventType = "events_school"
+
+        FirestoreFunctions.getAllDocumentsFromCollection(eventType, Event::class.java) { eventsList ->
+            if (eventsList != null) {
+                val todayEvents = eventsList.filter { event ->
+                    val eventDate = (event.date as? Timestamp)?.toDate()?.let { formatTimestampToDateString (it) }
+
+                    eventDate == today
+                }
+
+                if(todayEvents.isNotEmpty()){
+                    val eventDetails = todayEvents.joinToString("\n") { it.title}
+                    println("Today's Events: $eventDetails")
+                } else {
+                    println("No events today.")
+                }
+            } else {
+                println("Failed to retrieve events or collection doesn't exist.")
+            }
+        }
+    }
+
+
+    I KENAT may  exam pa kami ng 9 -GAB
+*/
