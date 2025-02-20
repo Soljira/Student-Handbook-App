@@ -47,4 +47,13 @@ object BottomNavigationHelper {
             }
         }
     }
+
+    // Purpose: para hindi macheck ung icons sa bottom nav bar kapag nagnavigate thru side drawer
+    fun unselectBottomNavIcon(bottomNavigationView: BottomNavigationView) {
+        bottomNavigationView.menu.setGroupCheckable(0, true, false)
+        for (i in 0 until bottomNavigationView.menu.size()) { // PARA HINDI LANG NAV_HOME UNG UNCHECKED
+            bottomNavigationView.menu.getItem(i).isChecked = false
+        }
+        bottomNavigationView.menu.setGroupCheckable(0, true, true)
+    }
 }

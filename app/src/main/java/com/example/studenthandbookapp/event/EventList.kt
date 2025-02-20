@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
@@ -35,8 +36,7 @@ class EventList : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        unselectBottomNavIcon()
-
+        unselectBottomNavIcon(bottomNavigationView)
     }
 
     fun initializeNavigationStuff() {
@@ -49,14 +49,6 @@ class EventList : AppCompatActivity() {
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
 
-        unselectBottomNavIcon()
+        unselectBottomNavIcon(bottomNavigationView)
     }
-
-    // ENSURES NA HINDI MACHECEHCK UNG ICONS SA BOTTOM NAVIGATION BAR KAPAG NAGNAVIGATE KA THRU SIDE DRAWER
-    fun unselectBottomNavIcon() {
-        bottomNavigationView.menu.setGroupCheckable(0, true, false)
-        bottomNavigationView.menu.findItem(R.id.nav_home).isChecked = false
-        bottomNavigationView.menu.setGroupCheckable(0, true, true)
-    }
-
 }
