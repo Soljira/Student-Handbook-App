@@ -75,7 +75,7 @@
     </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        style="@style/CustomBottomNavigationView"
+        style="@style/BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"

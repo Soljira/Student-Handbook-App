@@ -26,7 +26,7 @@ class EventList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.event_list)
+        setContentView(R.layout.activity_event_page1)
         initializeNavigationStuff()
         FirebaseApp.initializeApp(this)
 
