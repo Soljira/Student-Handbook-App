@@ -90,20 +90,19 @@ class AddUserEvent : AppCompatActivity() {
                 )
 
                 // Call Firestore function with callback
-                FirestoreFunctions.saveEventToFirestore(this, "events_user", event) {
-                    runOnUiThread {
-                        Toast.makeText(this, "Event saved successfully!", Toast.LENGTH_SHORT).show()
+                FirestoreFunctions.saveEventToFirestore(this, "events_user", event)
+                runOnUiThread {
+                    Toast.makeText(this, "Event saved successfully!", Toast.LENGTH_SHORT).show()
 
-                        titleEditText.text.clear()
-                        descriptionEditText.text.clear()
-                        dateEditText.text.clear()
-                        locationEditText.text.clear()
+                    titleEditText.text.clear()
+                    descriptionEditText.text.clear()
+                    dateEditText.text.clear()
+                    locationEditText.text.clear()
 
-                        // Notify the Calendar and refresh it
-                        val intent = Intent(this, CalendarActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        startActivity(intent)
-                    }
+                    // Notify the Calendar and refresh it
+                    val intent = Intent(this, CalendarActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
                 }
 
             } catch (e: Exception) {
