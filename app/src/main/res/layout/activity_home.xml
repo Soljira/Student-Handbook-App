@@ -2,12 +2,11 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    android:background="@color/offwhite"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#141C2C" android:fitsSystemWindows="true"
-    tools:context=".scholarships.ScholarshipPage2">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,19 +20,27 @@
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@android:color/white"
-            app:title="Scholarships"
+            app:title="Home"
             app:titleTextColor="@color/phinmaYellow"
             app:menu="@menu/top_app_bar_menu" />
 
-        <!-- RecyclerView for Content -->
-        <!--  Did some layout magic (aka using constrainedHeight)  -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constrainedHeight="true"
             android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView" />
+            android:layout_above="@id/bottomNavigationView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to PHINMA Student Handbook!"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:fontFamily="@font/josefinsans_bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+        </FrameLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
@@ -41,6 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true" />
+
+
 
     </RelativeLayout>
 

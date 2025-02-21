@@ -6,24 +6,31 @@ import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
     private var isEditable = false
     lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_profile)
+        initializeNavigationStuff()
 
-        // Bottom Navigation Bar DO NOT TOUCH
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.nav_profile
+
 
         val nameField = findViewById<EditText>(R.id.editTextText)
         val emailField = findViewById<EditText>(R.id.editTextText4)
@@ -148,7 +155,21 @@ class ProfileActivity : AppCompatActivity() {
     // I WASTED 3 HOURS ON THIS
     override fun onResume() {
         super.onResume()
-        bottomNavigationView.selectedItemId = R.id.nav_profile
+//        bottomNavigationView.selectedItemId = R.id.nav_profile
+        unselectBottomNavIcon(bottomNavigationView)
+    }
+
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Profile")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+        unselectBottomNavIcon(bottomNavigationView)
     }
 
 }

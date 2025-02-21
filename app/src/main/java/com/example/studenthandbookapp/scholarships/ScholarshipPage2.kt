@@ -4,11 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class ScholarshipPage2 : AppCompatActivity() {
 
@@ -17,16 +23,19 @@ class ScholarshipPage2 : AppCompatActivity() {
     private lateinit var heading: Array<String>
     lateinit var scholarshipDescriptions : Array<String>
 
+    lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_scholarship_page2)
+        initializeNavigationStuff()
 
-        // Bottom Navigation Bar DO NOT TOUCH
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         val menuItem = bottomNavigationView.menu.findItem(R.id.nav_scholarship)
-        menuItem.isChecked = true  // ensures that scholarship button thingy stays checked
+        menuItem?.isChecked = true  // ensures that scholarship button thingy stays checked
 
         heading = arrayOf(
             "1. PHINMA Scholarship (formerly Presidential Scholarship)",
@@ -85,5 +94,19 @@ class ScholarshipPage2 : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+    }
+
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Scholarships")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+//        bottomNavigationView.selectedItemId = R.id.nav_home
+        unselectBottomNavIcon(bottomNavigationView)
     }
 }

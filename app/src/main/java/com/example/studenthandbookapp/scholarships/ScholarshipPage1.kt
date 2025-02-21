@@ -6,24 +6,29 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 
 class ScholarshipPage1 : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Set content view first
         setContentView(R.layout.activity_scholarship_page1)
+        initializeNavigationStuff()
 
-        // Bottom Navigation Bar DO NOT TOUCH
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.nav_scholarship
 
         val btnScholarshipLists: ImageButton = findViewById(R.id.btn_scholarship_lists)
         btnScholarshipLists.setOnClickListener {
@@ -31,13 +36,27 @@ class ScholarshipPage1 : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Enabling edge-to-edge after setting the content view
         enableEdgeToEdge()
 
     }
 
     override fun onResume() {
         super.onResume()
-        bottomNavigationView.selectedItemId = R.id.nav_scholarship
+//        bottomNavigationView.selectedItemId = R.id.nav_scholarship
+        unselectBottomNavIcon(bottomNavigationView)
+    }
+
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Scholarships")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+//        bottomNavigationView.selectedItemId = R.id.nav_home
+        unselectBottomNavIcon(bottomNavigationView)
     }
 }

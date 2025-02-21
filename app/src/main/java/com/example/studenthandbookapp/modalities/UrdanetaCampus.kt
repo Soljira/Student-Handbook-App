@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.courses.AlliedHealthActivity
 import com.example.studenthandbookapp.courses.CriminalJusticeActivity
@@ -13,20 +14,26 @@ import com.example.studenthandbookapp.courses.EnglishActivity
 import com.example.studenthandbookapp.courses.ManagementActivity
 import com.example.studenthandbookapp.courses.ScienceActivity
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class UrdanetaCampus : AppCompatActivity() {
+    lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urdaneta)
-
-        // Bottom Navigation Bar DO NOT TOUCH
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        initializeNavigationStuff()
         val menuItem = bottomNavigationView.menu.findItem(R.id.nav_modalities)
-        menuItem.isChecked = true  // ensures that map button thingy stays checked
+        menuItem?.isChecked = true  // ensures that map button thingy stays checked
 
 
         val buttonAlliedHealth: Button = findViewById(R.id.button_allied_health)
@@ -64,5 +71,19 @@ class UrdanetaCampus : AppCompatActivity() {
     private fun navigateToActivity(activityClass: Class<*>) {
         val intent = Intent(this, activityClass)
         startActivity(intent)
+    }
+
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Modalities")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+//        bottomNavigationView.selectedItemId = R.id.nav_home
+        unselectBottomNavIcon(bottomNavigationView)
     }
 }

@@ -1,7 +1,12 @@
 package com.example.studenthandbookapp.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,24 +28,70 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.ui.theme.JosefinSans
 import com.example.studenthandbookapp.ui.theme.Merriweather
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {
+    lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navigationView: NavigationView
+    lateinit var topAppBar: MaterialToolbar
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            CenterAlignedTopAppBarExample()
+        setContentView(R.layout.activity_home)
+//        setContent {
+//            CenterAlignedTopAppBarExample()
+//        }
+        initializeNavigationStuff()
+
+    }
+
+
+    // Handle back press for drawer
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.selectedItemId = R.id.nav_home
+    }
+
+    // LAHAT NG RELATED TO NAVIGATION NANDITO OKAY????
+    fun initializeNavigationStuff() {
+        drawerLayout = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navigationView = findViewById(R.id.navigation_view)
+        topAppBar = findViewById(R.id.topAppBar)
+
+        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Home")
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
+        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
+
+        bottomNavigationView.selectedItemId = R.id.nav_home
+    }
 
     /**
      * FROM: https://developer.android.com/develop/ui/compose/components/app-bars
      */
+    // I FUCKED UP DI KO PA ALAM
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
