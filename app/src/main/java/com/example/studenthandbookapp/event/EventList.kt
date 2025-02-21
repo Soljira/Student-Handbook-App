@@ -63,8 +63,6 @@ class EventList : AppCompatActivity() {
         initializeRecyclerView()
 
 
-        fetchAndDisplayEvents()
-
         val dateTextView: TextView = findViewById(R.id.dateText)
         val currentDate = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
         dateTextView.text = currentDate
@@ -165,6 +163,7 @@ class EventList : AppCompatActivity() {
         val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
         allEvents.clear()
+        eventAdapter.updateEvents(emptyList())
 
         eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
@@ -180,8 +179,8 @@ class EventList : AppCompatActivity() {
                 }
             }
         }
-
     }
+
 
 
 

@@ -29,7 +29,7 @@ object AddShitToFirestore {
         note: change "events_test" to the collection of your choice
                 either "events_test", "events_school", "events_holiday", or "events_user"
      */
-    fun addEventsFromFile(context: Context, fileName: String, collectionName: String = "events_test") {
+    fun addEventsFromFile(context: Context, fileName: String, collectionName : String) {
         val db = FirebaseFirestore.getInstance()
         val assetsList = context.assets.list("")?.joinToString(", ") ?: "No files"
         Log.d(TAG, "Assets folder contains: $assetsList")

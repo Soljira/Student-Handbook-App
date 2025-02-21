@@ -36,8 +36,6 @@ class EventDetails : AppCompatActivity() {
 
         //todo delete functionality for user-added events
 
-
-
 //        val eventId = "e1oXYv4zFZXHGUTCZAj3" // school
 //        val eventId = "5vHyDyenbUECUDdFyovW" // user
 //        val eventId = "cisaBP2NtuToob8gDzDw"   // national

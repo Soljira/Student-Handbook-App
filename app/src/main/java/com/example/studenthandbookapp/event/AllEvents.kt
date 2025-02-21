@@ -49,8 +49,6 @@ class AllEvents : AppCompatActivity() {
         initializeRecyclerView()
         initializeSpinner()
 
-        fetchAndDisplayEvents()
-
         //todo: maybe share the code between AllEvents and EventList? THEYRE SO SIMILAR
     }
 
@@ -117,10 +115,12 @@ class AllEvents : AppCompatActivity() {
         }
     }
 
-    fun fetchAndDisplayEvents() {
+    fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
+        val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
         allEvents.clear()
+        eventAdapter.updateEvents(emptyList())
 
         eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
@@ -137,6 +137,7 @@ class AllEvents : AppCompatActivity() {
             }
         }
     }
+
 
     fun applyFilter(selectedOption: String) {
         val filteredEvents = when (selectedOption) {
