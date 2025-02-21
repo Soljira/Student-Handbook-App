@@ -13,13 +13,15 @@ import com.example.studenthandbookapp.event.EventDetails
 import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.home.Home
 import com.example.studenthandbookapp.manual.Manual
+import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
-    lateinit var loginButton: Button
-    lateinit var emailEditText: EditText
-    lateinit var passwordEditText: EditText
+    private lateinit var auth: FirebaseAuth
+    private lateinit var loginButton: Button
+    private lateinit var registerButton: Button
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -30,40 +32,43 @@ class Login : AppCompatActivity() {
 //        startActivity(Intent(this, AddUserEvent::class.java))
 //        startActivity(Intent(this, Manual::class.java))
 
+        auth = FirebaseAuth.getInstance()
 
-        loginButton = findViewById<Button>(R.id.btnLogin)
-        emailEditText = findViewById<EditText>(R.id.emailEditText)
-        passwordEditText = findViewById<EditText>(R.id.passwordEditText)
+        loginButton = findViewById(R.id.btnLogin)
+        registerButton = findViewById(R.id.btnRegister)
+        emailEditText = findViewById(R.id.emailEditText)
+        passwordEditText = findViewById(R.id.passwordEditText)
 
-        // TODO: Firebase Authentication
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            // ERROR HANDLING/VALIDATION CHECKS TO CHECK IF EMAIL AND PASSWORD IS EMPTY
             when {
                 email.isEmpty() -> showToast("Please enter email")
                 password.isEmpty() -> showToast("Please enter password")
                 else -> performLogin(email, password)
             }
-        }  // End of setOnClickListener
-    }  // End of onCreate method
-
-
-    fun performLogin(email: String, password: String) {
-        if (email == "admin@phinma.com" && password == "password123") {
-            startActivity(Intent(this, SchoolSelection::class.java))
-            finish()
-        } else {
-            Toast.makeText(
-                this,
-                "Invalid credentials. Please try again.",
-                Toast.LENGTH_SHORT)
-                .show()
         }
+
+        registerButton.setOnClickListener {
+            val intent = Intent(this, Registration::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun performLogin(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(this, SchoolSelection::class.java))
+                    finish()
+                } else {
+                    showToast("Login failed: ${task.exception?.message}")
+                }
+            }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-}  // End of Login class
+}

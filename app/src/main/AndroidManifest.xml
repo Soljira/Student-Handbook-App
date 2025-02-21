@@ -39,6 +39,7 @@
         <activity android:name=".modalities.ModalitiesActivity" />
         <activity android:name=".modalities.UrdanetaCampus" />
         <activity android:name=".modalities.RemoteCoursesActivity" />
+        <activity android:name=".landingpage.Registration"/>
 
 
         <activity android:name=".courses.AlliedHealthActivity" />
