@@ -43,7 +43,7 @@ class Registration : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     showToast("Registration successful")
-                    startActivity(Intent(this, Login::class.java))
+                    startActivity(Intent(this, SchoolSelection::class.java))
                     finish()
                 } else {
                     showToast("Registration failed: ${task.exception?.message}")

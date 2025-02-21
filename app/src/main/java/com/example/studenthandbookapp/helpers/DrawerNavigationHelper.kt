@@ -13,6 +13,7 @@ import com.example.studenthandbookapp.modalities.ModalitiesActivity
 import com.example.studenthandbookapp.scholarships.ScholarshipPage1
 import com.example.studenthandbookapp.support.Support
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 /*
     HELPER CLASS SO WE CAN REUSE THIS CODE YES
@@ -54,7 +55,10 @@ object DrawerNavigationHelper {
 //                    true
 //                }
                 R.id.nav_logout -> {
-                    activity.startActivity(Intent(activity, Login::class.java))
+                    val auth = FirebaseAuth.getInstance()
+                    auth.signOut()  // Sign out the user
+                    activity.startActivity(Intent(activity, Login::class.java))  // Redirect to the Login screen
+                    activity.finish()
                     true
                 }
                 else -> false

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.home.Home
 
 /**
  * A simple [Fragment] subclass.
@@ -22,7 +23,7 @@ class SelectUpangCampusFragment : Fragment(R.layout.fragment_select_upang_campus
         val cardUpangDagupan = view.findViewById<CardView>(R.id.cardUpangDagupan)
 
         cardUpangUrdaneta.setOnClickListener {
-            startActivity(Intent(requireContext(), ProfileActivity::class.java))
+            startActivity(Intent(requireContext(), Home::class.java))
             parentFragmentManager.beginTransaction().remove(this).commit()
             activity?.finish()  // dismisses the current activity (which is SchoolSelection.kt) after pressing this button (yay memory optimization)
         }
