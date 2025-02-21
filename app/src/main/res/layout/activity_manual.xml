@@ -16,6 +16,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
+            app:titleTextAppearance="@style/CustomTopAppBarTitle"
             android:layout_height="wrap_content"
             android:background="@color/phinmaGreen"
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"

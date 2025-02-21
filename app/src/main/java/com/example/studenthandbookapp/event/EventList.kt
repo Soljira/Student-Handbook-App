@@ -135,8 +135,6 @@ class EventList : AppCompatActivity() {
         eventRecyclerView = findViewById(R.id.recycler_events)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // todo: pass the selected event id to eventdetails and change the details there accordingly
-
         eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
             val intent = Intent(this, EventDetails::class.java).apply {
                 putExtra("EVENT_ID", documentId)
@@ -174,12 +172,18 @@ class EventList : AppCompatActivity() {
                     val formattedEvents = documents.map { (id, event) ->
                         id to (eventType to event)
                     }
+
                     allEvents.addAll(formattedEvents)
-                    applyFilter(spinner.selectedItem.toString())
+
+                    // Apply the filter only once after all data is fetched
+                    if (eventType == eventTypes.last()) {
+                        applyFilter(spinner.selectedItem.toString())
+                    }
                 }
             }
         }
     }
+
 
 
 

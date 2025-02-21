@@ -29,15 +29,20 @@
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@android:color/white"
             app:title="Events"
+            app:titleTextAppearance="@style/CustomTopAppBarTitle"
             app:titleTextColor="@color/phinmaYellow" />
         <!--      ^^^  FORBIDDEN ZONE^^^^^-->
 
-        <LinearLayout
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="70dp"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -45,94 +50,122 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="124dp"
-                android:layout_height="32dp"
-                android:text="New Event"
-                android:textSize="24sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Title" />
-
-            <EditText
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/eventDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/addDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="YYYY-MM-DD"
-                android:gravity="center"
-                android:textColorHint="@color/custom_gray"
-                android:textColor="@color/black"
-                android:focusable="false"
-                android:clickable="true" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:background="@color/white"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="vertical"
+                android:layout_marginVertical="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
 
-                <Button
-                    android:id="@+id/saveBtn"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="124dp"
+                    android:layout_height="32dp"
+                    android:text="New Event"
+                    android:fontFamily="@font/josefinsans_bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="Save"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Title"
                     android:textColor="@color/black" />
 
-                <Button
-                    android:id="@+id/clearBtn"
-                    android:layout_marginHorizontal="10dp"
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clear"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Description"
                     android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/eventDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Date"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/addDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:hint="YYYY-MM-DD"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/custom_gray" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/saveBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:layout_marginEnd="5dp"
+                        android:fontFamily="@font/merriweather_bold"
+                        android:backgroundTint="@color/phinmaGreen"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_bold"
+                        android:layout_marginStart="5dp"
+                        android:text="Clear"
+                        android:backgroundTint="@color/phinmaGreen"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
         <!--  vvvvv      FORBIDDEN ZONE   vvvvvvvvvvvv-->

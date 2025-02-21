@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/phinmaGreen"
+            app:titleTextAppearance="@style/CustomTopAppBarTitle"
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,87 +37,100 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/offwhite"
             app:layout_constraintTop_toBottomOf="@id/topAppBar"
             app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
             android:fillViewport="true">
 
-            <LinearLayout
+
+            <androidx.cardview.widget.CardView
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:background="@color/offwhite">
+                android:layout_margin="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                android:layout_gravity="center" >
 
-                <!-- Event Title -->
-                <TextView
-                    android:id="@+id/title"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/josefinsans_regular"
-                    android:text="Event Title"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    tools:ignore="HardcodedText" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:background="@color/white">
 
-                <!-- Date and Time -->
-                <TextView
-                    android:id="@+id/dateTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:text="Date and Time"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    tools:ignore="HardcodedText" />
+                    <!-- Event Title -->
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefinsans_regular"
+                        android:text="Event Title"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        tools:ignore="HardcodedText" />
 
-                <!-- Location -->
-                <TextView
-                    android:id="@+id/location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:text="Location"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    tools:ignore="HardcodedText" />
+                    <!-- Date and Time -->
+                    <TextView
+                        android:id="@+id/dateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:text="Date and Time"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        tools:ignore="HardcodedText" />
 
-                <!-- Event Description -->
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/merriweather_regular"
-                    android:text="Event Description"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="16dp"
-                    tools:ignore="HardcodedText" />
+                    <!-- Location -->
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:text="Location"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        tools:ignore="HardcodedText" />
 
-                <!-- Delete Button -->
-                <Button
-                    android:id="@+id/btnDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="@color/phinmaGreen"
-                    android:padding="8dp"
-                    android:text="Delete Event"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
+                    <!-- Event Description -->
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/merriweather_regular"
+                        android:text="Event Description"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="16dp"
+                        tools:ignore="HardcodedText" />
 
-            </LinearLayout>
+                    <!-- Delete Button -->
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="50dp"
+                        android:backgroundTint="@color/phinmaGreen"
+                        android:padding="16dp"
+                        android:text="Delete Event"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </ScrollView>
-
 
 
         <!--        DITO LANG SA GITNA OKIE-->

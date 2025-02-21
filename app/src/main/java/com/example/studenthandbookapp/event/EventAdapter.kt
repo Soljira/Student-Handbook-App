@@ -37,6 +37,16 @@ class EventAdapter(
         notifyDataSetChanged()
     }
 
+    fun formatEventType(eventType: String): String {
+        return when (eventType) {
+            "events_holiday" -> "Holiday Event"
+            "events_school" -> "School Event"
+            "events_user" -> "User Event"
+            else -> "Unknown Event"
+        }
+    }
+
+
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dateTextView: TextView = itemView.findViewById(R.id.eventDate)
         private val eventDetails: LinearLayout = itemView.findViewById(R.id.eventDetails)
@@ -52,7 +62,7 @@ class EventAdapter(
             dateTextView.text = formattedDate
             titleTextView.text = event.title
             eventDesc.text = event.description
-            typeTextView.text = eventType
+            typeTextView.text = formatEventType(eventType)
 
             eventDetails.setOnClickListener {
                 onEventDetailsClick(eventType, documentId)

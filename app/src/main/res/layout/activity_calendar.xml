@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/phinmaGreen"
+            app:titleTextAppearance="@style/CustomTopAppBarTitle"
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@android:color/white"

@@ -90,7 +90,7 @@ class AllEvents : AppCompatActivity() {
 
     fun initializeSpinner() {
         spinner = findViewById(R.id.spinner_filter)
-        val options = listOf("All", "School Events", "Holidays", "User Events")
+        val options = listOf("All", "School Event", "Holiday Event", "User Event") // Updated labels
         val adapter = ArrayAdapter(
             this,
             R.layout.custom_spinner_selected_item,
@@ -114,6 +114,7 @@ class AllEvents : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
 
     fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
@@ -140,15 +141,17 @@ class AllEvents : AppCompatActivity() {
 
 
     fun applyFilter(selectedOption: String) {
-        val filteredEvents = when (selectedOption) {
-            "School Events" -> allEvents.filter { it.second.first == "events_school" }
-            "Holidays" -> allEvents.filter { it.second.first == "events_holiday" }
-            "User Events" -> allEvents.filter { it.second.first == "events_user" }
-            else -> allEvents
+        val rawEventType = reverseFormatEventType(selectedOption)
+
+        val filteredEvents = if (rawEventType == "All") {
+            allEvents
+        } else {
+            allEvents.filter { it.second.first == rawEventType }
         }
 
         eventAdapter.updateEvents(filteredEvents)
     }
+
 
     fun initializeEventDetailsLauncher() {
         eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -157,4 +160,22 @@ class AllEvents : AppCompatActivity() {
             }
         }
     }
+    fun formatEventType(eventType: String): String {
+        return when (eventType) {
+            "events_holiday" -> "Holiday Event"
+            "events_school" -> "School Event"
+            "events_user" -> "User Event"
+            else -> "Unknown Event"
+        }
+    }
+
+    fun reverseFormatEventType(formattedType: String): String {
+        return when (formattedType) {
+            "Holiday Event" -> "events_holiday"
+            "School Event" -> "events_school"
+            "User Event" -> "events_user"
+            else -> "All"
+        }
+    }
+
 }
