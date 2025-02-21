@@ -40,10 +40,10 @@ class EventList : AppCompatActivity() {
     lateinit var topAppBar: MaterialToolbar
 
     lateinit var spinner: Spinner
-    private lateinit var eventRecyclerView: RecyclerView
-    private lateinit var eventAdapter: EventAdapter
+    lateinit var eventRecyclerView: RecyclerView
+    lateinit var eventAdapter: EventAdapter
 
-    private lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
+    lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
 
 
     @SuppressLint("MissingInflatedId")
@@ -145,30 +145,11 @@ class EventList : AppCompatActivity() {
     }
 
 
-//    private fun fetchAndDisplayEvents(filterType: String = "All") {
-//        val eventTypes = listOf("events_holiday", "events_school", "events_user")
-//        val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
-//
-//        allEvents.clear() // Clear the list before fetching new data
-//
-//        selectedTypes.forEach { eventType ->
-//            FirestoreFunctions.getAllDocumentsFromCollection(
-//                eventType,
-//                Event::class.java
-//            ) { events ->
-//                events?.let {
-//                    allEvents.addAll(it.map { event -> eventType to event })
-//                    applyFilter(spinner.selectedItem.toString()) // Apply filter based on selected spinner value
-//                }
-//            }
-//        }
-//    }
-
     private fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
         val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
-        allEvents.clear() // Clear the list before fetching new data
+        allEvents.clear()
 
         selectedTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
