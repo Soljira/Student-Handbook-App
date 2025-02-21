@@ -26,9 +26,9 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Temporarily bypass login para hnd paulit ulit naglologin (habang wala pa firebase auth)
-//        startActivity(Intent(this, Home::class.java))
+        startActivity(Intent(this, Home::class.java))
 //        startActivity(Intent(this, EventDetails::class.java))
-        startActivity(Intent(this, EventList::class.java))
+//        startActivity(Intent(this, EventList::class.java))
 //        startActivity(Intent(this, AddUserEvent::class.java))
 //        startActivity(Intent(this, Manual::class.java))
 
