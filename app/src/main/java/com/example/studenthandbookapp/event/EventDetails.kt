@@ -36,8 +36,6 @@ class EventDetails : AppCompatActivity() {
 
         //todo delete functionality for user-added events
 
-        // hnd na to need vv
-//        AddEventsToFirestore.addEventsFromFile(this, "holidays_events.txt")
 
 
 //        val eventId = "e1oXYv4zFZXHGUTCZAj3" // school

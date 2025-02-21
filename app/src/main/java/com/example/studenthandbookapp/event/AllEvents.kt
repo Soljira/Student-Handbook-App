@@ -57,6 +57,7 @@ class AllEvents : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         unselectBottomNavIcon(bottomNavigationView)
+        fetchAndDisplayEvents()
     }
 
     fun initializeNavigationStuff() {

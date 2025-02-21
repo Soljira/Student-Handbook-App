@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
+import com.example.studenthandbookapp.helpers.AddShitToFirestore
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
@@ -86,6 +87,7 @@ class EventList : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         unselectBottomNavIcon(bottomNavigationView)
+        fetchAndDisplayEvents()
     }
 
     fun initializeNavigationStuff() {
@@ -164,21 +166,23 @@ class EventList : AppCompatActivity() {
 
         allEvents.clear()
 
-        selectedTypes.forEach { eventType ->
+        eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
                 eventType,
                 Event::class.java
             ) { documentsWithIds ->
                 documentsWithIds?.let { documents ->
-                    // Store document ID with eventType and Event
-                    documents.forEach { (docId, event) ->
-                        allEvents.add(docId to (eventType to event))
+                    val formattedEvents = documents.map { (id, event) ->
+                        id to (eventType to event)
                     }
+                    allEvents.addAll(formattedEvents)
                     applyFilter(spinner.selectedItem.toString())
                 }
             }
         }
+
     }
+
 
 
     fun applyFilter(selectedOption: String) {
