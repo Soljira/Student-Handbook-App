@@ -263,6 +263,23 @@ object FirestoreFunctions {
         }
     }
 
+    /**
+     * FROM OFFICIAL FIREBASE DOCS
+     */
+    fun deleteEvent(eventType: String, eventId: String, callback: (Boolean) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection(eventType).document(eventId)
+            .delete()
+            .addOnSuccessListener {
+                callback(true)
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+                callback(false)
+            }
+    }
+
+
 
     // fancy divider lol
     /***********************************************

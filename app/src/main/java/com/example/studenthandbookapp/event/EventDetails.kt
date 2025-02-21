@@ -2,6 +2,7 @@ package com.example.studenthandbookapp.event
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -44,6 +45,7 @@ class EventDetails : AppCompatActivity() {
 //        val eventId = "cisaBP2NtuToob8gDzDw"   // national
 //        val eventType = "events_school"
         var eventTest: Event? = Event()
+        val btnDelete = findViewById<Button>(R.id.btnDelete)
 
 
         // ALGORITHM:
@@ -78,6 +80,19 @@ class EventDetails : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Error: Event not found", Toast.LENGTH_SHORT).show()
                 finish()
+            }
+        }
+
+
+        // NOTE: set eventType to events_user (only; the other events should be left alone) just in case
+        btnDelete.setOnClickListener {
+            FirestoreFunctions.deleteEvent("events_user", eventId) { success ->
+                if (success) {
+                    Toast.makeText(this, "Event deleted", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this, "Error: Event not deleted", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
