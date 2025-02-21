@@ -30,22 +30,35 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.event.EventAdapter
+import com.example.studenthandbookapp.event.EventDetails
+import com.example.studenthandbookapp.helpers.AddShitToFirestore
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
+import com.example.studenthandbookapp.helpers.FirestoreFunctions
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.ui.theme.JosefinSans
 import com.example.studenthandbookapp.ui.theme.Merriweather
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.Timestamp
+import com.example.studenthandbookapp.dataclasses.Event
+import com.example.studenthandbookapp.event.EventList
 
 class Home : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var topAppBar: MaterialToolbar
+
+    lateinit var eventRecyclerView: RecyclerView
+    lateinit var eventAdapter: EventAdapter
+    lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +68,16 @@ class Home : AppCompatActivity() {
 //        setContent {
 //            CenterAlignedTopAppBarExample()
 //        }
+
+        val btnEvent = findViewById<ImageButton>(R.id.btnEvent)
+        btnEvent.setOnClickListener {
+            startActivity(Intent(this, EventList::class.java))
+        }
         initializeNavigationStuff()
+
+        initializeRecyclerView()
+
+        fetchAndDisplayUpcomingEvents()
 
     }
 
@@ -87,6 +109,56 @@ class Home : AppCompatActivity() {
 
         bottomNavigationView.selectedItemId = R.id.nav_home
     }
+
+
+    fun initializeRecyclerView() {
+        eventRecyclerView = findViewById(R.id.recycler_upcoming_events)
+        eventRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
+            val intent = Intent(this, EventDetails::class.java).apply {
+                putExtra("EVENT_ID", documentId)
+                putExtra("EVENT_TYPE", eventType)
+            }
+            startActivity(intent)
+        }
+
+        eventRecyclerView.adapter = eventAdapter
+        allEvents = mutableListOf()
+    }
+
+    fun fetchAndDisplayUpcomingEvents() {
+        val eventTypes = listOf("events_holiday", "events_school", "events_user")
+        val currentTime = Timestamp.now().toDate().time
+
+        eventTypes.forEach { eventType ->
+            FirestoreFunctions.getAllDocumentsWithIds(
+                eventType,
+                Event::class.java
+            ) { documentsWithIds ->
+                documentsWithIds?.let { documents ->
+                    val formattedEvents = documents.map { (id, event) ->
+                        id to (eventType to event)
+                    }
+
+                    allEvents.addAll(formattedEvents)
+                }
+
+                // Filter events based on upcoming date
+                val filteredEvents = allEvents.filter { (_, typedEvent) ->
+                    val (_, event) = typedEvent
+                    (event.date?.toDate()?.time ?: 0) >= currentTime
+                }
+
+                eventAdapter.updateEvents(filteredEvents)
+            }
+        }
+    }
+
+
+
+
+
 
     /**
      * FROM: https://developer.android.com/develop/ui/compose/components/app-bars

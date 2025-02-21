@@ -112,7 +112,4 @@ class Manual : AppCompatActivity() {
         // TODO: Maybe a toast for declaring page numbers and if user reached 0 or 100?
 
     }
-
-
-
 }
