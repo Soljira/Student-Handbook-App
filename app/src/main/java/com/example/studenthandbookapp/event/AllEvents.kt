@@ -1,5 +1,6 @@
 package com.example.studenthandbookapp.event
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -68,9 +69,15 @@ class AllEvents : AppCompatActivity() {
         eventRecyclerView = findViewById(R.id.recycler_events)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        eventAdapter = EventAdapter(emptyList()) { documentId, eventType ->
-            // Handle item click if needed
+        eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
+            val intent = Intent(this, EventDetails::class.java).apply {
+                putExtra("EVENT_TYPE", eventType)
+                putExtra("EVENT_ID", documentId)
+            }
+            startActivity(intent)
         }
+
+
 
         eventRecyclerView.adapter = eventAdapter
         allEvents = mutableListOf()
