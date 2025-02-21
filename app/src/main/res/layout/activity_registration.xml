@@ -7,7 +7,7 @@
     android:background="@drawable/bg_schoolselection">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardLogin"
+        android:id="@+id/cardRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
@@ -45,7 +45,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:importantForAutofill="no"
                 android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -87,8 +86,31 @@
                 android:padding="12dp"
                 tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
+                android:text="Confirm Password"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/confirmPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_border"
+                android:textColor="@color/black"
+                android:textColorHint="#494949"
+                android:hint="Re-enter your password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -97,21 +119,22 @@
                 android:fontFamily="@font/josefin_sans_bold"
                 android:textColor="@color/phinmaYellow"
                 android:textSize="20sp"
-                android:text="LOGIN"
+                android:text="REGISTER"
                 tools:ignore="HardcodedText,VisualLintButtonSize" />
 
-            <Button
-                android:id="@+id/btnRegister"
+            <TextView
+                android:id="@+id/tvGoToLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:backgroundTint="@color/phinmaYellow"
-                android:fontFamily="@font/josefin_sans_bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="Already have an account? Login here"
                 android:textColor="@color/phinmaGreen"
-                android:textSize="20sp"
-                android:text="REGISTER"
-                tools:ignore="HardcodedText,VisualLintButtonSize" />
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
