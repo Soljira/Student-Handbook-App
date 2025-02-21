@@ -13,6 +13,7 @@ import java.util.Calendar
 import java.util.Locale
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.event.AddUserEvent
+import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
@@ -25,6 +26,7 @@ class CalendarActivity : AppCompatActivity() {
 //    private lateinit var btnMonth: Button
 //    private lateinit var btnDay: Button
     private lateinit var btnToday: TextView
+    private lateinit var btnEvents: ImageButton
     private lateinit var btnAddEvent: TextView
     private lateinit var btnPrev: ImageButton
     private lateinit var btnNext: ImageButton
@@ -80,6 +82,10 @@ class CalendarActivity : AppCompatActivity() {
             updateCalendar()
         }
 
+        btnEvents.setOnClickListener {
+            startActivity(Intent(this, EventList::class.java))
+        }
+
         btnToday.setOnClickListener {
             calendar.timeInMillis = System.currentTimeMillis()
             selectedDay = currentDay
@@ -90,6 +96,7 @@ class CalendarActivity : AppCompatActivity() {
         btnAddEvent.setOnClickListener {
             startActivity(Intent(this, AddUserEvent::class.java))
         }
+
 
 //        btnMonth.setOnClickListener {
 //            Toast.makeText(this, "Month View", Toast.LENGTH_SHORT).show()
@@ -113,6 +120,7 @@ class CalendarActivity : AppCompatActivity() {
     private fun initializeViews() {
 //        btnMonth = findViewById(R.id.btnMonth)
 //        btnDay = findViewById(R.id.btnDay)
+        btnEvents = findViewById(R.id.btnEvents)
         btnToday = findViewById(R.id.btnToday)
         btnAddEvent = findViewById(R.id.btnAddEvent)
         btnPrev = findViewById(R.id.btnPrev)
@@ -129,7 +137,15 @@ class CalendarActivity : AppCompatActivity() {
 
         val days = generateCalendarDays()
 
-        calendarGrid.adapter = CalendarAdapter(this, days, selectedDay) { day ->
+        // Get dates with events for the current month
+        val currentMonth = calendar.get(Calendar.MONTH)
+        val currentYear = calendar.get(Calendar.YEAR)
+
+        calendarGrid.adapter = CalendarAdapter(
+            this,
+            days,
+            selectedDay,
+        ) { day ->
             onDaySelected(day.toInt())
         }
 
