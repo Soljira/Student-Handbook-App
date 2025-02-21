@@ -163,6 +163,8 @@ class EventList : AppCompatActivity() {
         allEvents.clear()
         eventAdapter.updateEvents(emptyList())
 
+        var completedFetches = 0 // Counter to track completed fetches
+
         eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
                 eventType,
@@ -174,15 +176,19 @@ class EventList : AppCompatActivity() {
                     }
 
                     allEvents.addAll(formattedEvents)
+                }
 
-                    // Apply the filter only once after all data is fetched
-                    if (eventType == eventTypes.last()) {
-                        applyFilter(spinner.selectedItem.toString())
-                    }
+                // Increment the completed fetch counter
+                completedFetches++
+
+                // Apply filter only when all fetches are completed
+                if (completedFetches == eventTypes.size) {
+                    applyFilter(spinner.selectedItem.toString())
                 }
             }
         }
     }
+
 
 
 
