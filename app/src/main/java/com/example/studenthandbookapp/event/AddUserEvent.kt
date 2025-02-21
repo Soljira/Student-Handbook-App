@@ -1,6 +1,7 @@
 package com.example.studenthandbookapp.event
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.calendar.CalendarActivity
 import com.example.studenthandbookapp.dataclasses.Event
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
@@ -34,11 +36,6 @@ class AddUserEvent : AppCompatActivity() {
         setContentView(R.layout.activity_add_user_event)
         initializeNavigationStuff()
 
-
-        // TODO: Bale gagawin mo, kukunin mo ng laman ng mga text sa lahat ng edittext
-        // TODO: Gumawa na ako ng script para i-add na sa firestore ung entered data. palitan mo nalng ung ipopoint ko
-
-
         val btnClear = findViewById<Button>(R.id.clearBtn)
         val btnSave = findViewById<Button>(R.id.saveBtn)
 
@@ -47,7 +44,6 @@ class AddUserEvent : AppCompatActivity() {
         val dateEditText = findViewById<EditText>(R.id.addDate)
         val locationEditText = findViewById<EditText>(R.id.location)
 
-
         dateEditText.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -55,7 +51,6 @@ class AddUserEvent : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                // Format the date as YYYY-MM-DD
                 val formattedDate = String.format("%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay)
                 dateEditText.setText(formattedDate)
             }, year, month, day)
@@ -63,14 +58,12 @@ class AddUserEvent : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-
         btnClear.setOnClickListener {
             titleEditText.text.clear()
             descriptionEditText.text.clear()
             dateEditText.text.clear()
             locationEditText.text.clear()
         }
-
 
         btnSave.setOnClickListener {
             val title = titleEditText.text.toString().trim()
@@ -83,7 +76,6 @@ class AddUserEvent : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // converts the date string to a Timestamp (firestore)
             val dateParts = dateString.split("-")
             val calendar = Calendar.getInstance()
             try {
@@ -97,23 +89,28 @@ class AddUserEvent : AppCompatActivity() {
                     location = location
                 )
 
-                FirestoreFunctions.saveEventToFirestore(this, "events_user", event)
-                Toast.makeText(this, "Event saved successfully!", Toast.LENGTH_SHORT).show()
+                // Call Firestore function with callback
+                FirestoreFunctions.saveEventToFirestore(this, "events_user", event) {
+                    runOnUiThread {
+                        Toast.makeText(this, "Event saved successfully!", Toast.LENGTH_SHORT).show()
 
-                titleEditText.text.clear()
-                descriptionEditText.text.clear()
-                dateEditText.text.clear()
-                locationEditText.text.clear()
+                        titleEditText.text.clear()
+                        descriptionEditText.text.clear()
+                        dateEditText.text.clear()
+                        locationEditText.text.clear()
+
+                        // Notify the Calendar and refresh it
+                        val intent = Intent(this, CalendarActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intent)
+                    }
+                }
 
             } catch (e: Exception) {
                 Toast.makeText(this, "Invalid date. Please try again.", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
-
-
 
     override fun onResume() {
         super.onResume()

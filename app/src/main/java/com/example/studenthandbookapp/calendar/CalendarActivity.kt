@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import java.util.Calendar
 import java.util.Locale
 import com.example.studenthandbookapp.R
@@ -23,31 +24,23 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var btnNext: ImageButton
     private lateinit var txtYear: TextView
     private lateinit var txtMonth: TextView
+    private lateinit var eventHeader: TextView
     private lateinit var calendarGrid: GridView
 
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
-    lateinit var topAppBar: MaterialToolbar
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var topAppBar: MaterialToolbar
 
     private val calendar: Calendar = Calendar.getInstance()
-
     private var selectedDay: Int = calendar.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
+
+        initializeViews()
         initializeNavigationStuff()
-
-        btnMonth = findViewById(R.id.btnMonth)
-        btnDay = findViewById(R.id.btnDay)
-        btnToday = findViewById(R.id.btnToday)
-        btnPrev = findViewById(R.id.btnPrev)
-        btnNext = findViewById(R.id.btnNext)
-        txtYear = findViewById(R.id.txtYear)
-        txtMonth = findViewById(R.id.txtMonth)
-        calendarGrid = findViewById(R.id.calendarGrid)
-
         updateCalendar()
 
         btnPrev.setOnClickListener {
@@ -70,6 +63,14 @@ class CalendarActivity : AppCompatActivity() {
             Toast.makeText(this, "Month View", Toast.LENGTH_SHORT).show()
             updateCalendar()
         }
+
+        calendarGrid.setOnItemClickListener { _, _, position, _ ->
+            val days = generateCalendarDays()
+            val selectedDate = days[position]
+            if (selectedDate.isNotEmpty()) {
+                onDaySelected(selectedDate.toInt())
+            }
+        }
     }
 
     override fun onResume() {
@@ -77,29 +78,57 @@ class CalendarActivity : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.nav_calendar
     }
 
-
-
+    private fun initializeViews() {
+        btnMonth = findViewById(R.id.btnMonth)
+        btnDay = findViewById(R.id.btnDay)
+        btnToday = findViewById(R.id.btnToday)
+        btnPrev = findViewById(R.id.btnPrev)
+        btnNext = findViewById(R.id.btnNext)
+        txtYear = findViewById(R.id.txtYear)
+        txtMonth = findViewById(R.id.txtMonth)
+        eventHeader = findViewById(R.id.eventHeader)
+        calendarGrid = findViewById(R.id.calendarGrid)
+    }
 
     private fun updateCalendar() {
         txtYear.text = calendar.get(Calendar.YEAR).toString()
         txtMonth.text = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
 
+        val days = generateCalendarDays()
+
+        calendarGrid.adapter = CalendarAdapter(this, days) { day ->
+            onDaySelected(day.toInt())
+        }
+
+        setGridViewHeight(calendarGrid, (days.size / 7) + 1)
+    }
+
+    private fun generateCalendarDays(): MutableList<String> {
         val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         val firstDayOfMonth = getFirstDayOfMonth(calendar)
 
         val days = mutableListOf<String>()
-        for (i in 1..firstDayOfMonth) days.add("")
+        repeat(firstDayOfMonth) { days.add("") }
         for (day in 1..daysInMonth) days.add(day.toString())
 
-        calendarGrid.adapter = CalendarAdapter(this, days) { day ->
-            selectedDay = day.toInt()
-        }
-
-        setGridViewHeight(calendarGrid, days.size / 7 + 1)
+        return days
     }
 
+    private fun onDaySelected(day: Int) {
+        selectedDay = day
+        val selectedDate = "${txtMonth.text} $day, ${txtYear.text}"
 
+        eventHeader.text = selectedDate
 
+        val fragment = EventFragment.newInstance(selectedDate)
+        replaceFragment(fragment)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.eventFragmentContainer, fragment)
+            .commit()
+    }
 
     private fun getFirstDayOfMonth(calendar: Calendar): Int {
         val tempCal = calendar.clone() as Calendar
@@ -109,13 +138,11 @@ class CalendarActivity : AppCompatActivity() {
 
     private fun setGridViewHeight(gridView: GridView, rows: Int) {
         val itemHeight = 120
-        val totalHeight = rows * itemHeight
-        gridView.layoutParams.height = totalHeight
+        gridView.layoutParams.height = rows * itemHeight
         gridView.requestLayout()
     }
 
-    // LAHAT NG RELATED TO NAVIGATION NANDITO OKAY????
-    fun initializeNavigationStuff() {
+    private fun initializeNavigationStuff() {
         drawerLayout = findViewById(R.id.drawer_layout)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navigationView = findViewById(R.id.navigation_view)
@@ -128,6 +155,3 @@ class CalendarActivity : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.nav_calendar
     }
 }
-
-
-

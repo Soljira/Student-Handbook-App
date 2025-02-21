@@ -136,7 +136,7 @@ class AllEvents : AppCompatActivity() {
             "School Events" -> allEvents.filter { it.second.first == "events_school" }
             "Holidays" -> allEvents.filter { it.second.first == "events_holiday" }
             "User Events" -> allEvents.filter { it.second.first == "events_user" }
-            else -> allEvents // nonfiltered option
+            else -> allEvents
         }
 
         eventAdapter.updateEvents(filteredEvents)
