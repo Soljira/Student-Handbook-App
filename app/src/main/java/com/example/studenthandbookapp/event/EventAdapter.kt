@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class EventAdapter(
-    private var eventList: List<Pair<String, Event>>,
-    private val onEventDetailsClick: (Event) -> Unit // Add click listener as a parameter
+    private var eventList: List<Pair<String, Pair<String, Event>>>, // Now includes documentId, eventType, and Event
+    private val onEventDetailsClick: (String, String) -> Unit // eventType, documentId
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -25,14 +25,15 @@ class EventAdapter(
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val (eventType, event) = eventList[position]
-        holder.bind(eventType, event)
+        val (documentId, typedEvent) = eventList[position]
+        val (eventType, event) = typedEvent
+        holder.bind(documentId, eventType, event)
     }
 
     override fun getItemCount() = eventList.size
 
-    fun updateEvents(newEvents: List<Pair<String, Event>>) {
-        eventList = newEvents.sortedBy { it.second.date?.toDate() }
+    fun updateEvents(newEvents: List<Pair<String, Pair<String, Event>>>) {
+        eventList = newEvents.sortedBy { it.second.second.date?.toDate() }
         notifyDataSetChanged()
     }
 
@@ -43,7 +44,7 @@ class EventAdapter(
         private val typeTextView: TextView = eventDetails.findViewById(R.id.eventType)
         private val eventDesc: TextView = eventDetails.findViewById(R.id.eventDescription)
 
-        fun bind(eventType: String, event: Event) {
+        fun bind(documentId: String, eventType: String, event: Event) {
             val formattedDate = event.date?.let { timestamp ->
                 SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(timestamp.toDate())
             } ?: "No Date"
@@ -54,7 +55,7 @@ class EventAdapter(
             typeTextView.text = eventType
 
             eventDetails.setOnClickListener {
-                onEventDetailsClick(event)
+                onEventDetailsClick(eventType, documentId)
             }
         }
     }

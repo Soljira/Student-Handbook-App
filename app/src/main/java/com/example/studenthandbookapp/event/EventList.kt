@@ -43,7 +43,7 @@ class EventList : AppCompatActivity() {
     private lateinit var eventRecyclerView: RecyclerView
     private lateinit var eventAdapter: EventAdapter
 
-    private lateinit var allEvents: MutableList<Pair<String, Event>>
+    private lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
 
 
     @SuppressLint("MissingInflatedId")
@@ -52,10 +52,10 @@ class EventList : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_event_page1)
         FirebaseApp.initializeApp(this)
-
         initializeNavigationStuff()
         initializeSpinners()
         initializeRecyclerView()
+
 
         fetchAndDisplayEvents()
 
@@ -63,8 +63,11 @@ class EventList : AppCompatActivity() {
         val currentDate = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
         dateTextView.text = currentDate
 
+
         val btnNewEvent = findViewById<Button>(R.id.btn_new_event)
         val btnShowAll = findViewById<Button>(R.id.btn_show_all)
+//        val btnEventDetails = findViewById<Button>(R.id.eventDetails)
+
 
 
         btnNewEvent.setOnClickListener {
@@ -128,15 +131,38 @@ class EventList : AppCompatActivity() {
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
         // todo: pass the selected event id to eventdetails and change the details there accordingly
-        eventAdapter = EventAdapter(emptyList()) { event ->
-            startActivity(Intent(this, EventDetails::class.java).apply {
-            })
+
+        eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
+            val intent = Intent(this, EventDetails::class.java).apply {
+                putExtra("EVENT_ID", documentId)
+                putExtra("EVENT_TYPE", eventType)
+            }
+            startActivity(intent)
         }
 
         eventRecyclerView.adapter = eventAdapter
         allEvents = mutableListOf()
     }
 
+
+//    private fun fetchAndDisplayEvents(filterType: String = "All") {
+//        val eventTypes = listOf("events_holiday", "events_school", "events_user")
+//        val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
+//
+//        allEvents.clear() // Clear the list before fetching new data
+//
+//        selectedTypes.forEach { eventType ->
+//            FirestoreFunctions.getAllDocumentsFromCollection(
+//                eventType,
+//                Event::class.java
+//            ) { events ->
+//                events?.let {
+//                    allEvents.addAll(it.map { event -> eventType to event })
+//                    applyFilter(spinner.selectedItem.toString()) // Apply filter based on selected spinner value
+//                }
+//            }
+//        }
+//    }
 
     private fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
@@ -145,27 +171,33 @@ class EventList : AppCompatActivity() {
         allEvents.clear() // Clear the list before fetching new data
 
         selectedTypes.forEach { eventType ->
-            FirestoreFunctions.getAllDocumentsFromCollection(
+            FirestoreFunctions.getAllDocumentsWithIds(
                 eventType,
                 Event::class.java
-            ) { events ->
-                events?.let {
-                    allEvents.addAll(it.map { event -> eventType to event })
-                    applyFilter(spinner.selectedItem.toString()) // Apply filter based on selected spinner value
+            ) { documentsWithIds ->
+                documentsWithIds?.let { documents ->
+                    // Store document ID with eventType and Event
+                    documents.forEach { (docId, event) ->
+                        allEvents.add(docId to (eventType to event))
+                    }
+                    applyFilter(spinner.selectedItem.toString())
                 }
             }
         }
     }
 
+
     private fun applyFilter(selectedOption: String) {
         val currentTime = Timestamp.now().toDate().time
 
         val filteredEvents = when (selectedOption) {
-            "Show: Upcoming" -> allEvents.filter { (_, event) ->
-                event.date?.toDate()?.time ?: 0 >= currentTime
+            "Show: Upcoming" -> allEvents.filter { (_, typedEvent) ->
+                val (_, event) = typedEvent
+                (event.date?.toDate()?.time ?: 0) >= currentTime
             }
-            "Show: Past" -> allEvents.filter { (_, event) ->
-                event.date?.toDate()?.time ?: 0 < currentTime
+            "Show: Past" -> allEvents.filter { (_, typedEvent) ->
+                val (_, event) = typedEvent
+                (event.date?.toDate()?.time ?: 0) < currentTime
             }
             else -> allEvents
         }

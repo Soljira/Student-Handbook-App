@@ -3,6 +3,7 @@ package com.example.studenthandbookapp.event
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -32,55 +33,53 @@ class EventDetails : AppCompatActivity() {
         setContentView(R.layout.activity_event_details)
         initializeNavigationStuff()
 
+        //todo delete functionality for user-added events
+
         // hnd na to need vv
 //        AddEventsToFirestore.addEventsFromFile(this, "holidays_events.txt")
-        // TODO: RECYCLER VIEW
 
-        var title = findViewById<TextView>(R.id.title)
 
-        // todo: firebase function for fetching eventid list
-        val eventId = "e1oXYv4zFZXHGUTCZAj3" // school
+//        val eventId = "e1oXYv4zFZXHGUTCZAj3" // school
 //        val eventId = "5vHyDyenbUECUDdFyovW" // user
 //        val eventId = "cisaBP2NtuToob8gDzDw"   // national
-        val eventType = "events_school"
-        // todo: create eventtest array based on the number of eventIDs
+//        val eventType = "events_school"
         var eventTest: Event? = Event()
 
 
-        FirestoreFunctions.setEventObjectById(eventType, eventId) { event ->
-//            eventTest = event  // eventTest is your empty Event object
-//            title.text = eventTest?.title  // based sa findings ko above, its important na nandito mismo ung pagpalit ng title, kasi async nga
-//            println("Title: ${eventTest?.title}")
+        // ALGORITHM:
+        //  1. get document id and eventType from EventList (via putExtra)
+        //  2. Use getEventById (from FirestoreFunctions) and change the text in xml according to the document
+
+        // Get the data from the prev intent (ung EventList)
+        val eventId = intent.getStringExtra("EVENT_ID") ?: ""
+        val eventType = intent.getStringExtra("EVENT_TYPE") ?: ""
+        if (eventId.isEmpty() || eventType.isEmpty()) {
+            Toast.makeText(this, "Error: Event details not found", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        val eventTitleTv = findViewById<TextView>(R.id.title)
+        val eventDateTimeTv = findViewById<TextView>(R.id.dateTime)
+        val eventLocationTv = findViewById<TextView>(R.id.location)
+        val eventDescTv = findViewById<TextView>(R.id.description)
+
+
+        // Use the getEventById function to fetch the event FROM FIRESTORSE
+        FirestoreFunctions.getEventById(eventType, eventId) { event ->
             if (event != null) {
-                eventTest = event
-                val formattedDate = FirestoreFunctions.formatTimestampToDateString(eventTest.date)
-//                title.text = event.title
-                title.text = formattedDate
-            } else {
-                println("Event not found or an error occurred.")
-            }
-            // For error checking only; uncomment if kailangan icheck
-//            println("Title: ${eventTest?.title}")
-//            println("Date: ${eventTest?.date}")
-//            println("Description: ${eventTest?.description}")
-//            println("Location: ${eventTest?.location}")
-        }
+                eventTitleTv.text = event.title
 
-        var listTest : List<Event>
-
-        FirestoreFunctions.getAllDocumentsFromCollection(eventType, Event::class.java) { eventsList ->
-            if (eventsList != null) {
-                // Process the list of events
-                for (event in eventsList) {
-                    println("Event title: ${event.title}")
-                }
-                listTest = eventsList
-                println(listTest)
+                // UPDATE UI WITH THE FETCHED DATA
+                val formattedDate = FirestoreFunctions.formatTimestampToDateString(event.date)
+                eventDateTimeTv.text = formattedDate
+                eventDescTv.text = event.description
+                eventLocationTv.text = event.location
             } else {
-                println("Failed to retrieve events or collection doesn't exist")
+                Toast.makeText(this, "Error: Event not found", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
-
     }
 
     override fun onResume() {

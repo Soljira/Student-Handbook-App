@@ -50,8 +50,38 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Placeholder"
-                android:gravity="center" />
+                android:text="Title"
+                android:textColor="@color/black" />
+
+            <!--            OPTIONAL; FOR TESTING PURPOSES ONLY     -->
+<!--            <TextView-->
+<!--                android:id="@+id/eventId"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="ID"-->
+<!--                android:textColor="@color/black" />-->
+
+            <TextView
+                android:id="@+id/dateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date and Time"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Desciption"
+                android:textColor="@color/black" />
+
 
 
 
