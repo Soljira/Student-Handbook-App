@@ -318,4 +318,19 @@ object FirestoreFunctions {
 
     I KENAT may  exam pa kami ng 9 -GAB
 */
+    fun listenForEventChanges(eventType: String, onEventUpdate: (List<Event>) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection(eventType)
+            .addSnapshotListener { snapshot, error ->
+                if (error != null) {
+                    println("Error listening for event changes: ${error.message}")
+                    return@addSnapshotListener
+                }
+                if (snapshot != null && !snapshot.isEmpty) {
+                    val events = snapshot.documents.mapNotNull { it.toObject(Event::class.java) }
+                    onEventUpdate(events) // Notify the calendar of the updated events
+                }
+            }
+    }
 }

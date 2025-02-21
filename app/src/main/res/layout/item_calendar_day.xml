@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="8dp">
+    android:layout_margin="4dp"
+    android:padding="2dp">
 
     <TextView
         android:id="@+id/txtDay"
@@ -12,5 +13,6 @@
         android:gravity="center"
         android:textSize="16sp"
         android:textColor="@android:color/black"
+        android:fontFamily="@font/montserrat_medium"
         android:background="@drawable/calendar_day_background" />
 </LinearLayout>

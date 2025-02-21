@@ -39,33 +39,63 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center_vertical">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnMonth"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="Month"/>-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnDay"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="Day"/>-->
+
+<!--                    android:src="@android:drawable/ic_menu_today"-->
+
+<!--                </LinearLayout>-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="end"
+                    android:orientation="horizontal" >
 
-                    <Button
-                        android:id="@+id/btnMonth"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Month"/>
-
-                    <Button
-                        android:id="@+id/btnDay"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Day"/>
-
-                    <ImageButton
-                        android:id="@+id/btnToday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_today"
+                    <TextView
+                        android:id="@+id/btnAddEvent"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:layout_gravity="end"
+                        android:text="+"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/calendar_day_background"
+                        android:fontFamily="@font/montserrat_medium"
                         android:contentDescription="Go to Today" />
+                    <TextView
+                        android:id="@+id/btnToday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_gravity="end"
+                        android:text="1"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/calendar_day_background"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:contentDescription="Go to Today" />
+
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,28 +109,44 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_left_arrow"
+                        android:background="#0000"
                         android:contentDescription="Previous" />
 
-                    <TextView
-                        android:id="@+id/txtMonth"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="February"
-                        android:textSize="18sp"
-                        android:layout_marginHorizontal="16dp" />
+                        android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/txtYear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2025"
-                        android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/txtMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="February"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/merriweather_bold"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtYear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/merriweather_bold"
+                            android:text="2025"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
 
                     <ImageButton
                         android:id="@+id/btnNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_right_arrow"
+                        android:background="#0000"
                         android:contentDescription="Next" />
                 </LinearLayout>
 
@@ -109,13 +155,93 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sun"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mon"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tue"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Wed"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Thu"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fri"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sat"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
                     <GridView
                         android:id="@+id/calendarGrid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:numColumns="7"
-                        android:verticalSpacing="4dp"
-                        android:horizontalSpacing="4dp"
+                        android:verticalSpacing="2dp"
+                        android:horizontalSpacing="2dp"
+                        android:layout_marginTop="20dp"
                         android:stretchMode="columnWidth"
                         android:gravity="center" />
 
@@ -135,21 +261,28 @@
                 </FrameLayout>
 
                 <!-- Event Header -->
-                <TextView
-                    android:id="@+id/eventHeader"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="February 18, 2025"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginVertical="12dp" />
+                    android:orientation="vertical" >
 
-                <!-- Fragment Container for Event Details -->
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/eventFragmentContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/eventHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="February 18, 2025"
+                        android:fontFamily="@font/merriweather_bold"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginVertical="12dp" />
 
+                    <!-- Fragment Container for Event Details -->
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/eventFragmentContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 

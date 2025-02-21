@@ -81,6 +81,7 @@ class EventDetails : AppCompatActivity() {
 
 
         // NOTE: set eventType to events_user (only; the other events should be left alone) just in case
+        // TODO: THIS SHOULD ONLY SHOW UP WHEN EVENTYPE IS EVENTS_USER
         btnDelete.setOnClickListener {
             FirestoreFunctions.deleteEvent("events_user", eventId) { success ->
                 if (success) {

@@ -11,6 +11,7 @@ import com.example.studenthandbookapp.R
 class CalendarAdapter(
     private val context: Context,
     private val days: List<String>,
+    private var selectedDay: Int, // Changed to var
     private val onDayClick: (String) -> Unit
 ) : BaseAdapter() {
 
@@ -29,8 +30,20 @@ class CalendarAdapter(
         txtDay.text = day
         txtDay.alpha = if (day.isEmpty()) 0.3f else 1.0f
 
+        if (day.isNotEmpty() && day.toIntOrNull() == selectedDay) {
+            txtDay.setTextColor(context.getColor(R.color.white))
+            txtDay.setBackgroundResource(R.drawable.selected_day_background)
+        } else {
+            txtDay.setTextColor(context.getColor(android.R.color.black))
+            txtDay.setBackgroundResource(R.drawable.calendar_day_background)
+        }
+
         view.setOnClickListener {
-            if (day.isNotEmpty()) onDayClick(day)
+            if (day.isNotEmpty()) {
+                selectedDay = day.toInt() // Update selected day
+                notifyDataSetChanged() // Refresh the view
+                onDayClick(day)
+            }
         }
 
         return view
