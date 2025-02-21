@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -36,6 +38,8 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var topAppBar: MaterialToolbar
 
+    lateinit var eventDetailsLauncher: ActivityResultLauncher<Intent>
+
     private val calendar: Calendar = Calendar.getInstance()
     var currentDay = calendar.get(Calendar.DAY_OF_MONTH)
     var selectedDay: Int = calendar.get(Calendar.DAY_OF_MONTH)
@@ -43,6 +47,14 @@ class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
+
+        // Initialize the activity result launcher
+        eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                // Refresh the current day view when returning with OK result (after deletion)
+                onDaySelected(selectedDay)
+            }
+        }
 
         initializeViews()
         initializeNavigationStuff()

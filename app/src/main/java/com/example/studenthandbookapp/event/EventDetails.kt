@@ -82,18 +82,23 @@ class EventDetails : AppCompatActivity() {
 
         // NOTE: set eventType to events_user (only; the other events should be left alone) just in case
         // TODO: THIS SHOULD ONLY SHOW UP WHEN EVENTYPE IS EVENTS_USER
-        btnDelete.setOnClickListener {
-            FirestoreFunctions.deleteEvent("events_user", eventId) { success ->
-                if (success) {
-                    Toast.makeText(this, "Event deleted", Toast.LENGTH_SHORT).show()
-                    setResult(RESULT_OK) // Indicate success
-                    finish()
-                } else {
-                    Toast.makeText(this, "Error: Event not deleted", Toast.LENGTH_SHORT).show()
+
+        if (eventType != "events_user") {
+            btnDelete.visibility = Button.GONE
+        } else {
+            btnDelete.visibility = Button.VISIBLE
+            btnDelete.setOnClickListener {
+                FirestoreFunctions.deleteEvent("events_user", eventId) { success ->
+                    if (success) {
+                        Toast.makeText(this, "Event deleted", Toast.LENGTH_SHORT).show()
+                        setResult(RESULT_OK) // Indicate success
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Error: Event not deleted", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
-
     }
 
     override fun onResume() {

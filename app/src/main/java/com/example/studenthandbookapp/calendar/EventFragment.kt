@@ -1,6 +1,7 @@
 package com.example.studenthandbookapp.calendar
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
+import com.example.studenthandbookapp.event.EventDetails
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
@@ -53,24 +55,24 @@ class EventFragment : Fragment() {
             val endOfDay = Timestamp(Date(selectedDate.time + 86400000 - 1))
 
             val collections = listOf("events_school", "events_holiday", "events_user")
-            val allEvents = mutableListOf<Pair<Event, String>>()
+            val allEvents = mutableListOf<Triple<Event, String, String>>() // Event, collection type, document ID
             var loadedCollections = 0
 
             eventListContainer.removeAllViews()
 
             collections.forEach { collection ->
-                FirestoreFunctions.getAllDocumentsFromCollection(collection, Event::class.java) { eventsList ->
+                FirestoreFunctions.getAllDocumentsWithIds(collection, Event::class.java) { documentsWithIds ->
                     // Avoid proceeding if the fragment is not attached
-                    if (!isAdded) return@getAllDocumentsFromCollection
+                    if (!isAdded) return@getAllDocumentsWithIds
 
                     loadedCollections++
 
-                    if (eventsList != null) {
-                        val eventsForSelectedDate = eventsList.filter { event ->
+                    if (documentsWithIds != null) {
+                        val eventsForSelectedDate = documentsWithIds.filter { (_, event) ->
                             event.date?.toDate()?.after(startOfDay.toDate()) == true &&
                                     event.date?.toDate()?.before(endOfDay.toDate()) == true
                         }
-                        allEvents.addAll(eventsForSelectedDate.map { event -> event to collection })
+                        allEvents.addAll(eventsForSelectedDate.map { (id, event) -> Triple(event, collection, id) })
                     } else {
                         println("Failed to retrieve events from $collection or collection doesn't exist.")
                     }
@@ -86,8 +88,8 @@ class EventFragment : Fragment() {
                                 eventListContainer.addView(noEventsTextView)
                             }
                         } else {
-                            allEvents.forEach { (event, eventType) ->
-                                addEventToUI(event, eventType)
+                            allEvents.forEach { (event, eventType, docId) ->
+                                addEventToUI(event, eventType, docId)
                             }
                         }
                     }
@@ -99,7 +101,7 @@ class EventFragment : Fragment() {
     }
 
     @SuppressLint("MissingInflatedId")
-    private fun addEventToUI(event: Event, eventType: String) {
+    private fun addEventToUI(event: Event, eventType: String, documentId: String) {
         context?.let { safeContext ->
             val eventView = LayoutInflater.from(safeContext)
                 .inflate(R.layout.event_item, eventListContainer, false)
@@ -118,7 +120,31 @@ class EventFragment : Fragment() {
                 else -> "Unknown Event Type"
             }
 
+            // Add click listener with the document ID
+            eventView.setOnClickListener {
+                openEventDetails(documentId, eventType)
+            }
+
             eventListContainer.addView(eventView)
+        }
+    }
+
+    private fun openEventDetails(eventId: String, eventType: String) {
+        activity?.let { activity ->
+            if (activity is CalendarActivity) {
+                val intent = Intent(activity, EventDetails::class.java).apply {
+                    putExtra("EVENT_ID", eventId)
+                    putExtra("EVENT_TYPE", eventType)
+                }
+                activity.eventDetailsLauncher.launch(intent)
+            } else {
+                // Fallback if not launched from CalendarActivity
+                val intent = Intent(activity, EventDetails::class.java).apply {
+                    putExtra("EVENT_ID", eventId)
+                    putExtra("EVENT_TYPE", eventType)
+                }
+                startActivity(intent)
+            }
         }
     }
 }
