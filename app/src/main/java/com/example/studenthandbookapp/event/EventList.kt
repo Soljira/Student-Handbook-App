@@ -11,6 +11,8 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,7 +46,7 @@ class EventList : AppCompatActivity() {
     lateinit var eventAdapter: EventAdapter
 
     lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
-
+    lateinit var eventDetailsLauncher: ActivityResultLauncher<Intent>
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +54,9 @@ class EventList : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_event_page1)
         FirebaseApp.initializeApp(this)
+
+        initializeEventDetailsLauncher()
+
         initializeNavigationStuff()
         initializeSpinners()
         initializeRecyclerView()
@@ -140,12 +145,20 @@ class EventList : AppCompatActivity() {
             startActivity(intent)
         }
 
+        eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
+            val intent = Intent(this, EventDetails::class.java).apply {
+                putExtra("EVENT_ID", documentId)
+                putExtra("EVENT_TYPE", eventType)
+            }
+            eventDetailsLauncher.launch(intent)
+        }
+
         eventRecyclerView.adapter = eventAdapter
         allEvents = mutableListOf()
     }
 
 
-    private fun fetchAndDisplayEvents(filterType: String = "All") {
+    fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
         val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
@@ -168,7 +181,7 @@ class EventList : AppCompatActivity() {
     }
 
 
-    private fun applyFilter(selectedOption: String) {
+    fun applyFilter(selectedOption: String) {
         val currentTime = Timestamp.now().toDate().time
 
         val filteredEvents = when (selectedOption) {
@@ -184,6 +197,14 @@ class EventList : AppCompatActivity() {
         }
 
         eventAdapter.updateEvents(filteredEvents)
+    }
+
+    fun initializeEventDetailsLauncher() {
+        eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                fetchAndDisplayEvents()
+            }
+        }
     }
 
 

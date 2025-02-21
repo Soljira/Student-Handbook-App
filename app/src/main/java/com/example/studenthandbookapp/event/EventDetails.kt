@@ -89,12 +89,14 @@ class EventDetails : AppCompatActivity() {
             FirestoreFunctions.deleteEvent("events_user", eventId) { success ->
                 if (success) {
                     Toast.makeText(this, "Event deleted", Toast.LENGTH_SHORT).show()
+                    setResult(RESULT_OK) // Indicate success
                     finish()
                 } else {
                     Toast.makeText(this, "Error: Event not deleted", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
     }
 
     override fun onResume() {
