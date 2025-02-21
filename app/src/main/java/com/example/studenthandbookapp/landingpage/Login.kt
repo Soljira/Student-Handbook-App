@@ -8,6 +8,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.event.AddUserEvent
+import com.example.studenthandbookapp.event.EventDetails
+import com.example.studenthandbookapp.event.EventList
+import com.example.studenthandbookapp.home.Home
+import com.example.studenthandbookapp.manual.Manual
 
 class Login : AppCompatActivity() {
     lateinit var loginButton: Button
@@ -19,7 +24,11 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Temporarily bypass login para hnd paulit ulit naglologin (habang wala pa firebase auth)
-        startActivity(Intent(this, SchoolSelection::class.java))
+//        startActivity(Intent(this, Home::class.java))
+//        startActivity(Intent(this, EventDetails::class.java))
+        startActivity(Intent(this, EventList::class.java))
+//        startActivity(Intent(this, AddUserEvent::class.java))
+//        startActivity(Intent(this, Manual::class.java))
 
 
         loginButton = findViewById<Button>(R.id.btnLogin)
