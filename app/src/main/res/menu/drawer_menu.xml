@@ -20,10 +20,10 @@
         android:title="Modalities"
         android:icon="@drawable/navbar_modalities" />
 
-    <item
-        android:id="@+id/nav_support"
-        android:title="Support/Contact Us"
-        android:icon="@drawable/navbar_support" />
+<!--    <item-->
+<!--        android:id="@+id/nav_support"-->
+<!--        android:title="Support/Contact Us"-->
+<!--        android:icon="@drawable/navbar_support" />-->
 
 
     <item

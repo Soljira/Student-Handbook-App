@@ -47,12 +47,12 @@ object DrawerNavigationHelper {
                     }
                     true
                 }
-                R.id.nav_support -> {
-                    if (activity !is Support) {
-                        activity.startActivity(Intent(activity, Support::class.java))
-                    }
-                    true
-                }
+//                R.id.nav_support -> {
+//                    if (activity !is Support) {
+//                        activity.startActivity(Intent(activity, Support::class.java))
+//                    }
+//                    true
+//                }
                 R.id.nav_logout -> {
                     activity.startActivity(Intent(activity, Login::class.java))
                     true

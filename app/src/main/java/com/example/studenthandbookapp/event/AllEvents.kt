@@ -7,6 +7,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,27 +31,31 @@ class AllEvents : AppCompatActivity() {
     lateinit var navigationView: NavigationView
     lateinit var topAppBar: MaterialToolbar
 
-    private lateinit var spinner: Spinner
-    private lateinit var eventRecyclerView: RecyclerView
-    private lateinit var eventAdapter: EventAdapter
-    private lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>>
+    lateinit var spinner: Spinner
+    lateinit var eventRecyclerView: RecyclerView
+    lateinit var eventAdapter: EventAdapter
+
+    lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>>
+    lateinit var eventDetailsLauncher: ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_all_events)
+        initializeEventDetailsLauncher()
+
         initializeNavigationStuff()
         initializeRecyclerView()
         initializeSpinner()
 
-        fetchAndDisplayEvents()
-
-        //todo: maybe share the code between AllEvents and EventList?
+        //todo: maybe share the code between AllEvents and EventList? THEYRE SO SIMILAR
     }
 
     override fun onResume() {
         super.onResume()
         unselectBottomNavIcon(bottomNavigationView)
+        fetchAndDisplayEvents()
     }
 
     fun initializeNavigationStuff() {
@@ -71,12 +77,11 @@ class AllEvents : AppCompatActivity() {
 
         eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
             val intent = Intent(this, EventDetails::class.java).apply {
-                putExtra("EVENT_TYPE", eventType)
                 putExtra("EVENT_ID", documentId)
+                putExtra("EVENT_TYPE", eventType)
             }
-            startActivity(intent)
+            eventDetailsLauncher.launch(intent)
         }
-
 
 
         eventRecyclerView.adapter = eventAdapter
@@ -110,10 +115,12 @@ class AllEvents : AppCompatActivity() {
         }
     }
 
-    fun fetchAndDisplayEvents() {
+    fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
+        val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
         allEvents.clear()
+        eventAdapter.updateEvents(emptyList())
 
         eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
@@ -131,6 +138,7 @@ class AllEvents : AppCompatActivity() {
         }
     }
 
+
     fun applyFilter(selectedOption: String) {
         val filteredEvents = when (selectedOption) {
             "School Events" -> allEvents.filter { it.second.first == "events_school" }
@@ -140,5 +148,13 @@ class AllEvents : AppCompatActivity() {
         }
 
         eventAdapter.updateEvents(filteredEvents)
+    }
+
+    fun initializeEventDetailsLauncher() {
+        eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                fetchAndDisplayEvents()
+            }
+        }
     }
 }

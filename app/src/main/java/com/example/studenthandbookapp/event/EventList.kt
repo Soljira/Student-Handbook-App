@@ -11,12 +11,15 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
+import com.example.studenthandbookapp.helpers.AddShitToFirestore
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
@@ -44,7 +47,7 @@ class EventList : AppCompatActivity() {
     lateinit var eventAdapter: EventAdapter
 
     lateinit var allEvents: MutableList<Pair<String, Pair<String, Event>>> // documentId, (eventType, Event)
-
+    lateinit var eventDetailsLauncher: ActivityResultLauncher<Intent>
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,12 +55,13 @@ class EventList : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_event_page1)
         FirebaseApp.initializeApp(this)
+
+        initializeEventDetailsLauncher()
+
         initializeNavigationStuff()
         initializeSpinners()
         initializeRecyclerView()
 
-
-        fetchAndDisplayEvents()
 
         val dateTextView: TextView = findViewById(R.id.dateText)
         val currentDate = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
@@ -81,6 +85,7 @@ class EventList : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         unselectBottomNavIcon(bottomNavigationView)
+        fetchAndDisplayEvents()
     }
 
     fun initializeNavigationStuff() {
@@ -140,27 +145,36 @@ class EventList : AppCompatActivity() {
             startActivity(intent)
         }
 
+        eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
+            val intent = Intent(this, EventDetails::class.java).apply {
+                putExtra("EVENT_ID", documentId)
+                putExtra("EVENT_TYPE", eventType)
+            }
+            eventDetailsLauncher.launch(intent)
+        }
+
         eventRecyclerView.adapter = eventAdapter
         allEvents = mutableListOf()
     }
 
 
-    private fun fetchAndDisplayEvents(filterType: String = "All") {
+    fun fetchAndDisplayEvents(filterType: String = "All") {
         val eventTypes = listOf("events_holiday", "events_school", "events_user")
         val selectedTypes = if (filterType == "All") eventTypes else listOf(filterType)
 
         allEvents.clear()
+        eventAdapter.updateEvents(emptyList())
 
-        selectedTypes.forEach { eventType ->
+        eventTypes.forEach { eventType ->
             FirestoreFunctions.getAllDocumentsWithIds(
                 eventType,
                 Event::class.java
             ) { documentsWithIds ->
                 documentsWithIds?.let { documents ->
-                    // Store document ID with eventType and Event
-                    documents.forEach { (docId, event) ->
-                        allEvents.add(docId to (eventType to event))
+                    val formattedEvents = documents.map { (id, event) ->
+                        id to (eventType to event)
                     }
+                    allEvents.addAll(formattedEvents)
                     applyFilter(spinner.selectedItem.toString())
                 }
             }
@@ -168,7 +182,9 @@ class EventList : AppCompatActivity() {
     }
 
 
-    private fun applyFilter(selectedOption: String) {
+
+
+    fun applyFilter(selectedOption: String) {
         val currentTime = Timestamp.now().toDate().time
 
         val filteredEvents = when (selectedOption) {
@@ -184,6 +200,14 @@ class EventList : AppCompatActivity() {
         }
 
         eventAdapter.updateEvents(filteredEvents)
+    }
+
+    fun initializeEventDetailsLauncher() {
+        eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                fetchAndDisplayEvents()
+            }
+        }
     }
 
 
