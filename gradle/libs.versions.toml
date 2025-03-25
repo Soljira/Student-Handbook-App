@@ -1,5 +1,7 @@
 [versions]
+#noinspection AndroidGradlePluginVersion
 agp = "8.8.1"
+#noinspection GradleDependency
 kotlin = "2.1.0"
 mapsSecret = "2.0.1"
 coreKtx = "1.15.0"
@@ -8,18 +10,23 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
+#noinspection GradleDependency
 activity = "1.9.3"
+#noinspection GradleDependency
 googleMaps = "19.0.0"
+#noinspection GradleDependency
 constraintlayout = "2.2.0"
 uiTooling = "1.7.8"
 media3CommonKtx = "1.5.1"
 media3Ui = "1.5.1"
 media3Exoplayer = "1.5.1"
 navigationRuntimeAndroid = "2.9.0-alpha08"
+#noinspection GradleDependency
 foundationLayoutAndroid = "1.7.7"
 navigationCompose = "2.8.9"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
+#noinspection GradleDependency
 composeBom = "2024.04.01"
 navigationFragmentKtx = "2.8.9"
 navigationUiKtx = "2.8.9"
@@ -55,7 +62,9 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+#noinspection SimilarGradleDependency
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 map-secret = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsSecret" }
+#noinspection SimilarGradleDependency
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

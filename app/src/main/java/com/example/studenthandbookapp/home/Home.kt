@@ -3,27 +3,31 @@ package com.example.studenthandbookapp.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.*
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,23 +36,20 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.dataclasses.Event
 import com.example.studenthandbookapp.event.EventAdapter
 import com.example.studenthandbookapp.event.EventDetails
-import com.example.studenthandbookapp.helpers.AddShitToFirestore
+import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.ui.theme.JosefinSans
-import com.example.studenthandbookapp.ui.theme.Merriweather
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Timestamp
-import com.example.studenthandbookapp.dataclasses.Event
-import com.example.studenthandbookapp.event.EventList
 
 class Home : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
@@ -82,6 +83,7 @@ class Home : AppCompatActivity() {
 
 
     // Handle back press for drawer
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

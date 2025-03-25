@@ -13,6 +13,32 @@ data class VideoData(
 val videoList = listOf(
     VideoData(
         "Posted By Phinma UPang College Urdaneta - Supreme Student Council on Facebook",
+        "June 1, 2024",
+        "“\uD835\uDE3D\uD835\uDE5A \uD835\uDE65\uD835\uDE56\uD835\uDE67\uD835\uDE69 \uD835\uDE64\uD835\uDE5B \uD835\uDE69\uD835\uDE5D\uD835\uDE5A \uD835\uDE5C\uD835\uDE67\uD835\uDE64\uD835\uDE6C\uD835\uDE5E\uD835\uDE63\uD835\uDE5C \uD835\uDE5B\uD835\uDE56\uD835\uDE62\uD835\uDE5E\uD835\uDE61\uD835\uDE6E \uD835\uDE64\uD835\uDE5B \uD835\uDE4B\uD835\uDE43\uD835\uDE44\uD835\uDE49\uD835\uDE48\uD835\uDE3C \uD835\uDE50\uD835\uDE4B\uD835\uDE56\uD835\uDE63\uD835\uDE5C \uD835\uDE3E\uD835\uDE64\uD835\uDE61\uD835\uDE61\uD835\uDE5A\uD835\uDE5C\uD835\uDE5A \uD835\uDE50\uD835\uDE67\uD835\uDE59\uD835\uDE56\uD835\uDE63\uD835\uDE5A\uD835\uDE69\uD835\uDE56, \uD835\uDE6C\uD835\uDE5D\uD835\uDE5A\uD835\uDE67\uD835\uDE5A \uD835\uDE66\uD835\uDE6A\uD835\uDE56\uD835\uDE61\uD835\uDE5E\uD835\uDE69\uD835\uDE6E \uD835\uDE5A\uD835\uDE59\uD835\uDE6A\uD835\uDE58\uD835\uDE56\uD835\uDE69\uD835\uDE5E\uD835\uDE64\uD835\uDE63 \uD835\uDE62\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE68 \uD835\uDE57\uD835\uDE64\uD835\uDE6A\uD835\uDE63\uD835\uDE59\uD835\uDE61\uD835\uDE5A\uD835\uDE68\uD835\uDE68 \uD835\uDE64\uD835\uDE65\uD835\uDE65\uD835\uDE64\uD835\uDE67\uD835\uDE69\uD835\uDE6A\uD835\uDE63\uD835\uDE5E\uD835\uDE69\uD835\uDE5E\uD835\uDE5A\uD835\uDE68 \uD835\uDE5B\uD835\uDE64\uD835\uDE67 \uD835\uDE5C\uD835\uDE67\uD835\uDE64\uD835\uDE6C\uD835\uDE69\uD835\uDE5D \uD835\uDE56\uD835\uDE63\uD835\uDE59 \uD835\uDE68\uD835\uDE6A\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE68\uD835\uDE68!”\n" +
+                "\n" +
+                "Yes, you’ve read it right! PHINMA UPang also offers quality education in Urdaneta.\n" +
+                "\uD835\uDDE3\uD835\uDDDB\uD835\uDDDC\uD835\uDDE1\uD835\uDDE0\uD835\uDDD4 \uD835\uDDE8\uD835\uDDE3\uD835\uDDEE\uD835\uDDFB\uD835\uDDF4 \uD835\uDDD6\uD835\uDDFC\uD835\uDDF9\uD835\uDDF9\uD835\uDDF2\uD835\uDDF4\uD835\uDDF2 \uD835\uDDE8\uD835\uDDFF\uD835\uDDF1\uD835\uDDEE\uD835\uDDFB\uD835\uDDF2\uD835\uDE01\uD835\uDDEE \uD835\uDDFC\uD835\uDDF3\uD835\uDDF3\uD835\uDDF2\uD835\uDDFF\uD835\uDE00:\n" +
+                "•AB English Language\n" +
+                "•BS Accountancy\n" +
+                "•BS Accounting Information System\n" +
+                "•BS Architecture\n" +
+                "•BS Civil Engineering\n" +
+                "•BS Computer Science\n" +
+                "•BS Criminology\n" +
+                "•BS Entrepreneurship\n" +
+                "•BS Medical Laboratory Science\n" +
+                "•BS Tourism Management\n" +
+                "\uD835\uDC04\uD835\uDC27\uD835\uDC2B\uD835\uDC28\uD835\uDC25\uD835\uDC25 \uD835\uDC27\uD835\uDC28\uD835\uDC30 \uD835\uDC1A\uD835\uDC27\uD835\uDC1D \uD835\uDC1B\uD835\uDC1E \uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC2D \uD835\uDC28\uD835\uDC1F \uD835\uDC28\uD835\uDC2E\uD835\uDC2B \uD835\uDC25\uD835\uDC1E\uD835\uDC20\uD835\uDC1A\uD835\uDC1C\uD835\uDC32 \uD835\uDC28\uD835\uDC1F \uD835\uDC2C\uD835\uDC2E\uD835\uDC1C\uD835\uDC1C\uD835\uDC1E\uD835\uDC2C\uD835\uDC2C! \uD83D\uDCD6\n" +
+                "\n" +
+                "#WelcomeToPHINMAUPang\n" +
+                "#PHINMAUPangCollegeUrdaneta\n" +
+                "#KasamaMoAngPHINMAEd\n" +
+                "#MakingLivesBetterThroughEducation",
+        R.drawable.vid1_thumb,
+        "https://storage.googleapis.com/marketingvideos/01%20AQOCYBqwVD5VmgDfYdXeZjZ4BFrNwyGFb23VKhN0zDAIVIQ_H8uzjmGJGNP3JoQiqnEZSdP7a3QauzytzmwfcCvA.mp4"
+    ),
+    VideoData(
+        "Posted By Phinma UPang College Urdaneta - Supreme Student Council on Facebook",
         "February 10, 2025",
         "\uD835\uDC06\uD835\uDC2B\uD835\uDC1E\uD835\uDC32 \uD835\uDC02\uD835\uDC28\uD835\uDC1D\uD835\uDC1E\uD835\uDC1B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1A\uD835\uDC24\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C\n" +
                 "\n" +
@@ -22,8 +48,8 @@ val videoList = listOf(
                 "\n" +
                 "#KasamaMoAngPHINMAEd\n" +
                 "#MakingLivesBetterThroughEducation",
-        R.drawable.bg,
-        "https://storage.googleapis.com/marketingvideos/video1.mp4"
+        R.drawable.vid6_thumb,
+        "https://storage.googleapis.com/marketingvideos/06%20AQMCgq5ALPaiY81VILp6Xk_KuIL7pRtk9h2R5wqwgzLppkbZbPBytjUxZovICDdE8nIxra9jS_XxnbTqutqir230.mp4"
     ),
     VideoData(
         "Posted By Phinma UPang College Urdaneta - Supreme Student Council on Facebook",
@@ -48,8 +74,8 @@ val videoList = listOf(
                 "\n" +
                 "#SasamahanKita\n" +
                 "#MakingLivesBetterThroughEducation",
-        R.drawable.bg,
-        "https://storage.googleapis.com/marketingvideos/video1.mp4"
+        R.drawable.vid5_thumb,
+        "https://storage.googleapis.com/marketingvideos/05%20AQPt0G0gAD5anp7fsXELXx8_YWNDFdpOVw34sUU1iZlydQDyrf-vbz3IBcoVCm236x1ysXu08bejtk5jAFWWuNH3.mp4"
     ),
     VideoData(
         "Posted By Phinma UPang College Urdaneta - Supreme Student Council on Facebook",
@@ -59,8 +85,8 @@ val videoList = listOf(
                 "\uD835\uDC00-\uD835\uDFCF\uD835\uDFCE \uD835\uDC1A\uD835\uDC27\uD835\uDC20 \uD835\uDC0A\uD835\uDC30\uD835\uDC1E\uD835\uDC27\uD835\uDC2D\uD835\uDC28 \uD835\uDC27\uD835\uDC20 \uD835\uDC0F\uD835\uDC1A\uD835\uDC2C\uD835\uDC24\uD835\uDC28. \uD83C\uDF84✨\n" +
                 "\n" +
                 "#UPangUrdanetaLamparaan",
-        R.drawable.bg,
-        "https://storage.googleapis.com/marketingvideos/video1.mp4"
+        R.drawable.vid4_thumb,
+        "https://storage.googleapis.com/marketingvideos/04%20AQMT0hkn9lndu9jw9PnRxleLOIy8UR_yCA_DYoLHxtcpniQu8k19YmB1UTB1KSQoXZHFiT239wXhcOwfrntt_0QQ.mp4"
     ),
 
     VideoData(
@@ -73,8 +99,8 @@ val videoList = listOf(
                 "#UPangUrdanetaFirstWeekHi2024 " +
                 "#KasamaMoAngPHINMAEd " +
                 "#MakingLivesBetterThroughEducation",
-        R.drawable.bg,
-        "https://storage.cloud.google.com/marketingvideos/video3.mp4"
+        R.drawable.vid3_thumb,
+        "https://storage.googleapis.com/marketingvideos/03%20AQMMlnzTx5eninYXPNJqcr0f2LFZ9wnn50_2_ic6gLNpabSschqxJtc4CYJFh221zkjqQe2ncZNjRNon9ZDR7SOI.mp4"
     ),
 
     VideoData(
@@ -87,40 +113,7 @@ val videoList = listOf(
                 "#UPangUrdanetaPulseAwards2024\n" +
                 "#KasamaMoAngPHINMAEd\n" +
                 "#MakingLivesBetterThroughEducation",
-        R.drawable.bg,
-        "https://storage.googleapis.com/marketingvideos/video1.mp4"
+        R.drawable.vid2_thumb,
+        "https://storage.googleapis.com/marketingvideos/02%20AQOKPuKUgcEKlbIx-28ZCKqe3sOEOGayIZTzz6O5kQR9MvaYWwBJk_7AKzZS-cqv_jx1jfFfuXfngtv7kV9w3wwc.mp4"
     ),
-
-
-    VideoData(
-        "Posted By Phinma UPang College Urdaneta - Supreme Student Council on Facebook",
-        "June 1, 2024",
-        "“\uD835\uDE3D\uD835\uDE5A \uD835\uDE65\uD835\uDE56\uD835\uDE67\uD835\uDE69 \uD835\uDE64\uD835\uDE5B \uD835\uDE69\uD835\uDE5D\uD835\uDE5A \uD835\uDE5C\uD835\uDE67\uD835\uDE64\uD835\uDE6C\uD835\uDE5E\uD835\uDE63\uD835\uDE5C \uD835\uDE5B\uD835\uDE56\uD835\uDE62\uD835\uDE5E\uD835\uDE61\uD835\uDE6E \uD835\uDE64\uD835\uDE5B \uD835\uDE4B\uD835\uDE43\uD835\uDE44\uD835\uDE49\uD835\uDE48\uD835\uDE3C \uD835\uDE50\uD835\uDE4B\uD835\uDE56\uD835\uDE63\uD835\uDE5C \uD835\uDE3E\uD835\uDE64\uD835\uDE61\uD835\uDE61\uD835\uDE5A\uD835\uDE5C\uD835\uDE5A \uD835\uDE50\uD835\uDE67\uD835\uDE59\uD835\uDE56\uD835\uDE63\uD835\uDE5A\uD835\uDE69\uD835\uDE56, \uD835\uDE6C\uD835\uDE5D\uD835\uDE5A\uD835\uDE67\uD835\uDE5A \uD835\uDE66\uD835\uDE6A\uD835\uDE56\uD835\uDE61\uD835\uDE5E\uD835\uDE69\uD835\uDE6E \uD835\uDE5A\uD835\uDE59\uD835\uDE6A\uD835\uDE58\uD835\uDE56\uD835\uDE69\uD835\uDE5E\uD835\uDE64\uD835\uDE63 \uD835\uDE62\uD835\uDE5A\uD835\uDE5A\uD835\uDE69\uD835\uDE68 \uD835\uDE57\uD835\uDE64\uD835\uDE6A\uD835\uDE63\uD835\uDE59\uD835\uDE61\uD835\uDE5A\uD835\uDE68\uD835\uDE68 \uD835\uDE64\uD835\uDE65\uD835\uDE65\uD835\uDE64\uD835\uDE67\uD835\uDE69\uD835\uDE6A\uD835\uDE63\uD835\uDE5E\uD835\uDE69\uD835\uDE5E\uD835\uDE5A\uD835\uDE68 \uD835\uDE5B\uD835\uDE64\uD835\uDE67 \uD835\uDE5C\uD835\uDE67\uD835\uDE64\uD835\uDE6C\uD835\uDE69\uD835\uDE5D \uD835\uDE56\uD835\uDE63\uD835\uDE59 \uD835\uDE68\uD835\uDE6A\uD835\uDE58\uD835\uDE58\uD835\uDE5A\uD835\uDE68\uD835\uDE68!”\n" +
-                "\n" +
-                "Yes, you’ve read it right! PHINMA UPang also offers quality education in Urdaneta.\n" +
-                "\uD835\uDDE3\uD835\uDDDB\uD835\uDDDC\uD835\uDDE1\uD835\uDDE0\uD835\uDDD4 \uD835\uDDE8\uD835\uDDE3\uD835\uDDEE\uD835\uDDFB\uD835\uDDF4 \uD835\uDDD6\uD835\uDDFC\uD835\uDDF9\uD835\uDDF9\uD835\uDDF2\uD835\uDDF4\uD835\uDDF2 \uD835\uDDE8\uD835\uDDFF\uD835\uDDF1\uD835\uDDEE\uD835\uDDFB\uD835\uDDF2\uD835\uDE01\uD835\uDDEE \uD835\uDDFC\uD835\uDDF3\uD835\uDDF3\uD835\uDDF2\uD835\uDDFF\uD835\uDE00:\n" +
-                "•AB English Language\n" +
-                "•BS Accountancy\n" +
-                "•BS Accounting Information System\n" +
-                "•BS Architecture\n" +
-                "•BS Civil Engineering\n" +
-                "•BS Computer Science\n" +
-                "•BS Criminology\n" +
-                "•BS Entrepreneurship\n" +
-                "•BS Medical Laboratory Science\n" +
-                "•BS Tourism Management\n" +
-                "\uD835\uDC04\uD835\uDC27\uD835\uDC2B\uD835\uDC28\uD835\uDC25\uD835\uDC25 \uD835\uDC27\uD835\uDC28\uD835\uDC30 \uD835\uDC1A\uD835\uDC27\uD835\uDC1D \uD835\uDC1B\uD835\uDC1E \uD835\uDC29\uD835\uDC1A\uD835\uDC2B\uD835\uDC2D \uD835\uDC28\uD835\uDC1F \uD835\uDC28\uD835\uDC2E\uD835\uDC2B \uD835\uDC25\uD835\uDC1E\uD835\uDC20\uD835\uDC1A\uD835\uDC1C\uD835\uDC32 \uD835\uDC28\uD835\uDC1F \uD835\uDC2C\uD835\uDC2E\uD835\uDC1C\uD835\uDC1C\uD835\uDC1E\uD835\uDC2C\uD835\uDC2C! \uD83D\uDCD6\n" +
-                "\n" +
-                "#WelcomeToPHINMAUPang\n" +
-                "#PHINMAUPangCollegeUrdaneta\n" +
-                "#KasamaMoAngPHINMAEd\n" +
-                "#MakingLivesBetterThroughEducation",
-        R.drawable.bg,
-        "https://storage.googleapis.com/marketingvideos/video1.mp4"
-    ),
-
-
-
-
-
 )

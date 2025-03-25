@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
@@ -183,10 +182,7 @@ fun MarketingScreen() {
                 )
             }
             items(videoList) { video ->
-                VideoCard(author = video.author,
-                    datePosted = video.datePosted,
-                    description = video.description,
-                    imageRes = video.imageRes,
+                VideoCard(description = video.description,
                     video = video,
                     onClick = {
                         val intent = Intent(context, VideoPlayerActivity::class.java).apply {

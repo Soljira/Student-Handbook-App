@@ -3,8 +3,12 @@ package com.example.studenthandbookapp
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
-import android.widget.*
-import androidx.activity.enableEdgeToEdge
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
@@ -15,7 +19,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.redmadrobot.inputmask.MaskedTextChangedListener
-import java.util.*
+import java.util.Calendar
 
 class ProfileActivity : AppCompatActivity() {
     private var isEditable = false
