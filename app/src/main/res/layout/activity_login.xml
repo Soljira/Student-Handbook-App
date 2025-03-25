@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_schoolselection">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
         android:layout_centerInParent="true"
+        android:layout_marginHorizontal="25dp"
         app:cardCornerRadius="20dp">
 
         <LinearLayout
@@ -24,21 +25,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Student Handbook App"
-                android:textColor="@color/phinmaGreen"
-                android:gravity="center"
-                android:fontFamily="@font/josefin_sans_bold"
-                android:textSize="20sp"
-                android:textAllCaps="true"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/josefin_sans_bold"
+                android:gravity="center"
+                android:text="Student Handbook App"
+                android:textAllCaps="true"
+                android:textColor="@color/phinmaGreen"
+                android:textSize="20sp"
                 tools:ignore="HardcodedText" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:src="@drawable/logo_phinma_shadow"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
+                android:src="@drawable/logo_phinma_shadow"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -57,11 +58,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_border"
-                android:textColorHint="#494949"
-                android:textColor="@color/black"
                 android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="#494949"
                 tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
             <TextView
@@ -80,11 +81,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_border"
-                android:textColor="@color/black"
-                android:textColorHint="#494949"
                 android:hint="Enter your password"
                 android:inputType="textPassword"
                 android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="#494949"
                 tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
             <Button
@@ -92,12 +93,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:padding="10dp"
                 android:backgroundTint="@color/phinmaGreen"
                 android:fontFamily="@font/josefin_sans_bold"
+                android:padding="10dp"
+                android:text="LOGIN"
                 android:textColor="@color/phinmaYellow"
                 android:textSize="20sp"
-                android:text="LOGIN"
                 tools:ignore="HardcodedText,VisualLintButtonSize" />
 
             <Button
@@ -105,12 +106,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
                 android:backgroundTint="@color/phinmaYellow"
                 android:fontFamily="@font/josefin_sans_bold"
+                android:padding="10dp"
+                android:text="REGISTER"
                 android:textColor="@color/phinmaGreen"
                 android:textSize="20sp"
-                android:text="REGISTER"
                 tools:ignore="HardcodedText,VisualLintButtonSize" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

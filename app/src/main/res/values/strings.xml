@@ -248,5 +248,6 @@
         <item>Seminars</item>
         <item>Competitions</item>
     </string-array>
+    <string name="title_activity_video_card">VideoCard</string>
 
 </resources>

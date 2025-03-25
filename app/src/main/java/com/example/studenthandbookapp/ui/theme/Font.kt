@@ -19,3 +19,8 @@ val JosefinSans = FontFamily(
     Font(R.font.josefinsans_regular, FontWeight.Normal),
     Font(R.font.josefinsans_medium, FontWeight.Medium)
 )
+
+val Montserrat = FontFamily(
+    Font(R.font.montserrat_bold, FontWeight.Bold),
+    Font(R.font.montserrat_medium, FontWeight.Medium)
+)

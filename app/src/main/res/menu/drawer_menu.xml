@@ -10,6 +10,12 @@
         android:title="Events"
         android:icon="@drawable/navbar_events" />
 
+
+    <item
+        android:id="@+id/nav_marketing"
+        android:title="Marketing"
+        android:icon="@drawable/navbar_marketing" />
+
     <item
         android:id="@+id/nav_scholarship"
         android:title="Scholarship Information"

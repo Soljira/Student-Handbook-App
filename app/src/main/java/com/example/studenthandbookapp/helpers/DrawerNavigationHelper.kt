@@ -9,6 +9,7 @@ import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.landingpage.Login
 import com.example.studenthandbookapp.map.MapActivity
+import com.example.studenthandbookapp.marketing.Marketing
 import com.example.studenthandbookapp.modalities.ModalitiesActivity
 import com.example.studenthandbookapp.scholarships.ScholarshipPage1
 import com.example.studenthandbookapp.support.Support
@@ -36,6 +37,14 @@ object DrawerNavigationHelper {
                     }
                     true
                 }
+
+                R.id.nav_marketing -> {
+                    if (activity !is Marketing) {
+                        activity.startActivity(Intent(activity, Marketing::class.java))
+                    }
+                    true
+                }
+
                 R.id.nav_scholarship -> {
                     if (activity !is ScholarshipPage1) {
                         activity.startActivity(Intent(activity, ScholarshipPage1::class.java))
