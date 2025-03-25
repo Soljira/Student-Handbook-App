@@ -30,7 +30,6 @@ class ScholarshipPage2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_scholarship_page2)
         initializeNavigationStuff()
 

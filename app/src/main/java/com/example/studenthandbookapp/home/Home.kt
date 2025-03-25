@@ -63,7 +63,6 @@ class Home : AppCompatActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home)
 //        setContent {
 //            CenterAlignedTopAppBarExample()

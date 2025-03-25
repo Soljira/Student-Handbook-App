@@ -1,12 +1,11 @@
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,11 +18,11 @@
             android:layout_height="wrap_content"
             android:background="@color/phinmaGreen"
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+            app:menu="@menu/top_app_bar_menu"
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@android:color/white"
             app:title="Marketing"
-            app:titleTextColor="@color/phinmaYellow"
-            app:menu="@menu/top_app_bar_menu" />
+            app:titleTextColor="@color/phinmaYellow" />
 
         <androidx.compose.ui.platform.ComposeView
             android:id="@+id/composeView"
@@ -35,7 +34,7 @@
             android:id="@+id/bottomNavigationView"
             style="@style/BottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -43,7 +42,8 @@
         style="@style/SideDrawerView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"
+        />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

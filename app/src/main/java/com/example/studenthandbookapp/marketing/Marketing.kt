@@ -53,6 +53,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.compose.rememberNavController
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
+import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
@@ -72,8 +73,8 @@ class Marketing : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_marketing)
+
         initializeNavigationStuff()
 
         val composeView = findViewById<ComposeView>(R.id.composeView)
@@ -84,10 +85,18 @@ class Marketing : AppCompatActivity() {
             MarketingScreen()
         }
     }
+    // IM SO STUPID
+    // THIS FUNCTION ENSURES THAT THE APPROPRIATE ICON IS CHECKED EVEN WHEN YOU PRESS THE BACK BUTTON
+    // DO NOT COPY THIS FUNCTION TO NESTED ACTIVITIES BECAUSE IT WILL BREAK THE APP
+    // THANKS
+    // I WASTED 3 HOURS ON THIS
+    override fun onResume() {
+        super.onResume()
+//        bottomNavigationView.selectedItemId = R.id.nav_profile
+        unselectBottomNavIcon(bottomNavigationView)
+    }
 
-
-    //navigation stuff START
-    private fun initializeNavigationStuff() {
+    fun initializeNavigationStuff() {
         drawerLayout = findViewById(R.id.drawer_layout)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navigationView = findViewById(R.id.navigation_view)
@@ -97,7 +106,7 @@ class Marketing : AppCompatActivity() {
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
 
-        bottomNavigationView.selectedItemId = R.id.nav_marketing
+        unselectBottomNavIcon(bottomNavigationView)
     }
 
     // navigation stuff END

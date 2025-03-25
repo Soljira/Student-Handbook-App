@@ -31,6 +31,7 @@ android {
     buildFeatures {
         buildConfig = true
         compose = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -75,6 +76,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

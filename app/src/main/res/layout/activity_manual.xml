@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    android:fitsSystemWindows="true" >
+    android:fitsSystemWindows="false" >
 
     <RelativeLayout
         android:layout_width="match_parent"

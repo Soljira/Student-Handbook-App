@@ -1,7 +1,13 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.studenthandbookapp" parent="Theme.Material3.DayNight.NoActionBar"></style>
+    <style name="Theme.studenthandbookapp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/phinmaGreen</item>
+        <item name="colorAccent">@color/phinmaYellow</item>
 
+        <!-- Status bar and navigation bar colors -->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
 
-    <style name="Theme.studenthandbookapp" parent="Base.Theme.studenthandbookapp" />
+    </style>
 </resources>

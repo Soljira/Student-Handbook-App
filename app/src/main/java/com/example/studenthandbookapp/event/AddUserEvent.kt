@@ -32,7 +32,6 @@ class AddUserEvent : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_add_user_event)
         initializeNavigationStuff()
 

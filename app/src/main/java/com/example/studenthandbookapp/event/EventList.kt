@@ -52,7 +52,6 @@ class EventList : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_event_page1)
         FirebaseApp.initializeApp(this)
 
