@@ -6,135 +6,195 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_schoolselection">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardRegister"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_centerInParent="true"
-        app:cardCornerRadius="20dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRegister"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:padding="30dp">
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="20dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Student Handbook App"
-                android:textColor="@color/phinmaGreen"
-                android:gravity="center"
-                android:fontFamily="@font/josefin_sans_bold"
-                android:textSize="20sp"
-                android:textAllCaps="true"
-                android:layout_marginBottom="10dp"
-                tools:ignore="HardcodedText" />
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="30dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:src="@drawable/logo_phinma_shadow"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                tools:ignore="ContentDescription" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:gravity="center"
+                    android:text="Student Handbook App"
+                    android:textAllCaps="true"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Email"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/logo_phinma_shadow"
+                    tools:ignore="ContentDescription" />
 
-            <EditText
-                android:id="@+id/emailEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:textColorHint="#494949"
-                android:textColor="@color/black"
-                android:hint="Enter your email"
-                android:inputType="textEmailAddress"
-                android:padding="12dp"
-                tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+                <!-- Email -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="4dp"
-                android:text="Password"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+                <EditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter your email"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#494949"
+                    tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
-            <EditText
-                android:id="@+id/passwordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:textColor="@color/black"
-                android:textColorHint="#494949"
-                android:hint="Enter your password"
-                android:inputType="textPassword"
-                android:padding="12dp"
-                tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+                <!-- Password -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Password"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="4dp"
-                android:text="Confirm Password"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#494949"
+                    tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
-            <EditText
-                android:id="@+id/confirmPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:textColor="@color/black"
-                android:textColorHint="#494949"
-                android:hint="Re-enter your password"
-                android:inputType="textPassword"
-                android:padding="12dp"
-                tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+                <!-- Confirm Password -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Confirm Password"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:padding="10dp"
-                android:backgroundTint="@color/phinmaGreen"
-                android:fontFamily="@font/josefin_sans_bold"
-                android:textColor="@color/phinmaYellow"
-                android:textSize="20sp"
-                android:text="REGISTER"
-                tools:ignore="HardcodedText,VisualLintButtonSize" />
+                <EditText
+                    android:id="@+id/confirmPasswordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Re-enter your password"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#494949"
+                    tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
-            <TextView
-                android:id="@+id/tvGoToLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:minHeight="48dp"
-                android:text="Already have an account? Login here"
-                android:textColor="@color/phinmaGreen"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <!-- Full Name -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Full Name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/fullNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter your full name"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#494949"
+                    tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+
+                <!-- Student Number -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Student Number"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/studentNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter your student number"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#494949"
+                    tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+
+                <!-- Register Button -->
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:backgroundTint="@color/phinmaYellow"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:padding="10dp"
+                    android:text="REGISTER"
+                    android:textColor="@color/ic_launcher_background"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+                <!-- Login Link -->
+                <TextView
+                    android:id="@+id/tvGoToLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="48dp"
+                    android:text="Already have an account? Login here"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </RelativeLayout>

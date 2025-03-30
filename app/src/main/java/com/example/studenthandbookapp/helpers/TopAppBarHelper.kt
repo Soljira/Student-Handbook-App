@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.studenthandbookapp.ProfileActivity
+import com.example.studenthandbookapp.EditProfile
 import com.example.studenthandbookapp.R
 import com.google.android.material.appbar.MaterialToolbar
 
@@ -31,8 +31,8 @@ object TopAppBarHelper {
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_profile -> {
-                    if (activity !is ProfileActivity) {
-                        activity.startActivity(Intent(activity, ProfileActivity::class.java))
+                    if (activity !is EditProfile) {
+                        activity.startActivity(Intent(activity, EditProfile::class.java))
                     }
                     true
                 }

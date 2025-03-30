@@ -40,7 +40,7 @@ class SchoolSelection : AppCompatActivity() {
         flFragmentContainer = findViewById(R.id.flFragmentContainer)
 
         cardUpang.setOnClickListener {
-//            startActivity(Intent(this, ProfileActivity::class.java))
+//            startActivity(Intent(this, EditProfile::class.java))
             fragmentBeginTransaction(SelectUpangCampusFragment())
 //            finish()
         }

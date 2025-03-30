@@ -1,23 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="wrap_content"
+    android:background="@color/phinmaGreen"
+    android:gravity="bottom"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/phinmaGreen">
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profileImageHeader"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/faceset_leeian"
-        android:contentDescription="Profile Image" />
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profile_picture"
+        android:src="@drawable/ic_profile_placeholder"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circle_background" />
 
     <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/usernameHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome, Leeian!"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/josefinsans_regular"
-        android:textSize="18sp" />
+        android:layout_marginTop="16dp"
+        android:text="@string/user_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/emailHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/white" />
 </LinearLayout>

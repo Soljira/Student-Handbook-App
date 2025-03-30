@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.home.Home
 

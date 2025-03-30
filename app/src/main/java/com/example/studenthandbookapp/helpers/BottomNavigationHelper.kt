@@ -1,14 +1,11 @@
 package com.example.studenthandbookapp.helpers
 import android.app.Activity
 import android.content.Intent
-import com.example.studenthandbookapp.ProfileActivity
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.calendar.CalendarActivity
 import com.example.studenthandbookapp.home.Home
 import com.example.studenthandbookapp.manual.Manual
 import com.example.studenthandbookapp.map.MapActivity
-import com.example.studenthandbookapp.modalities.ModalitiesActivity
-import com.example.studenthandbookapp.scholarships.ScholarshipPage1
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /*

@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Toolbar-->
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
@@ -23,223 +25,302 @@
             app:title="Profile"
             app:titleTextColor="@color/phinmaYellow"
             app:menu="@menu/top_app_bar_menu" />
+        <!-- Toolbar-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView"
-            android:background="@drawable/bg3"
-            tools:context=".ProfileActivity">
+            android:layout_height="774dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="59dp"
+            android:background="#FFFFFF"
+            android:fillViewport="true"
+            android:padding="16dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/faceset_leeian"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.015"
-                app:shapeAppearanceOverlay="@style/rounderImageView" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/josefin_sans_bold"
-                android:text="@string/leeian_name"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.001" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="147dp"
-                android:layout_height="21dp"
-                android:layout_marginTop="1dp"
-                android:fontFamily="@font/montserrat_medium"
-                android:text="03-2122-033288"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ScrollView
-                android:id="@+id/scrollView2"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="295dp"
-                android:layout_marginHorizontal="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.633">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:contentDescription="@string/profile_picture"
+                        android:src="@drawable/ic_profile_placeholder"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="24dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Personal Details"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Name"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/editTextText"
-                        android:layout_width="337dp"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:fontFamily="sans-serif-medium"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:text="Leeian Matthew P. Lacorte" />
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Campus"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <Spinner
-                        android:id="@+id/spinnerCampus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
-                        android:entries="@array/campus_array"
-                        android:scrollHorizontally="true"
-                        android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-black"
-                        android:textColor="@color/white"
-                        android:text="Course"
-                        android:textSize="20sp" />
-
-                    <Spinner
-                        android:id="@+id/spinnerCourse"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:enabled="false"
-                        android:entries="@array/course_array"
-                        android:textColor="@color/black"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Email"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/editTextText4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:fontFamily="sans-serif-medium"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:text="lepa.lacorte.up@phinmaed.com" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Contact Number"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/editTextText5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/black"
-                        android:digits="1234567890 "
-                        android:inputType="number"
-                        android:text="0999 999 9999" />
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="Birthdate"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/editTextBirthdate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:enabled="false"
-                        android:focusable="false"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="5/19/2002"
-                        android:textColor="@color/black"
-                        android:inputType="none" />
+                        android:layout_marginTop="8dp"
+                        android:text="@string/change_profile_picture"
+                        android:textColor="@color/phinmaGreen"
+                        android:textSize="14sp" />
                 </LinearLayout>
-            </ScrollView>
 
-            <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="40dp"
-                android:layout_height="36dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.902"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.066"
-                app:srcCompat="@drawable/editv3" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/basic_information"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:text="@string/full_name" />
+
+                <EditText
+                    android:id="@+id/fullNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black"
+                    android:text="@string/student_number" />
+
+                <EditText
+                    android:id="@+id/studentNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="##-##-#####"
+                    android:inputType="text"
+                    android:textColor="#000000"
+                    tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/course" />
+
+                <EditText
+                    android:id="@+id/courseEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="BS Computer Science"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/contact_information"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/email" />
+
+                <EditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:enabled="false"
+                    android:hint=".up@phinmaed.com"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:textColorHint="#546E7A"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/contact_number" />
+
+                <EditText
+                    android:id="@+id/contactNumberEditText"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:hint="0943-123-1234"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/birthdate" />
+
+                <EditText
+                    android:id="@+id/birthdateEditText"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:hint="01/01/2000"
+                    android:inputType="none"
+                    android:minHeight="48dp"
+                    android:textColorHint="#546E7A"
+                    tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+                <!-- Social Media Links Section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/social_media"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+
+                <!-- Facebook -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/facebook"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/facebookEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="https://facebook.com/username"
+                    android:inputType="textUri"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    android:autoLink="web"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <!-- Instagram -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/instagram"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/instagramEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="https://instagram.com/username"
+                    android:inputType="textUri"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    android:autoLink="web"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <!-- Twitter -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/twitter"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/twitterEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="https://twitter.com/username"
+                    android:inputType="textUri"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    android:autoLink="web"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <!-- LinkedIn -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/linkedin"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/linkedinEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="https://linkedin.com/in/username"
+                    android:inputType="textUri"
+                    android:minHeight="48dp"
+                    android:textColor="#000000"
+                    android:autoLink="web"
+                    tools:ignore="Autofill,HardcodedText" />
+
+                <Button
+                    android:id="@+id/changePasswordButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/change_password"
+                    android:textColor="@color/phinmaGreen" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/phinmaGreen"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <!-- Drawer -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             style="@style/BottomNavigationView"

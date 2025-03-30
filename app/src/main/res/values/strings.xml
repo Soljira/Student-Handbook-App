@@ -292,4 +292,24 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
+    <string name="profile_picture">Profile Picture</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">user@example.com</string>
+    <string name="basic_information">Basic Information</string>
+    <string name="full_name">Full Name</string>
+    <string name="student_number">Student Number</string>
+    <string name="course">Course</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="email">Email</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="change_password">Change Password</string>
+    <string name="save">Save</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="social_media">Social Media</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="twitter">Twitter</string>
+    <string name="linkedin">LinkedIn</string>
+
 </resources>
