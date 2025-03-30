@@ -48,22 +48,23 @@
             android:layout_above="@id/bottomNavigationView">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/josefin_sans_bold"
+                android:gravity="center"
                 android:text="LEARNING MODALITIES"
-                android:textAlignment="center"
                 android:textColor="@color/phinmaGreen"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="28sp" />
 
             <ImageButton
+                android:layout_marginTop="50sp"
                 android:id="@+id/btnFlex24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/flex24people"
+                android:background="@drawable/flex24logo1"
                 android:scaleType="centerCrop" />
 
             <ImageButton
@@ -71,8 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/flexremoteguy"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/flexremotelogo"
                 android:scaleType="centerCrop" />
         </LinearLayout>
 

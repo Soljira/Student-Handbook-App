@@ -1,74 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/offwhite"
     tools:context=".modalities.Flex24Fragment">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="560dp"
-        android:background="@drawable/flex24bg"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:gravity="top"
-        android:orientation="vertical"
-        android:paddingTop="5dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/flex24logo1"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="center"
-            android:text="@string/flex24_description"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            tools:ignore="TextSizeCheck" />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/josefin_sans_bold"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="See offered courses:"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            tools:ignore="TextSizeCheck" />
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#00FFFFFF"
-            android:contentDescription="button for lists of scholarships"
-            android:src="@drawable/arrow_right2"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="209dp"
+                android:contentDescription="flex24"
+                android:scaleType="centerCrop"
+                android:src="@drawable/flex24_banner" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="254dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/flex24logo1"
+                    tools:ignore="ContentDescription" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/flex24_description"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="16dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:gravity="center"
+                    android:text="See offered courses:"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <ImageButton
+                    android:id="@+id/btn_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/next"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/arrow_right2" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

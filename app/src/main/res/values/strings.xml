@@ -213,7 +213,7 @@
     <!-- Maps page -->
 
     <string name="mapsTitle">
-        <u>MAP</u>
+        <u>SCHOOL MAP</u>
     </string>
 
     <string name="groundFloor">
@@ -311,5 +311,7 @@
     <string name="instagram">Instagram</string>
     <string name="twitter">Twitter</string>
     <string name="linkedin">LinkedIn</string>
+    <string name="scholarship_banner">scholarship banner</string>
+    <string name="recyclerview">recyclerview</string>
 
 </resources>

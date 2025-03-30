@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141C2C"
+    android:background="@color/phinmaGreen"
     android:orientation="vertical"
     tools:context=".scholarships.SchDescriptionsActivity"
     tools:ignore="Overdraw">
@@ -59,7 +59,7 @@
             android:contentDescription="TODO"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/sch_ic_back"
+            app:srcCompat="@drawable/arrow_left"
             tools:ignore="ContentDescription,HardcodedText,TouchTargetSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
