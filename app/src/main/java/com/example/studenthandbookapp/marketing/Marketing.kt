@@ -118,8 +118,7 @@ fun MarketingScreen() {
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .fillMaxSize(),
         contentAlignment = Alignment.Center // Ensures content inside is centered
     ) {
         LazyColumn(
@@ -138,7 +137,7 @@ fun MarketingScreen() {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(180.dp),
-                        contentScale = ContentScale.Fit
+                        contentScale = ContentScale.Crop
                     )
 
                     // Overlapping University Logo

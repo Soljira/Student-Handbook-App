@@ -30,7 +30,7 @@ class UrdanetaCampus : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_urdaneta)
+        setContentView(R.layout.activity_modalities_list_urdaneta_flex24)
         initializeNavigationStuff()
         val menuItem = bottomNavigationView.menu.findItem(R.id.nav_modalities)
         menuItem?.isChecked = true  // ensures that map button thingy stays checked

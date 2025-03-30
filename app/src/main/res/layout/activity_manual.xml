@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    android:fitsSystemWindows="false" >
+    android:fitsSystemWindows="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,65 +36,38 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
-
-                <!--     Table of contents lalagy diot       -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center">
-
-                    <ImageButton
-                        android:id="@+id/btnPrev"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/arrow_left" />
-
-                    <Button
-                        android:id="@+id/heading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome"
-                        android:fontFamily="@font/josefinsans_bold"
-                        android:textColor="@color/phinmaYellow"
-                        android:layout_marginHorizontal="10dp"
-                        android:backgroundTint="@color/phinmaGreen" />
-
-                    <ImageButton
-                        android:id="@+id/btnNext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/arrow_right2" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/pageNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:gravity="center"/>
+                android:orientation="vertical"
+                android:paddingBottom="16dp">
 
                 <TextView
                     android:id="@+id/subheading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:text="subheader text"
                     android:fontFamily="@font/josefin_sans_bold"
-                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="subheader text"
                     android:textColor="@color/black"
-                    android:gravity="center"/>
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/pageNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:gravity="center"
+                    android:text="Page 1"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"/>
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="10dp"
-                    android:layout_marginHorizontal="20dp" >
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp">
 
                     <TextView
                         android:id="@+id/content"
@@ -102,15 +75,54 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/merriweather_regular"
                         android:text=""
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </ScrollView>
 
+                <!-- Table of contents section with improved spacing -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:background="@color/offwhite">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageButton
+                            android:id="@+id/btnPrev"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/arrow_left"
+                            android:padding="12dp"/>
+
+                        <Button
+                            android:id="@+id/heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome"
+                            android:fontFamily="@font/josefinsans_bold"
+                            android:textColor="@color/phinmaYellow"
+                            android:layout_marginHorizontal="16dp"
+                            android:backgroundTint="@color/phinmaGreen"
+                            android:minWidth="120dp"
+                            android:paddingHorizontal="12dp"/>
+
+                        <ImageButton
+                            android:id="@+id/btnNext"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/arrow_right2"
+                            android:padding="12dp"/>
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
-
-
-
         </FrameLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

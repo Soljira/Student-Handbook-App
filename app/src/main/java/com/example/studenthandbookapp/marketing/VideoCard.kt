@@ -53,7 +53,7 @@ fun VideoCard(
             colors = CardDefaults.cardColors(containerColor = Color(0xFF3A4F24)),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
             modifier = Modifier
-                .fillMaxWidth()
+                .padding(16.dp)
                 .clickable { onClick() }
         ) {
             Column {
@@ -72,13 +72,13 @@ fun VideoCard(
                     IconButton(
                         onClick = { onClick() },
                         modifier = Modifier.size(60.dp),
-                        colors = IconButtonDefaults.filledTonalIconButtonColors(Color.Black.copy(alpha = 0.6f))                  ) {
+                        colors = IconButtonDefaults.filledTonalIconButtonColors(Color.White.copy(alpha = 0.6f))                  ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_play),
                             modifier = Modifier
                                 .size(50.dp),
                             contentDescription = "Play",
-                            tint = Color(0xFFFFD000).copy(alpha = 0.8f)
+                            tint = Color(0xFF3A4F24).copy(alpha = 0.8f)
                         )
                     }
                 }

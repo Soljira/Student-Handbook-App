@@ -28,7 +28,7 @@ class RemoteCoursesActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_remote_courses)
+        setContentView(R.layout.activity_modalities_list_remote)
         initializeNavigationStuff()
 
         val menuItem = bottomNavigationView.menu.findItem(R.id.nav_modalities)

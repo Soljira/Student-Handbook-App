@@ -61,7 +61,7 @@
                         android:gravity="center"
                         android:text="@string/mapsTitle"
                         android:textColor="@color/phinmaGreen"
-                        android:textSize="20sp" />
+                        android:textSize="28sp" />
 
                     <TextView
                         android:id="@+id/mapsAddress"
@@ -98,7 +98,7 @@
                         android:gravity="center"
                         android:text="You can also check what's inside the University"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <ImageButton
                         android:id="@+id/mapDownButton"

@@ -36,7 +36,7 @@
                     android:layout_width="254dp"
                     android:layout_height="75dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/flex24logo1"
+                    app:srcCompat="@drawable/flexremotelogo"
                     tools:ignore="ContentDescription" />
 
 

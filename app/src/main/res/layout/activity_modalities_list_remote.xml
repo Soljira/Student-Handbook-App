@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E3DF"
+    android:background="@color/offwhite"
     android:fitsSystemWindows="false">
 
     <RelativeLayout
@@ -20,95 +20,92 @@
             android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@android:color/white"
-            app:title="Modalities"
             app:titleTextColor="@color/phinmaYellow"
             app:menu="@menu/top_app_bar_menu" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="@drawable/gray_bg"
             android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView"
-            android:fillViewport="true"
-            android:background="@drawable/gray_bg">
+            android:layout_above="@id/bottomNavigationView">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/campus_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
-                    android:text="Urdaneta Campus"
-                    android:textColor="#2E4D1E"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center" />
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:gravity="center"
+                    android:text="REMOTE COURSES"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="28sp" />
 
                 <Button
-                    android:id="@+id/button_allied_health"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:id="@+id/button_management_Acc"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="102dp"
                     android:layout_marginBottom="16dp"
-                    android:text="College of Allied Health Sciences"
-                    android:drawableEnd="@drawable/arrow_right"
+                    android:textColor="@color/white"
+                    android:drawableEnd="@drawable/sch_ic_rightarrow"
+                    android:drawableTint="@android:color/white"
                     android:padding="16dp"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/button_management"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="16dp"
                     android:text="College of Management and Accountancy"
-                    android:drawableEnd="@drawable/arrow_right"
-                    android:padding="16dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:elevation="6dp"
+                    app:cornerRadius="16dp" />
 
                 <Button
-                    android:id="@+id/button_criminal"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:id="@+id/button_bs_crim"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="102dp"
                     android:layout_marginBottom="16dp"
+                    android:textColor="@color/white"
+                    android:drawableEnd="@drawable/sch_ic_rightarrow"
+                    android:drawableTint="@android:color/white"
+                    android:padding="16dp"
                     android:text="College of Criminal Justice Education"
-                    android:drawableEnd="@drawable/arrow_right"
-                    android:padding="16dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:elevation="6dp"
+                    app:cornerRadius="16dp" />
 
                 <Button
-                    android:id="@+id/button_engineering"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:id="@+id/button_bs_it"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="102dp"
                     android:layout_marginBottom="16dp"
-                    android:text="College of Engineering and Architecture"
-                    android:drawableEnd="@drawable/arrow_right"
+                    android:textColor="@color/white"
+                    android:drawableEnd="@drawable/sch_ic_rightarrow"
+                    android:drawableTint="@android:color/white"
                     android:padding="16dp"
-                    android:textSize="16sp" />
+                    android:text="College of Information Technology"
+                    android:textSize="16sp"
+                    android:elevation="6dp"
+                    app:cornerRadius="16dp" />
 
                 <Button
-                    android:id="@+id/button_science"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:id="@+id/button_bs_educ_liberal_arts"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="102dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Bachelor of Science in Computer Science"
-                    android:drawableEnd="@drawable/arrow_right"
+                    android:textColor="@color/white"
+                    android:drawableEnd="@drawable/sch_ic_rightarrow"
+                    android:drawableTint="@android:color/white"
                     android:padding="16dp"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/button_english"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Bachelor of Arts in English Language"
-                    android:drawableEnd="@drawable/arrow_right"
-                    android:padding="16dp"
-                    android:textSize="16sp" />
-
+                    android:text="College of Education and Liberal Arts"
+                    android:textSize="16sp"
+                    android:elevation="6dp"
+                    app:cornerRadius="16dp" />
 
             </LinearLayout>
         </ScrollView>
