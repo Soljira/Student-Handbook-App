@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -53,6 +54,7 @@ class EditProfile : AppCompatActivity() {
     private lateinit var birthdateEditText: EditText
     private lateinit var saveButton: Button
     private lateinit var changePasswordButton: Button
+    private lateinit var changeProfile: TextView
 
     private var imageUri: Uri? = null
     private val PICK_IMAGE_REQUEST = 1
@@ -114,9 +116,14 @@ class EditProfile : AppCompatActivity() {
         birthdateEditText = findViewById(R.id.birthdateEditText)
         saveButton = findViewById(R.id.saveButton)
         changePasswordButton = findViewById(R.id.changePasswordButton)
+        changeProfile = findViewById(R.id.tvProfilePic)
     }
 
     private fun setupClickListeners() {
+        changeProfile.setOnClickListener {
+            openImageChooser()
+        }
+
         profileImage.setOnClickListener {
             openImageChooser()
         }
