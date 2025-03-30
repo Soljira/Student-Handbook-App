@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studenthandbookapp.R
@@ -21,6 +22,7 @@ class Registration : AppCompatActivity() {
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var fullNameEditText: EditText
     private lateinit var studentNumberEditText: EditText
+    private lateinit var goToLoginTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +42,15 @@ class Registration : AppCompatActivity() {
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText)
         fullNameEditText = findViewById(R.id.fullNameEditText)
         studentNumberEditText = findViewById(R.id.studentNumberEditText)
+        goToLoginTextView = findViewById(R.id.tvGoToLogin) // Add this line
     }
 
     private fun setupClickListeners() {
         registerButton.setOnClickListener {
             registerUser()
+        }
+        goToLoginTextView.setOnClickListener {
+            finish()
         }
     }
 
