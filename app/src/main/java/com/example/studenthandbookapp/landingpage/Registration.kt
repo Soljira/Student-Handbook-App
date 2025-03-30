@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.EditProfile
+import com.example.studenthandbookapp.home.Home
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -79,7 +80,7 @@ class Registration : AppCompatActivity() {
                     val userId = auth.currentUser?.uid ?: ""
                     saveUserToFirestore(userId, email, fullName, studentNumber)
                     showToast("Registration successful")
-                    startActivity(Intent(this, EditProfile::class.java))
+                    startActivity(Intent(this, Home::class.java))
                     finish()
                 } else {
                     showToast("Registration failed: ${task.exception?.message}")
