@@ -80,8 +80,7 @@ class Registration : AppCompatActivity() {
                     val userId = auth.currentUser?.uid ?: ""
                     saveUserToFirestore(userId, email, fullName, studentNumber)
                     showToast("Registration successful")
-                    startActivity(Intent(this, Home::class.java))
-                    finish()
+                    startActivity(Intent(this, SchoolSelection::class.java))
                 } else {
                     showToast("Registration failed: ${task.exception?.message}")
                 }

@@ -103,6 +103,13 @@ object DrawerNavigationHelper {
                     true
                 }
 
+                R.id.nav_settings -> {
+                    if (activity !is EditProfile) {
+                        activity.startActivity(Intent(activity, EditProfile::class.java))
+                    }
+                    true
+                }
+
                 R.id.nav_logout -> {
                     auth.signOut()
                     activity.startActivity(Intent(activity, Login::class.java))
@@ -142,12 +149,6 @@ object DrawerNavigationHelper {
                     }
                 }
 
-            // Make header clickable to edit profile
-            headerView.setOnClickListener {
-                if (activity !is EditProfile) {
-                    activity.startActivity(Intent(activity, EditProfile::class.java))
-                }
-            }
         }
     }
 }

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.home.Home
@@ -30,7 +31,15 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Go back to SchoolSelection when back is pressed
+                startActivity(Intent(this@Login, SchoolSelection::class.java))
+                finish()
+            }
+        })
+
+                // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
         // Check if user is already logged in

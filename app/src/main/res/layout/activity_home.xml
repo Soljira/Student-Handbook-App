@@ -44,7 +44,6 @@
 
                     <!-- Greeting -->
 
-                    <!-- Replace the current MaterialCardView for announcements with this: -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -54,12 +53,23 @@
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_announcements"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:nestedScrollingEnabled="false"/>
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:fontFamily="@font/merriweather_regular"
+                            android:padding="16dp"
+                            android:text="No new announcements at this time."
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </com.google.android.material.card.MaterialCardView>
 
                     <!--                    <LinearLayout-->
 <!--                        android:layout_width="match_parent"-->

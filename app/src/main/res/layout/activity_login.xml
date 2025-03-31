@@ -93,7 +93,7 @@
                 android:id="@+id/rememberMeCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remember me"
+                android:text="@string/remember_me"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"/>
 

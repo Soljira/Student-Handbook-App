@@ -1,6 +1,7 @@
 package com.example.studenthandbookapp.landingpage
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -9,15 +10,31 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.home.Home
+import com.google.firebase.auth.FirebaseAuth
 
+@Suppress("DEPRECATION")
 class SchoolSelection : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     lateinit var flFragmentContainer: FrameLayout
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Check if user is already logged in
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this, Home::class.java))
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            finish()
+            return
+        }
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_school_selection)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -40,9 +57,8 @@ class SchoolSelection : AppCompatActivity() {
         flFragmentContainer = findViewById(R.id.flFragmentContainer)
 
         cardUpang.setOnClickListener {
-//            startActivity(Intent(this, EditProfile::class.java))
-            fragmentBeginTransaction(SelectUpangCampusFragment())
-//            finish()
+            startActivity(Intent(this, Login::class.java))
+            finish()
         }
 
         // THESE SCHOOLS ARE BEYOND OUR SCOPE
@@ -81,7 +97,6 @@ class SchoolSelection : AppCompatActivity() {
         cardHorizon.setOnClickListener {
             showToast()
         }
-
     }
 
     fun showToast() {
@@ -90,14 +105,5 @@ class SchoolSelection : AppCompatActivity() {
             "Not yet available!",
             Toast.LENGTH_SHORT)
             .show()
-    }
-
-    // Wrote this function to make my code more readable
-    fun fragmentBeginTransaction(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragmentContainer, fragment)
-            addToBackStack(null)
-            commit()  // to actually apply changes
-        }
     }
 }

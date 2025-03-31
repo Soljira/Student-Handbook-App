@@ -41,18 +41,15 @@ import com.example.studenthandbookapp.dataclasses.Event
 import com.example.studenthandbookapp.event.EventAdapter
 import com.example.studenthandbookapp.event.EventDetailsActivity
 import com.example.studenthandbookapp.event.EventListActivity
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.ui.theme.JosefinSans
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Timestamp
 
 class Home : AppCompatActivity() {
-    lateinit var bottomNavigationView: BottomNavigationView
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var topAppBar: MaterialToolbar
@@ -92,23 +89,17 @@ class Home : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        bottomNavigationView.selectedItemId = R.id.nav_home
-    }
+
 
     // LAHAT NG RELATED TO NAVIGATION NANDITO OKAY????
     fun initializeNavigationStuff() {
         drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navigationView = findViewById(R.id.navigation_view)
         topAppBar = findViewById(R.id.topAppBar)
 
         TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Home")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
         DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
 
-        bottomNavigationView.selectedItemId = R.id.nav_home
     }
 
 

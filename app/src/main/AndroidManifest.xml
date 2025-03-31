@@ -16,15 +16,34 @@
         android:theme="@style/Theme.studenthandbookapp"
         tools:targetApi="31">
 
+
+
+        <!-- School Selection Activity -->
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".landingpage.SchoolSelection"
+            android:launchMode="standard"
             android:exported="true"
-            >
+            android:noHistory="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".landingpage.Login"
+            android:launchMode="standard"
+            android:noHistory="true"/>
+
+        <!-- Home Activity -->
+        <activity
+            android:name=".home.Home"
+            android:launchMode="singleTask"/>
+
+
         <activity
             android:name=".marketing.VideoPlayerActivity"
             android:exported="false" />
@@ -32,10 +51,6 @@
         <activity
             android:name=".marketing.Marketing"
             android:exported="false" />
-        <activity
-            android:name=".landingpage.Login"
-            android:exported="true"/>
-        <activity android:name=".landingpage.SchoolSelection" />
         <activity
             android:name=".EditProfile"
             android:windowSoftInputMode="adjustPan" /> <!-- ^ automatically adjusts UI (or pans to the focused EditText) when keyboard is shown/hidden -->
@@ -62,7 +77,6 @@
             android:name=".scholarships.ScholarshipPage2"
             android:parentActivityName=".scholarships.ScholarshipPage1" />
         <activity android:name=".scholarships.ScholarshipPage1" />
-        <activity android:name=".home.Home" />
         <activity android:name=".calendar.CalendarActivity" />
         <activity android:name=".manual.Manual" />
         <activity android:name=".event.EventListActivity" />
