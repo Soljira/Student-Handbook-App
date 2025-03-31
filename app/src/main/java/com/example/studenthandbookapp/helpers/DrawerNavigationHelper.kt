@@ -11,13 +11,18 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.studenthandbookapp.EditProfile
 import com.example.studenthandbookapp.R
+import com.example.studenthandbookapp.calendar.CalendarActivity
 import com.example.studenthandbookapp.event.EventListActivity
 import com.example.studenthandbookapp.landingpage.Login
 import com.example.studenthandbookapp.marketing.Marketing
 import com.example.studenthandbookapp.chat.ChatActivity
+import com.example.studenthandbookapp.home.Home
+import com.example.studenthandbookapp.manual.Manual
+import com.example.studenthandbookapp.map.MapActivity
 import com.example.studenthandbookapp.modalities.ModalitiesActivity
 import com.example.studenthandbookapp.scholarships.ScholarshipPage1
 import com.google.android.material.navigation.NavigationView
+import com.google.common.collect.Maps
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -37,6 +42,36 @@ object DrawerNavigationHelper {
         // Setup navigation items
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
+                R.id.nav_home -> {
+                    if (activity !is Home) {
+                        activity.startActivity(Intent(activity, Home::class.java))
+                    }
+                    true
+                }
+
+                R.id.nav_map -> {
+                    if (activity !is MapActivity) {
+                        activity.startActivity(Intent(activity, MapActivity::class.java))
+                    }
+                    true
+                }
+
+                R.id.nav_calendar -> {
+                    if (activity !is CalendarActivity) {
+                        activity.startActivity(Intent(activity, CalendarActivity::class.java))
+                    }
+                    true
+                }
+
+                R.id.nav_manual -> {
+                    if (activity !is Manual) {
+                        activity.startActivity(Intent(activity, Manual::class.java))
+                    }
+                    true
+                }
+
+
                 R.id.nav_events -> {
                     if (activity !is EventListActivity) {
                         activity.startActivity(Intent(activity, EventListActivity::class.java))

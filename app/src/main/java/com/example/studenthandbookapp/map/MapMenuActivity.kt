@@ -4,94 +4,63 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class MapMenuActivity : AppCompatActivity() {
 
-    lateinit var btnGroundFloor : ImageButton
-    lateinit var btnSecondFloor : ImageButton
-    lateinit var btnThirdFloor : ImageButton
-    lateinit var btnFourthFloor : ImageButton
-    lateinit var btnFifthFloor : ImageButton
-
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
-    lateinit var topAppBar: MaterialToolbar
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_menu)
-        initializeNavigationStuff()
 
-//        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottomNavigationView)
-//        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_map)
-        menuItem.isChecked = true  // ensures that map button thingy stays checked
+        setupTopAppBar()
+        setupFloorButtons()
+    }
 
-        btnGroundFloor = findViewById(R.id.btnGroundFloor)
-        btnSecondFloor = findViewById(R.id.btnSecondFloor)
-        btnThirdFloor = findViewById(R.id.btnThirdFloor)
-        btnFourthFloor = findViewById(R.id.btnFourthFloor)
-        btnFifthFloor = findViewById(R.id.btnFifthFloor)
+    private fun setupTopAppBar() {
+        val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(topAppBar)
 
-        // Fragment Initializations
+        // Enable back button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        topAppBar.setNavigationOnClickListener {
+            finish() // Handle back button press
+        }
+    }
+
+    private fun setupFloorButtons() {
+        // Initialize fragments
         val groundFloorFragment = GroundFloorFragment()
         val secondFloorFragment = SecondFloorFragment()
         val thirdFloorFragment = ThirdFloorFragment()
         val fourthFloorFragment = FourthFloorFragment()
         val fifthFloorFragment = FifthFloorFragment()
 
-        btnGroundFloor.setOnClickListener {
-            fragmentBeginTransaction(groundFloorFragment)
+        // Set click listeners
+        findViewById<ImageButton>(R.id.btnGroundFloor).setOnClickListener {
+            replaceFragment(groundFloorFragment)
         }
-        btnSecondFloor.setOnClickListener {
-            fragmentBeginTransaction(secondFloorFragment)
+        findViewById<ImageButton>(R.id.btnSecondFloor).setOnClickListener {
+            replaceFragment(secondFloorFragment)
         }
-        btnThirdFloor.setOnClickListener {
-            fragmentBeginTransaction(thirdFloorFragment)
+        findViewById<ImageButton>(R.id.btnThirdFloor).setOnClickListener {
+            replaceFragment(thirdFloorFragment)
         }
-        btnFourthFloor.setOnClickListener {
-            fragmentBeginTransaction(fourthFloorFragment)
+        findViewById<ImageButton>(R.id.btnFourthFloor).setOnClickListener {
+            replaceFragment(fourthFloorFragment)
         }
-        btnFifthFloor.setOnClickListener {
-            fragmentBeginTransaction(fifthFloorFragment)
-        }
-
-
-    }
-
-
-    // Wrote this function to make my code more readable
-    fun fragmentBeginTransaction(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragmentContainer, fragment)
-            addToBackStack(null)
-            commit()  // to actually apply changes
+        findViewById<ImageButton>(R.id.btnFifthFloor).setOnClickListener {
+            replaceFragment(fifthFloorFragment)
         }
     }
 
-
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Map")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-//        bottomNavigationView.selectedItemId = R.id.nav_map
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flFragmentContainer, fragment)
+            .addToBackStack(null)
+            .commit()
     }
-
 }

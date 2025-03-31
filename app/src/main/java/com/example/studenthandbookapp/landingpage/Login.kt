@@ -1,8 +1,10 @@
 package com.example.studenthandbookapp.landingpage
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,53 +18,81 @@ class Login : AppCompatActivity() {
     private lateinit var registerButton: Button
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
+    private lateinit var rememberMeCheckbox: CheckBox
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFS_NAME = "LoginPrefs"
+    private val PREF_EMAIL = "email"
+    private val PREF_PASSWORD = "password"
+    private val PREF_REMEMBER = "remember"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        // Temporarily bypass login para hnd paulit ulit naglologin (habang wala pa firebase auth)
-//        startActivity(Intent(this, Home::class.java))
-//        startActivity(Intent(this, EventDetails::class.java))
-//        startActivity(Intent(this, EventList::class.java))
-//        startActivity(Intent(this, AddUserEvent::class.java))
-//        startActivity(Intent(this, Manual::class.java))
 
-        // Check if the user is already signed in
+        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        /**
-         * Persistent session functionality
-         */
-        // If the user is already logged in, redirect to Home activity
+        // Check if user is already logged in
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            // If logged in, navigate directly to Home activity
             startActivity(Intent(this, Home::class.java))
             finish()
+            return
         }
 
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+
+        // Initialize views
         loginButton = findViewById(R.id.btnLogin)
         registerButton = findViewById(R.id.btnRegister)
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
+        rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox)
 
+        // Load saved credentials if "Remember Me" was checked
+        val savedEmail = sharedPreferences.getString(PREF_EMAIL, "")
+        val savedPassword = sharedPreferences.getString(PREF_PASSWORD, "")
+        val rememberMe = sharedPreferences.getBoolean(PREF_REMEMBER, false)
+
+        if (rememberMe) {
+            emailEditText.setText(savedEmail)
+            passwordEditText.setText(savedPassword)
+            rememberMeCheckbox.isChecked = true
+        }
+
+        // Set up login button click listener
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
+            val remember = rememberMeCheckbox.isChecked
 
             when {
                 email.isEmpty() -> showToast("Please enter email")
                 password.isEmpty() -> showToast("Please enter password")
-                else -> performLogin(email, password)
+                else -> {
+                    // Save credentials if "Remember Me" is checked
+                    val editor = sharedPreferences.edit()
+                    if (remember) {
+                        editor.putString(PREF_EMAIL, email)
+                        editor.putString(PREF_PASSWORD, password)
+                        editor.putBoolean(PREF_REMEMBER, true)
+                    } else {
+                        editor.clear()
+                    }
+                    editor.apply()
+
+                    performLogin(email, password)
+                }
             }
         }
 
+        // Set up register button click listener
         registerButton.setOnClickListener {
-            val intent = Intent(this, Registration::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Registration::class.java))
         }
     }
-
 
     private fun performLogin(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)

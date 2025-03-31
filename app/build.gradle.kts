@@ -83,6 +83,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+    implementation ("androidx.credentials:credentials:1.2.0")
+    implementation ("androidx.credentials:credentials-play-services-auth:1.2.0")
+    implementation ("com.google.android.libraries.identity.googleid:googleid:1.1.0")
     // Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.16.0")
 

@@ -1,316 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/offwhite"
-    android:fitsSystemWindows="false">
+    android:background="@color/offwhite">
 
-    <!-- Main Content -->
-    <RelativeLayout
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/phinmaGreen"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/white"
+        app:title="Calendar"
+        app:titleTextColor="@color/phinmaYellow" />
 
-        <!-- Top App Bar -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_below="@id/topAppBar">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/phinmaGreen"
-            app:titleTextAppearance="@style/CustomTopAppBarTitle"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@android:color/white"
-            app:title="Calendar"
-            app:titleTextColor="@color/phinmaYellow"
-            app:menu="@menu/top_app_bar_menu" />
-
-        <!-- Scrollable Content -->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="center_vertical">-->
+                <ImageButton
+                    android:id="@+id/btnEvents"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/navbar_events"
+                    android:background="#0000"
+                    android:contentDescription="Go to EventList" />
 
-<!--                    <Button-->
-<!--                        android:id="@+id/btnMonth"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:text="Month"/>-->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-<!--                    <Button-->
-<!--                        android:id="@+id/btnDay"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:text="Day"/>-->
-
-<!--                    android:src="@android:drawable/ic_menu_today"-->
-
-<!--                </LinearLayout>-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/btnAddEvent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:text="+"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/calendar_day_background"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:contentDescription="Go to Today" />
 
-                    <ImageButton
-                        android:id="@+id/btnEvents"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/navbar_events"
-                        android:background="#0000"
-                        android:contentDescription="Go to EventList" />
+                <TextView
+                    android:id="@+id/btnToday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/calendar_day_background"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:contentDescription="Go to Today" />
+            </LinearLayout>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginVertical="12dp">
+
+                <ImageButton
+                    android:id="@+id/btnPrev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_left_arrow"
+                    android:background="#0000"
+                    android:contentDescription="Previous" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
 
                     <TextView
-                        android:id="@+id/btnAddEvent"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:text="+"
-                        android:textSize="25sp"
+                        android:id="@+id/txtMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="February"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/merriweather_bold"
                         android:textColor="@color/black"
-                        android:background="@drawable/calendar_day_background"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:contentDescription="Go to Today" />
+                        android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/btnToday"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:layout_marginHorizontal="5dp"
-                        android:text="1"
-                        android:textSize="16sp"
+                        android:id="@+id/txtYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/merriweather_bold"
+                        android:text="2025"
                         android:textColor="@color/black"
-                        android:background="@drawable/calendar_day_background"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:contentDescription="Go to Today" />
+                        android:textSize="18sp" />
                 </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_right_arrow"
+                    android:background="#0000"
+                    android:contentDescription="Next" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/viewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
-                    android:layout_marginVertical="12dp">
-
-                    <ImageButton
-                        android:id="@+id/btnPrev"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_left_arrow"
-                        android:background="#0000"
-                        android:contentDescription="Previous" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:id="@+id/txtMonth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="February"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/merriweather_bold"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/txtYear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:fontFamily="@font/merriweather_bold"
-                            android:text="2025"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-
-
-                    <ImageButton
-                        android:id="@+id/btnNext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_right_arrow"
-                        android:background="#0000"
-                        android:contentDescription="Next" />
-                </LinearLayout>
-
-                <FrameLayout
-                    android:id="@+id/viewContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:layout_marginBottom="8dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sun"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Mon"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Tue"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Wed"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Thu"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Fri"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Sat"
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-
-                    <GridView
-                        android:id="@+id/calendarGrid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:numColumns="7"
-                        android:verticalSpacing="2dp"
-                        android:horizontalSpacing="2dp"
-                        android:layout_marginTop="20dp"
-                        android:stretchMode="columnWidth"
-                        android:gravity="center" />
-
-                    <LinearLayout
-                        android:id="@+id/dayView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/hourSlot"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="08:00 AM - Event"/>
-                    </LinearLayout>
-                </FrameLayout>
-
-                <!-- Event Header -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:layout_marginBottom="8dp">
 
                     <TextView
-                        android:id="@+id/eventHeader"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="February 18, 2025"
-                        android:fontFamily="@font/merriweather_bold"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:text="Sun"
+                        android:gravity="center"
                         android:textColor="@color/black"
-                        android:layout_marginVertical="12dp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                    <!-- Fragment Container for Event Details -->
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/eventFragmentContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    <!-- Other weekday text views... -->
                 </LinearLayout>
+
+                <GridView
+                    android:id="@+id/calendarGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="7"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:layout_marginTop="20dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center" />
+            </FrameLayout>
+
+            <!-- Event Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/eventHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="February 18, 2025"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginVertical="12dp" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/eventFragmentContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-        </ScrollView>
-
-        <!-- Bottom Navigation View -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            style="@style/BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        style="@style/SideDrawerView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

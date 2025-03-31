@@ -1,37 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Main Features Group -->
+    <group android:id="@+id/main_group">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/navbar_home"
+            android:iconTint="@color/black"/>
 
-    <item
-        android:id="@+id/nav_events"
-        android:title="Events"
-        android:icon="@drawable/navbar_events" />
+        <item
+            android:id="@+id/nav_map"
+            android:title="Map"
+            android:icon="@drawable/navbar_map"
+            android:iconTint="@color/black"/>
 
+        <item
+            android:id="@+id/nav_calendar"
+            android:title="Calendar"
+            android:icon="@drawable/navbar_calendar"
+            android:iconTint="@color/black"/>
 
-    <item
-        android:id="@+id/nav_marketing"
-        android:title="Marketing"
-        android:icon="@drawable/navbar_marketing" />
+        <item
+            android:id="@+id/nav_manual"
+            android:title="Manual"
+            android:icon="@drawable/navbar_manual"
+            android:iconTint="@color/black"/>
+    </group>
 
-    <item
-        android:id="@+id/nav_scholarship"
-        android:title="Scholarship Information"
-        android:icon="@drawable/navbar_scholarship" />
+    <!-- Information Group -->
+    <group android:id="@+id/info_group">
+        <item
+            android:id="@+id/nav_events"
+            android:title="Events"
+            android:icon="@drawable/navbar_events" />
 
-    <item
-        android:id="@+id/nav_modalities"
-        android:title="Modalities"
-        android:icon="@drawable/navbar_modalities" />
+        <item
+            android:id="@+id/nav_marketing"
+            android:title="Marketing"
+            android:icon="@drawable/navbar_marketing" />
 
-    <item
-        android:id="@+id/nav_support"
-        android:title="Support/Contact Us"
-        android:icon="@drawable/navbar_support" />
+        <item
+            android:id="@+id/nav_scholarship"
+            android:title="Scholarship Information"
+            android:icon="@drawable/navbar_scholarship" />
 
+        <item
+            android:id="@+id/nav_modalities"
+            android:title="Modalities"
+            android:icon="@drawable/navbar_modalities" />
+    </group>
 
-    <item
-        android:id="@+id/nav_logout"
-        android:title="Logout"
-        android:icon="@drawable/navbar_logout" />
-
+    <!-- Support Group -->
+    <group android:id="@+id/support_group">
+        <item
+            android:id="@+id/nav_support"
+            android:title="Support/Contact Us"
+            android:icon="@drawable/navbar_support" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"
+            android:icon="@drawable/navbar_logout" />
+    </group>
 </menu>

@@ -5,43 +5,30 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
-    lateinit var topAppBar: MaterialToolbar
 
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        initializeNavigationStuff()
 
+        setupTopAppBar()
 
-        val intentMapMenuActivity = Intent(this, MapMenuActivity::class.java)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
-
-
         mapFragment?.getMapAsync(this)
 
         val mapDownButton = findViewById<ImageButton>(R.id.mapDownButton)
-
         mapDownButton.setOnClickListener {
-            startActivity(intentMapMenuActivity)
+            // Use finish() after starting new activity to prevent stacking
+            startActivity(Intent(this, MapMenuActivity::class.java))
         }
     }
 
@@ -50,22 +37,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19.5f))
     }
 
-    override fun onResume() {
-        super.onResume()
-        bottomNavigationView.selectedItemId = R.id.nav_map
+    private fun setupTopAppBar() {
+        val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(topAppBar)
+
+        // Enable back button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        topAppBar.setNavigationOnClickListener {
+            finish() // Handle back button press
+        }
     }
-
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Map")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-        bottomNavigationView.selectedItemId = R.id.nav_map
-    }
-
 }

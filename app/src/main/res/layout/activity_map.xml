@@ -1,133 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/phinmaGreen"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/white"
+        app:title="School Map"
+        app:titleTextColor="@color/phinmaYellow" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topAppBar"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/phinmaGreen"
-            app:titleTextAppearance="@style/CustomTopAppBarTitle"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@android:color/white"
-            app:title="Map"
-            app:titleTextColor="@color/phinmaYellow"
-            app:menu="@menu/top_app_bar_menu" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView"
-            android:fillViewport="true">
+            <!-- Banner Image -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
+                android:contentDescription="University Map Banner"
+                android:scaleType="centerCrop"
+                android:src="@drawable/map_banner" />
 
+            <!-- Map Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <!-- Banner Image -->
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="142dp"
-                    android:contentDescription="University Map Banner"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/map_banner" />
-
-                <!-- Map Section -->
-                <LinearLayout
+                <TextView
+                    android:id="@+id/mapsTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/mapsTitle"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="28sp" />
 
-                    <TextView
-                        android:id="@+id/mapsTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/josefin_sans_bold"
-                        android:gravity="center"
-                        android:text="@string/mapsTitle"
-                        android:textColor="@color/phinmaGreen"
-                        android:textSize="28sp" />
+                <TextView
+                    android:id="@+id/mapsAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="@string/schoolAddress"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/mapsAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:gravity="center"
-                        android:text="@string/schoolAddress"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/map_fragment"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="251dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
 
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/map_fragment"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="251dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp" />
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="?android:attr/listDivider" />
 
-                    <View
-                        android:id="@+id/divider3"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="?android:attr/listDivider" />
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="You can also check what's inside the University"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:gravity="center"
-                        android:text="You can also check what's inside the University"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/mapDownButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="16dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="View interior map"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/arrow_right2" />
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/mapDownButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="View interior map"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/arrow_right2" />
             </LinearLayout>
-        </ScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            style="@style/BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
-
-    </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        style="@style/SideDrawerView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

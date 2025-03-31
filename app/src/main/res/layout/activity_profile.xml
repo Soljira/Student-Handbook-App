@@ -1,75 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="false"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/phinmaGreen"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/white"
+        app:title="Edit Profile"
+        app:titleTextColor="@color/phinmaYellow" />
 
-        <!-- Toolbar-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topAppBar"
+        android:padding="16dp">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/phinmaGreen"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@android:color/white"
-            app:title="Profile"
-            app:titleTextColor="@color/phinmaYellow"
-            app:menu="@menu/top_app_bar_menu" />
-        <!-- Toolbar-->
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="774dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="59dp"
-            android:background="#FFFFFF"
-            android:fillViewport="true"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:contentDescription="@string/profile_picture"
+                    android:src="@drawable/ic_profile_placeholder" />
+
+                <TextView
+                    android:id="@+id/tvProfilePic"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:id="@+id/profileImage"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:contentDescription="@string/profile_picture"
-                        android:src="@drawable/ic_profile_placeholder"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvProfilePic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/change_profile_picture"
-                        android:textColor="@color/phinmaGreen"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                    android:layout_marginTop="8dp"
+                    android:text="@string/change_profile_picture"
+                    android:textColor="@color/phinmaGreen"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -319,21 +301,4 @@
 
             </LinearLayout>
         </ScrollView>
-
-
-        <!-- Drawer -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            style="@style/BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        style="@style/SideDrawerView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start" />
-</androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

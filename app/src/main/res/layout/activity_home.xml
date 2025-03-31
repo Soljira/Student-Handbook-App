@@ -29,8 +29,7 @@
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView">
+            android:layout_below="@id/topAppBar">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -44,16 +43,25 @@
                     android:gravity="center_horizontal">
 
                     <!-- Greeting -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome back to PHINMA Student Handbook!"
-                        android:fontFamily="@font/josefinsans_bold"
-                        android:textSize="24sp"
-                        android:padding="10dp"
-                        android:textColor="@color/black"/>
 
-<!--                    <LinearLayout-->
+                    <!-- Replace the current MaterialCardView for announcements with this: -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefinsans_regular"
+                        android:padding="10dp"
+                        android:text="Announcements"
+                        android:textColor="@color/black"
+                        android:textSize="22sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_announcements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:nestedScrollingEnabled="false"/>
+
+                    <!--                    <LinearLayout-->
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:orientation="horizontal"-->
@@ -96,6 +104,11 @@
 
 <!--                    </LinearLayout>-->
 
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -131,44 +144,10 @@
                         android:nestedScrollingEnabled="false"/>
 
                     <!-- Announcements Banner -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Announcements"
-                        android:textSize="22sp"
-                        android:fontFamily="@font/josefinsans_regular"
-                        android:padding="10dp"
-                        android:textColor="@color/black"/>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <TextView
-                            android:background="@color/white"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="16dp"
-                            android:text="No new announcements at this time."
-                            android:fontFamily="@font/merriweather_regular"
-                            android:textSize="18sp"
-                            android:textColor="@color/black"/>
-                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
             </ScrollView>
         </FrameLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            style="@style/BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
-
 
 
     </RelativeLayout>

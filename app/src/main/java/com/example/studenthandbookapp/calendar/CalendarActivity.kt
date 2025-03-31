@@ -7,24 +7,16 @@ import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import java.util.Calendar
 import java.util.Locale
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.event.AddUserEventActivity
 import com.example.studenthandbookapp.event.EventListActivity
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class CalendarActivity : AppCompatActivity() {
 
-//    private lateinit var btnMonth: Button
-//    private lateinit var btnDay: Button
     private lateinit var btnToday: TextView
     private lateinit var btnEvents: ImageButton
     private lateinit var btnAddEvent: TextView
@@ -35,43 +27,64 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var eventHeader: TextView
     private lateinit var calendarGrid: GridView
 
-    private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var topAppBar: MaterialToolbar
-
     lateinit var eventDetailsLauncher: ActivityResultLauncher<Intent>
 
     private val calendar: Calendar = Calendar.getInstance()
-    var currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-    var selectedDay: Int = calendar.get(Calendar.DAY_OF_MONTH)
+    private var currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+    private var selectedDay: Int = calendar.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
         // Initialize the activity result launcher
-        eventDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        eventDetailsLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
             if (result.resultCode == RESULT_OK) {
-                // Refresh the current day view when returning with OK result (after deletion)
-                onDaySelected(selectedDay)
+                onDaySelected(selectedDay) // Refresh events after changes
             }
         }
 
         initializeViews()
-        initializeNavigationStuff()
+        setupTopAppBar()
 
         calendar.firstDayOfWeek = Calendar.SUNDAY
         btnToday.text = currentDay.toString()
-
-
-        // Set the calendar to today and update the UI
         calendar.timeInMillis = System.currentTimeMillis()
 
         updateCalendar()
-        // Immediately select the current day on launch
         onDaySelected(selectedDay)
 
+        setupClickListeners()
+    }
+
+    private fun setupTopAppBar() {
+        val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(topAppBar)
+
+        // Enable back button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        topAppBar.setNavigationOnClickListener {
+            finish() // Handle back button press
+        }
+    }
+
+    private fun initializeViews() {
+        btnEvents = findViewById(R.id.btnEvents)
+        btnToday = findViewById(R.id.btnToday)
+        btnAddEvent = findViewById(R.id.btnAddEvent)
+        btnPrev = findViewById(R.id.btnPrev)
+        btnNext = findViewById(R.id.btnNext)
+        txtYear = findViewById(R.id.txtYear)
+        txtMonth = findViewById(R.id.txtMonth)
+        eventHeader = findViewById(R.id.eventHeader)
+        calendarGrid = findViewById(R.id.calendarGrid)
+    }
+
+    private fun setupClickListeners() {
         btnPrev.setOnClickListener {
             calendar.add(Calendar.MONTH, -1)
             updateCalendar()
@@ -97,12 +110,6 @@ class CalendarActivity : AppCompatActivity() {
             startActivity(Intent(this, AddUserEventActivity::class.java))
         }
 
-
-//        btnMonth.setOnClickListener {
-//            Toast.makeText(this, "Month View", Toast.LENGTH_SHORT).show()
-//            updateCalendar()
-//        }
-
         calendarGrid.setOnItemClickListener { _, _, position, _ ->
             val days = generateCalendarDays()
             val selectedDate = days[position]
@@ -112,44 +119,20 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        bottomNavigationView.selectedItemId = R.id.nav_calendar
-    }
-
-    private fun initializeViews() {
-//        btnMonth = findViewById(R.id.btnMonth)
-//        btnDay = findViewById(R.id.btnDay)
-        btnEvents = findViewById(R.id.btnEvents)
-        btnToday = findViewById(R.id.btnToday)
-        btnAddEvent = findViewById(R.id.btnAddEvent)
-        btnPrev = findViewById(R.id.btnPrev)
-        btnNext = findViewById(R.id.btnNext)
-        txtYear = findViewById(R.id.txtYear)
-        txtMonth = findViewById(R.id.txtMonth)
-        eventHeader = findViewById(R.id.eventHeader)
-        calendarGrid = findViewById(R.id.calendarGrid)
-    }
-
     private fun updateCalendar() {
         txtYear.text = calendar.get(Calendar.YEAR).toString()
         txtMonth.text = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
 
         val days = generateCalendarDays()
 
-        // Get dates with events for the current month
-        val currentMonth = calendar.get(Calendar.MONTH)
-        val currentYear = calendar.get(Calendar.YEAR)
-
         calendarGrid.adapter = CalendarAdapter(
             this,
             days,
-            selectedDay,
+            selectedDay
         ) { day ->
             onDaySelected(day.toInt())
         }
 
-//        setGridViewHeight(calendarGrid, (days.size / 7) + 1)  //using this will mess up the calendar height for some reason
         setGridViewHeight(calendarGrid, 7)
     }
 
@@ -167,7 +150,6 @@ class CalendarActivity : AppCompatActivity() {
     private fun onDaySelected(day: Int) {
         selectedDay = day
         val selectedDate = "${txtMonth.text} $day, ${txtYear.text}"
-
         eventHeader.text = selectedDate
 
         val fragment = EventFragment.newInstance(selectedDate)
@@ -185,7 +167,6 @@ class CalendarActivity : AppCompatActivity() {
         tempCal.set(Calendar.DAY_OF_MONTH, 1)
         return tempCal.get(Calendar.DAY_OF_WEEK) - 1
     }
-
 
     private fun setGridViewHeight(gridView: GridView, numColumns: Int) {
         val listAdapter = gridView.adapter ?: return
@@ -207,19 +188,5 @@ class CalendarActivity : AppCompatActivity() {
         params.height = totalHeight + (gridView.verticalSpacing * (rows - 1))
         gridView.layoutParams = params
         gridView.requestLayout()
-    }
-
-
-    private fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Calendar")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-        bottomNavigationView.selectedItemId = R.id.nav_calendar
     }
 }
