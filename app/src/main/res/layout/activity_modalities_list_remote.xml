@@ -1,129 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/offwhite"
-    android:fitsSystemWindows="false">
+    android:background="@color/offwhite">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/phinmaGreen"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/white"
+        app:title="Remote Courses"
+        app:titleTextColor="@color/phinmaYellow" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@drawable/gray_bg"
+        android:layout_below="@id/topAppBar">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/phinmaGreen"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@android:color/white"
-            app:titleTextColor="@color/phinmaYellow"
-            app:menu="@menu/top_app_bar_menu" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:background="@drawable/gray_bg"
-            android:layout_below="@id/topAppBar"
-            android:layout_above="@id/bottomNavigationView">
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/josefin_sans_bold"
+                android:gravity="center"
+                android:text="REMOTE COURSES"
+                android:textColor="@color/phinmaGreen"
+                android:textSize="28sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:gravity="center"
-                    android:text="REMOTE COURSES"
-                    android:textColor="@color/phinmaGreen"
-                    android:textSize="28sp" />
+            <Button
+                android:fontFamily="@font/josefin_sans_bold"
+                android:id="@+id/button_management_Acc"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/sch_ic_rightarrow"
+                android:drawableTint="@android:color/white"
+                android:padding="16dp"
+                android:text="College of Management and Accountancy"
+                android:textSize="16sp"
+                android:elevation="6dp"
+                app:cornerRadius="16dp" />
 
-                <Button
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:id="@+id/button_management_Acc"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginBottom="16dp"
-                    android:textColor="@color/white"
-                    android:drawableEnd="@drawable/sch_ic_rightarrow"
-                    android:drawableTint="@android:color/white"
-                    android:padding="16dp"
-                    android:text="College of Management and Accountancy"
-                    android:textSize="16sp"
-                    android:elevation="6dp"
-                    app:cornerRadius="16dp" />
+            <Button
+                android:fontFamily="@font/josefin_sans_bold"
+                android:id="@+id/button_bs_crim"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/sch_ic_rightarrow"
+                android:drawableTint="@android:color/white"
+                android:padding="16dp"
+                android:text="College of Criminal Justice Education"
+                android:textSize="16sp"
+                android:elevation="6dp"
+                app:cornerRadius="16dp" />
 
-                <Button
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:id="@+id/button_bs_crim"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginBottom="16dp"
-                    android:textColor="@color/white"
-                    android:drawableEnd="@drawable/sch_ic_rightarrow"
-                    android:drawableTint="@android:color/white"
-                    android:padding="16dp"
-                    android:text="College of Criminal Justice Education"
-                    android:textSize="16sp"
-                    android:elevation="6dp"
-                    app:cornerRadius="16dp" />
+            <Button
+                android:fontFamily="@font/josefin_sans_bold"
+                android:id="@+id/button_bs_it"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/sch_ic_rightarrow"
+                android:drawableTint="@android:color/white"
+                android:padding="16dp"
+                android:text="College of Information Technology"
+                android:textSize="16sp"
+                android:elevation="6dp"
+                app:cornerRadius="16dp" />
 
-                <Button
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:id="@+id/button_bs_it"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginBottom="16dp"
-                    android:textColor="@color/white"
-                    android:drawableEnd="@drawable/sch_ic_rightarrow"
-                    android:drawableTint="@android:color/white"
-                    android:padding="16dp"
-                    android:text="College of Information Technology"
-                    android:textSize="16sp"
-                    android:elevation="6dp"
-                    app:cornerRadius="16dp" />
+            <Button
+                android:fontFamily="@font/josefin_sans_bold"
+                android:id="@+id/button_bs_educ_liberal_arts"
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/sch_ic_rightarrow"
+                android:drawableTint="@android:color/white"
+                android:padding="16dp"
+                android:text="College of Education and Liberal Arts"
+                android:textSize="16sp"
+                android:elevation="6dp"
+                app:cornerRadius="16dp" />
 
-                <Button
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:id="@+id/button_bs_educ_liberal_arts"
-                    android:layout_width="match_parent"
-                    android:layout_height="102dp"
-                    android:layout_marginBottom="16dp"
-                    android:textColor="@color/white"
-                    android:drawableEnd="@drawable/sch_ic_rightarrow"
-                    android:drawableTint="@android:color/white"
-                    android:padding="16dp"
-                    android:text="College of Education and Liberal Arts"
-                    android:textSize="16sp"
-                    android:elevation="6dp"
-                    app:cornerRadius="16dp" />
-
-            </LinearLayout>
-        </ScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            style="@style/BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
-
-    </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        style="@style/SideDrawerView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

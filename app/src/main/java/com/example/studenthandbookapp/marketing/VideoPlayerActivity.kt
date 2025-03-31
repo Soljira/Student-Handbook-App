@@ -29,6 +29,7 @@ class VideoPlayerActivity : ComponentActivity() {
         hideSystemUI() // Hide status & navigation bars
 
         val playerView = PlayerView(this).apply {
+            setBackgroundColor(android.graphics.Color.BLACK)
             player = viewModel.getPlayer(this@VideoPlayerActivity, intent.getStringExtra("videoUri"))
             resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
             useController = true

@@ -5,33 +5,22 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
-import com.example.studenthandbookapp.helpers.AddShitToFirestore
 
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
-class EventDetails : AppCompatActivity() {
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
+class EventDetailsActivity : AppCompatActivity() {
     lateinit var topAppBar: MaterialToolbar
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_details)
-        initializeNavigationStuff()
+        setupTopAppBar()
+
 
         //todo delete functionality for user-added events
 
@@ -100,21 +89,13 @@ class EventDetails : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        unselectBottomNavIcon(bottomNavigationView)
-    }
-
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
+    private fun setupTopAppBar() {
         topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Events")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-        unselectBottomNavIcon(bottomNavigationView)
+        topAppBar.title = "Add Event"
+        topAppBar.setNavigationIcon(R.drawable.ic_back)
+        topAppBar.setNavigationOnClickListener {
+            finish() // Just close the activity when back is clicked
+        }
+        topAppBar.menu.clear() // Remove any menu items
     }
 }

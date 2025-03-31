@@ -9,15 +9,13 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/phinmaGreen"
-        app:titleTextAppearance="@style/CustomTopAppBarTitle"
         android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
         app:navigationIcon="@drawable/ic_back"
         app:navigationIconTint="@android:color/white"
-        app:title="FAQs"
-        app:titleTextColor="@color/phinmaYellow"
-        app:menu="@menu/top_app_bar_menu" />
+        app:title="Support"
+        app:titleTextColor="@color/phinmaYellow" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_messages"
@@ -43,10 +41,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:completionThreshold="1"
             android:hint="Type a question..."
             android:inputType="textCapSentences|textMultiLine"
             android:maxLines="3"
-            android:completionThreshold="1" />
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button_send"

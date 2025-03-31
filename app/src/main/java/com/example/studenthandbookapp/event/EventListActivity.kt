@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
-import com.example.studenthandbookapp.helpers.AddShitToFirestore
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
@@ -36,10 +33,7 @@ import java.util.Locale
 
 
 // nilagay ko na dito code ni jilbert from event_page1.kt
-class EventList : AppCompatActivity() {
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
+class EventListActivity : AppCompatActivity() {
     lateinit var topAppBar: MaterialToolbar
 
     lateinit var spinner: Spinner
@@ -56,8 +50,7 @@ class EventList : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
 
         initializeEventDetailsLauncher()
-
-        initializeNavigationStuff()
+        setupTopAppBar()
         initializeSpinners()
         initializeRecyclerView()
 
@@ -74,30 +67,26 @@ class EventList : AppCompatActivity() {
 
 
         btnNewEvent.setOnClickListener {
-            startActivity(Intent(this, AddUserEvent::class.java))
+            startActivity(Intent(this, AddUserEventActivity::class.java))
         }
         btnShowAll.setOnClickListener {
-            startActivity(Intent(this, AllEvents::class.java))
+            startActivity(Intent(this, AllEventsActivity::class.java))
         }
+    }
+
+    private fun setupTopAppBar() {
+        topAppBar = findViewById(R.id.topAppBar)
+        topAppBar.title = "Add Event"
+        topAppBar.setNavigationIcon(R.drawable.ic_back)
+        topAppBar.setNavigationOnClickListener {
+            finish() // Just close the activity when back is clicked
+        }
+        topAppBar.menu.clear() // Remove any menu items
     }
 
     override fun onResume() {
         super.onResume()
-        unselectBottomNavIcon(bottomNavigationView)
         fetchAndDisplayEvents()
-    }
-
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Events")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-        unselectBottomNavIcon(bottomNavigationView)
     }
 
     fun initializeSpinners() {
@@ -135,7 +124,7 @@ class EventList : AppCompatActivity() {
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
         eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
-            val intent = Intent(this, EventDetails::class.java).apply {
+            val intent = Intent(this, EventDetailsActivity::class.java).apply {
                 putExtra("EVENT_ID", documentId)
                 putExtra("EVENT_TYPE", eventType)
             }
@@ -143,7 +132,7 @@ class EventList : AppCompatActivity() {
         }
 
         eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
-            val intent = Intent(this, EventDetails::class.java).apply {
+            val intent = Intent(this, EventDetailsActivity::class.java).apply {
                 putExtra("EVENT_ID", documentId)
                 putExtra("EVENT_TYPE", eventType)
             }

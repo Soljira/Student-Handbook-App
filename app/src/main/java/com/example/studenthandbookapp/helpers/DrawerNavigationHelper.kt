@@ -11,7 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.studenthandbookapp.EditProfile
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.event.EventList
+import com.example.studenthandbookapp.event.EventListActivity
 import com.example.studenthandbookapp.landingpage.Login
 import com.example.studenthandbookapp.marketing.Marketing
 import com.example.studenthandbookapp.chat.ChatActivity
@@ -38,8 +38,8 @@ object DrawerNavigationHelper {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_events -> {
-                    if (activity !is EventList) {
-                        activity.startActivity(Intent(activity, EventList::class.java))
+                    if (activity !is EventListActivity) {
+                        activity.startActivity(Intent(activity, EventListActivity::class.java))
                     }
                     true
                 }

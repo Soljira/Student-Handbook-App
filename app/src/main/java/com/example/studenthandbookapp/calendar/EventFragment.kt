@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
-import com.example.studenthandbookapp.event.EventDetails
+import com.example.studenthandbookapp.event.EventDetailsActivity
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
@@ -132,14 +132,14 @@ class EventFragment : Fragment() {
     private fun openEventDetails(eventId: String, eventType: String) {
         activity?.let { activity ->
             if (activity is CalendarActivity) {
-                val intent = Intent(activity, EventDetails::class.java).apply {
+                val intent = Intent(activity, EventDetailsActivity::class.java).apply {
                     putExtra("EVENT_ID", eventId)
                     putExtra("EVENT_TYPE", eventType)
                 }
                 activity.eventDetailsLauncher.launch(intent)
             } else {
                 // Fallback if not launched from CalendarActivity
-                val intent = Intent(activity, EventDetails::class.java).apply {
+                val intent = Intent(activity, EventDetailsActivity::class.java).apply {
                     putExtra("EVENT_ID", eventId)
                     putExtra("EVENT_TYPE", eventType)
                 }

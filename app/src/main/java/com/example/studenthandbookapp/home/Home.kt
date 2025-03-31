@@ -39,8 +39,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.dataclasses.Event
 import com.example.studenthandbookapp.event.EventAdapter
-import com.example.studenthandbookapp.event.EventDetails
-import com.example.studenthandbookapp.event.EventList
+import com.example.studenthandbookapp.event.EventDetailsActivity
+import com.example.studenthandbookapp.event.EventListActivity
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.FirestoreFunctions
@@ -71,7 +71,7 @@ class Home : AppCompatActivity() {
 
         val btnEvent = findViewById<ImageButton>(R.id.btnEvent)
         btnEvent.setOnClickListener {
-            startActivity(Intent(this, EventList::class.java))
+            startActivity(Intent(this, EventListActivity::class.java))
         }
         initializeNavigationStuff()
 
@@ -117,7 +117,7 @@ class Home : AppCompatActivity() {
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
         eventAdapter = EventAdapter(emptyList()) { eventType, documentId ->
-            val intent = Intent(this, EventDetails::class.java).apply {
+            val intent = Intent(this, EventDetailsActivity::class.java).apply {
                 putExtra("EVENT_ID", documentId)
                 putExtra("EVENT_TYPE", eventType)
             }

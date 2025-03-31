@@ -51,16 +51,18 @@
         <activity android:name=".courses.EducAndLibArtsActivity" />
         <activity android:name=".courses.InfoTechActivity" />
         <activity android:name=".courses.ManagementAccountancyActivity" />
-        <activity android:name=".scholarships.SchDescriptionsActivity" />
-        <activity android:name=".scholarships.ScholarshipPage2" />
+        <activity android:name=".scholarships.SchDescriptionsActivity"
+            android:parentActivityName=".scholarships.ScholarshipPage2"/>
+        <activity android:name=".scholarships.ScholarshipPage2"
+            android:parentActivityName=".scholarships.ScholarshipPage1"/>
         <activity android:name=".scholarships.ScholarshipPage1" />
         <activity android:name=".home.Home" />
         <activity android:name=".calendar.CalendarActivity" />
         <activity android:name=".manual.Manual" />
-        <activity android:name=".event.EventList" />
-        <activity android:name=".event.AllEvents" />
-        <activity android:name=".event.EventDetails" />
-        <activity android:name=".event.AddUserEvent" />
+        <activity android:name=".event.EventListActivity" />
+        <activity android:name=".event.AllEventsActivity" />
+        <activity android:name=".event.EventDetailsActivity" />
+        <activity android:name=".event.AddUserEventActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

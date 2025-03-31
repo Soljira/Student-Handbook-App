@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment
 import java.util.Calendar
 import java.util.Locale
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.event.AddUserEvent
-import com.example.studenthandbookapp.event.EventList
+import com.example.studenthandbookapp.event.AddUserEventActivity
+import com.example.studenthandbookapp.event.EventListActivity
 import com.example.studenthandbookapp.helpers.BottomNavigationHelper
 import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
 import com.example.studenthandbookapp.helpers.TopAppBarHelper
@@ -83,7 +83,7 @@ class CalendarActivity : AppCompatActivity() {
         }
 
         btnEvents.setOnClickListener {
-            startActivity(Intent(this, EventList::class.java))
+            startActivity(Intent(this, EventListActivity::class.java))
         }
 
         btnToday.setOnClickListener {
@@ -94,7 +94,7 @@ class CalendarActivity : AppCompatActivity() {
         }
 
         btnAddEvent.setOnClickListener {
-            startActivity(Intent(this, AddUserEvent::class.java))
+            startActivity(Intent(this, AddUserEventActivity::class.java))
         }
 
 

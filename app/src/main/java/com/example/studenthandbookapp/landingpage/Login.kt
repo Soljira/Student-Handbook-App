@@ -1,22 +1,14 @@
 package com.example.studenthandbookapp.landingpage
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.event.AddUserEvent
-import com.example.studenthandbookapp.event.EventDetails
-import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.home.Home
-import com.example.studenthandbookapp.manual.Manual
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.firestore
 
 class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth

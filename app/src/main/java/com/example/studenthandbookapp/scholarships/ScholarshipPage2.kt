@@ -1,39 +1,29 @@
 package com.example.studenthandbookapp.scholarships
+
 import MyAdapter
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class ScholarshipPage2 : AppCompatActivity() {
 
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<ScholarshipsDataClass>
     private lateinit var heading: Array<String>
-    lateinit var scholarshipDescriptions : Array<String>
-
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView: NavigationView
-    lateinit var topAppBar: MaterialToolbar
+    private lateinit var scholarshipDescriptions: Array<String>
+    private lateinit var topAppBar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scholarship_page2)
-        initializeNavigationStuff()
 
-        val menuItem = bottomNavigationView.menu.findItem(R.id.nav_scholarship)
-        menuItem?.isChecked = true  // ensures that scholarship button thingy stays checked
+        // Setup simplified top app bar
+        topAppBar = findViewById(R.id.topAppBar)
+        setupTopAppBar()
 
         heading = arrayOf(
             "1. PHINMA Scholarship (formerly Presidential Scholarship)",
@@ -70,8 +60,16 @@ class ScholarshipPage2 : AppCompatActivity() {
         getUserData()
     }
 
+    private fun setupTopAppBar() {
+        topAppBar.title = "Scholarships"
+        topAppBar.navigationIcon = getDrawable(R.drawable.ic_close) // Make sure you have this icon
+        topAppBar.setNavigationOnClickListener {
+            finish()
+        }
+    }
+
     private fun getUserData() {
-        for (i in heading.indices){
+        for (i in heading.indices) {
             val scholarshipsDataClass = ScholarshipsDataClass(heading[i])
             newArrayList.add(scholarshipsDataClass)
         }
@@ -81,30 +79,12 @@ class ScholarshipPage2 : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-//                Toast.makeText(this@MainActivity, "Clicked item $position", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this@ScholarshipPage2, SchDescriptionsActivity::class.java)
-                intent.putExtra("heading", newArrayList[position].title)
-
-
-
-                intent.putExtra("description", scholarshipDescriptions[position])
+                val intent = Intent(this@ScholarshipPage2, SchDescriptionsActivity::class.java).apply {
+                    putExtra("heading", newArrayList[position].title)
+                    putExtra("description", scholarshipDescriptions[position])
+                }
                 startActivity(intent)
             }
         })
-    }
-
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
-
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Scholarships")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-//        bottomNavigationView.selectedItemId = R.id.nav_home
-        unselectBottomNavIcon(bottomNavigationView)
     }
 }

@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studenthandbookapp.R
-import java.util.*
+import com.google.android.material.appbar.MaterialToolbar
+import java.util.UUID
 
 class ChatActivity : AppCompatActivity() {
-
+    private lateinit var topAppBar: MaterialToolbar
     private lateinit var recyclerView: RecyclerView
     private lateinit var messageEditText: AutoCompleteTextView
     private lateinit var sendButton: Button
@@ -20,7 +22,7 @@ class ChatActivity : AppCompatActivity() {
     private val messages = mutableListOf<Message>()
     private lateinit var chatAdapter: ChatAdapter
 
-    // Simplified FAQ data (question-answer pairs)
+    // FAQ data (question-answer pairs)
     private val faqList = listOf(
         "How do I reset my password?" to "You can reset your password by visiting the student portal and clicking 'Forgot Password'.",
         "Where can I find my course schedule?" to "Your course schedule is available in the student portal under 'My Courses' section.",
@@ -30,64 +32,93 @@ class ChatActivity : AppCompatActivity() {
         "Where can I find my grades?" to "Grades are posted in the student portal at the end of each semester."
     )
 
-    // Extract questions for autocomplete
     private val faqQuestions = faqList.map { it.first }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        // Initialize views
+
+        try {
+            initializeViews()
+            setupAutoComplete()
+            setupTopAppBar()
+            setupRecyclerView()
+            setupClickListeners()
+            addWelcomeMessage()
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error initializing chat: ${e.message}", Toast.LENGTH_LONG).show()
+            finish()
+        }
+    }
+
+    private fun setupTopAppBar() {
+        topAppBar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    private fun initializeViews() {
+        topAppBar = findViewById(R.id.topAppBar)
         recyclerView = findViewById(R.id.recycler_view_messages)
         messageEditText = findViewById(R.id.edit_text_message)
         sendButton = findViewById(R.id.button_send)
+    }
 
-        // Setup autocomplete
-        val autoCompleteAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, faqQuestions)
-        messageEditText.setAdapter(autoCompleteAdapter)
+    private fun setupAutoComplete() {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, faqQuestions)
+        messageEditText.setAdapter(adapter)
         messageEditText.threshold = 1
+    }
 
-        // Setup RecyclerView
-        chatAdapter = ChatAdapter(messages, "support")
-        recyclerView.adapter = chatAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Add welcome message with FAQs
-        addBotMessage("Hello! How can I help you today? Here are some common questions:\n" +
-                faqQuestions.joinToString("\n• ", "• "))
-
-        // Scroll to bottom when new message arrives
-        chatAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
-                recyclerView.smoothScrollToPosition(messages.size - 1)
+    private fun setupRecyclerView() {
+        chatAdapter = ChatAdapter(messages)  // Now correctly initialized without currentUserId
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@ChatActivity).apply {
+                stackFromEnd = true  // This makes the chat start from bottom
             }
-        })
+            adapter = chatAdapter
+        }
+    }
 
-        // Send message button click
-        sendButton.setOnClickListener { sendMessage() }
+    private fun setupClickListeners() {
+        sendButton.setOnClickListener {
+            try {
+                sendMessage()
+            } catch (_: Exception) {
+                Toast.makeText(this, "Error sending message", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun addWelcomeMessage() {
+        // First message - Greeting
+        addBotMessage("Hello! How can I help you today?")
+
+        // Second message - Questions list (after 500ms delay)
+        messageEditText.postDelayed({
+            val questionsFormatted = faqQuestions.joinToString("\n") { "• $it" }
+            addBotMessage("Common questions:\n$questionsFormatted")
+        }, 500)
     }
 
     private fun sendMessage() {
         val messageText = messageEditText.text.toString().trim()
         if (messageText.isEmpty()) return
 
-        // Add user message
         addUserMessage(messageText)
-
-        // Clear input
         messageEditText.text.clear()
 
-        // Get answer from FAQ list
-        val answer = getFaqAnswer(messageText)
-
-        // Simulate bot response
-        messageEditText.postDelayed({ addBotMessage(answer) }, 500)
+        // Simulate typing delay
+        messageEditText.postDelayed({
+            val answer = getFaqAnswer(messageText)
+            addBotMessage(answer)
+        }, 500)
     }
 
     private fun getFaqAnswer(question: String): String {
-        val index = faqQuestions.indexOf(question)
-        return if (index != -1) faqList[index].second
-        else "I'm sorry, I don't have an answer for that. Please contact the support desk for further assistance."
+        return faqList.find { it.first.equals(question, ignoreCase = true) }?.second
+            ?: "I'm sorry, I don't have an answer for that. Please contact the support desk for further assistance."
     }
 
     private fun addUserMessage(text: String) {
@@ -98,8 +129,7 @@ class ChatActivity : AppCompatActivity() {
             senderName = "You",
             timestamp = System.currentTimeMillis()
         )
-        messages.add(message)
-        chatAdapter.notifyItemInserted(messages.size - 1)
+        addMessageToChat(message)
     }
 
     private fun addBotMessage(text: String) {
@@ -110,7 +140,14 @@ class ChatActivity : AppCompatActivity() {
             senderName = "Support",
             timestamp = System.currentTimeMillis()
         )
-        messages.add(message)
-        chatAdapter.notifyItemInserted(messages.size - 1)
+        addMessageToChat(message)
+    }
+
+    private fun addMessageToChat(message: Message) {
+        runOnUiThread {
+            messages.add(message)
+            chatAdapter.notifyItemInserted(messages.size - 1)
+            recyclerView.scrollToPosition(messages.size - 1)
+        }
     }
 }

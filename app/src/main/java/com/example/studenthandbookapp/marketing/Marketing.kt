@@ -48,24 +48,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.compose.rememberNavController
 import com.example.studenthandbookapp.R
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper
-import com.example.studenthandbookapp.helpers.BottomNavigationHelper.unselectBottomNavIcon
-import com.example.studenthandbookapp.helpers.DrawerNavigationHelper
-import com.example.studenthandbookapp.helpers.TopAppBarHelper
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
+import androidx.core.net.toUri
 
 
 class Marketing : AppCompatActivity() {
-
-    //navigation stuff START
-    private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
     private lateinit var topAppBar: MaterialToolbar
 //navigation stuff END
 
@@ -74,7 +63,9 @@ class Marketing : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_marketing)
 
-        initializeNavigationStuff()
+        // Initialize only the top app bar
+        topAppBar = findViewById(R.id.topAppBar)
+        setupTopAppBar()
 
         val composeView = findViewById<ComposeView>(R.id.composeView)
         composeView.setContent {
@@ -84,315 +75,304 @@ class Marketing : AppCompatActivity() {
             MarketingScreen()
         }
     }
-    // IM SO STUPID
-    // THIS FUNCTION ENSURES THAT THE APPROPRIATE ICON IS CHECKED EVEN WHEN YOU PRESS THE BACK BUTTON
-    // DO NOT COPY THIS FUNCTION TO NESTED ACTIVITIES BECAUSE IT WILL BREAK THE APP
-    // THANKS
-    // I WASTED 3 HOURS ON THIS
-    override fun onResume() {
-        super.onResume()
-//        bottomNavigationView.selectedItemId = R.id.nav_profile
-        unselectBottomNavIcon(bottomNavigationView)
+
+    private fun setupTopAppBar() {
+        topAppBar.title = "Marketing"
+        topAppBar.setNavigationOnClickListener {
+            finish() // Just close the activity when navigation icon is clicked
+        }
     }
 
-    fun initializeNavigationStuff() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        navigationView = findViewById(R.id.navigation_view)
-        topAppBar = findViewById(R.id.topAppBar)
+    @RequiresApi(Build.VERSION_CODES.R)
+    @Composable
+    fun MarketingScreen() {
+        val context = LocalContext.current
 
-        TopAppBarHelper.setupTopAppBar(this, topAppBar, drawerLayout, "Marketing")
-        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView)
-        DrawerNavigationHelper.setupDrawerNavigation(this, drawerLayout, navigationView)
-
-        unselectBottomNavIcon(bottomNavigationView)
-    }
-
-    // navigation stuff END
-}
-
-@RequiresApi(Build.VERSION_CODES.R)
-@Composable
-fun MarketingScreen() {
-    val context = LocalContext.current
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center // Ensures content inside is centered
-    ) {
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally // Centers all items horizontally
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center // Ensures content inside is centered
         ) {
-            item {
-                Box(
-                    contentAlignment = Alignment.TopCenter, // Center logo horizontally
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    // Banner Image
-                    Image(
-                        painter = painterResource(id = R.drawable.marketing_banner),
-                        contentDescription = "Marketing Banner",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(180.dp),
-                        contentScale = ContentScale.Crop
-                    )
-
-                    // Overlapping University Logo
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally // Centers all items horizontally
+            ) {
+                item {
                     Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(100.dp) // Adjust size as needed
-                            .offset(y = 100.dp) // Moves logo up to overlap the banner
-                            .background(Color.White, shape = CircleShape)
+                        contentAlignment = Alignment.TopCenter, // Center logo horizontally
+                        modifier = Modifier.fillMaxWidth()
                     ) {
+                        // Banner Image
                         Image(
-                            painter = painterResource(id = R.drawable.logo_upang),
-                            contentDescription = "University Logo",
+                            painter = painterResource(id = R.drawable.marketing_banner),
+                            contentDescription = "Marketing Banner",
                             modifier = Modifier
-                                .size(90.dp) // Slightly smaller than the white background
-                                .clip(CircleShape),
+                                .fillMaxWidth()
+                                .height(180.dp),
                             contentScale = ContentScale.Crop
                         )
+
+                        // Overlapping University Logo
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier
+                                .size(100.dp) // Adjust size as needed
+                                .offset(y = 100.dp) // Moves logo up to overlap the banner
+                                .background(Color.White, shape = CircleShape)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.logo_upang),
+                                contentDescription = "University Logo",
+                                modifier = Modifier
+                                    .size(90.dp) // Slightly smaller than the white background
+                                    .clip(CircleShape),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
                     }
                 }
-            }
-            item {
-                Text(
-                    text = "PHINMA—University of Pangasinan ",
-                    style = MaterialTheme.typography.headlineSmall,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
-            item {
-                ContactUsSection()
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp)) // Add space before the first item
-                HorizontalDivider(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
-                    thickness = 0.5.dp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
-                )
-            }
-            items(videoList) { video ->
-                VideoCard(description = video.description,
-                    video = video,
-                    onClick = {
-                        val intent = Intent(context, VideoPlayerActivity::class.java).apply {
-                            putExtra("videoUri", video.videoUrl)
-                        }
-                        context.startActivity(intent)
-                    })
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp)) // Add space before the first item
-            }
-        }
-    }
-}
-
-@Composable
-fun ContactUsSection() {
-    val context = LocalContext.current
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-        // Contact Us Section
-        ExpandableCard(title = "CONTACT US",
-            isExpanded = false, // Expanded by default
-            onExpand = { }) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                ContactDetails(
-                    title = "Dagupan Campus",
-                    address = "Arellano Street, Dagupan City, 2400, Pangasinan",
-                    phoneNumbers = listOf("+63 995-078-5660", "(075) 522-5635", "(075) 522-2496"),
-                    email = "info.up@phinmaed.com"
-                )
-
-                Spacer(modifier = Modifier.height(18.dp))
-                HorizontalDivider(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
-                    thickness = 0.5.dp,
-                    color = Color.White
-                )
-                ContactDetails(
-                    title = "Urdaneta Campus",
-                    address = "McArthur Highway, Urdaneta City, 2428, Pangasinan",
-                    phoneNumbers = listOf("+63 921-211-9138"),
-                    email = "info.up@phinmaed.com"
-                )
-
-                Spacer(modifier = Modifier.height(18.dp))
-
-                HorizontalDivider(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
-                    thickness = 0.5.dp,
-                    color = Color.White
-                )
-
-                // Social Media Section with Clickable Icons
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    SocialMediaIcon(
-                        context = context,
-                        iconRes = R.drawable.ic_facebook,
-                        url = "https://www.facebook.com/PHINMA.UPang"
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    SocialMediaIcon(
-                        context = context,
-                        iconRes = R.drawable.ic_twitter,
-                        url = "https://twitter.com/PHINMA_UPang"
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    SocialMediaIcon(
-                        context = context,
-                        iconRes = R.drawable.ic_instagram,
-                        url = "https://www.instagram.com/phinmaupang"
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    SocialMediaIcon(
-                        context = context,
-                        iconRes = R.drawable.ic_youtube,
-                        url = "https://www.youtube.com/c/PHINMAEducation"
+                item {
+                    Text(
+                        text = "PHINMA—University of Pangasinan ",
+                        style = MaterialTheme.typography.headlineSmall,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
-                Spacer(modifier = Modifier.height(16.dp))
+                item {
+                    ContactUsSection()
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp)) // Add space before the first item
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
+                        thickness = 0.5.dp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                    )
+                }
+                items(videoList) { video ->
+                    VideoCard(
+                        description = video.description,
+                        video = video,
+                        onClick = {
+                            val intent = Intent(context, VideoPlayerActivity::class.java).apply {
+                                putExtra("videoUri", video.videoUrl)
+                                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            }
+                            context.startActivity(intent)
+                        })
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp)) // Add space before the first item
+                }
             }
         }
     }
-}
 
-@Composable
-fun SocialMediaIcon(context: android.content.Context, iconRes: Int, url: String) {
-    Icon(
-        tint = Color.White,
-        painter = painterResource(id = iconRes),
-        contentDescription = "Social Media",
-        modifier = Modifier
-            .size(24.dp)
-            .clickable {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                context.startActivity(intent)
-            }
-    )
-}
+    @Composable
+    fun ContactUsSection() {
+        val context = LocalContext.current
 
-
-@Composable
-fun ExpandableCard(
-    title: String,
-    isExpanded: Boolean,
-    onExpand: () -> Unit,
-    content: @Composable () -> Unit
-) {
-    var expandedState by remember { mutableStateOf(isExpanded) }
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable {
-                expandedState = !expandedState
-                onExpand()
-            },
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF3A4F24)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Spacer(modifier = Modifier.weight(1f)) // Push title to center
-
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
-                    color = Color.White,
-                    modifier = Modifier.weight(5f), // Center the text
-                    textAlign = TextAlign.Center
-                )
-
-                Icon(
-                    painter = painterResource(
-                        if (expandedState) R.drawable.ic_expand_less
-                        else R.drawable.ic_expand_more
-                    ),
-                    contentDescription = if (expandedState) "Collapse" else "Expand",
-                    tint = Color.White,
+        Column(modifier = Modifier.fillMaxWidth()) {
+            // Contact Us Section
+            ExpandableCard(
+                title = "CONTACT US",
+                isExpanded = false, // Expanded by default
+                onExpand = { }) {
+                Column(
                     modifier = Modifier
-                        .size(24.dp)
-                        .weight(1f) // Align icon properly
-                        .clickable {
-                            expandedState = !expandedState
-                            onExpand()
-                        }
-                )
-            }
-            // Expandable Content
-            if (expandedState) {
-                content()
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    ContactDetails(
+                        title = "Dagupan Campus",
+                        address = "Arellano Street, Dagupan City, 2400, Pangasinan",
+                        phoneNumbers = listOf(
+                            "+63 995-078-5660",
+                            "(075) 522-5635",
+                            "(075) 522-2496"
+                        ),
+                        email = "info.up@phinmaed.com"
+                    )
+
+                    Spacer(modifier = Modifier.height(18.dp))
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
+                        thickness = 0.5.dp,
+                        color = Color.White
+                    )
+                    ContactDetails(
+                        title = "Urdaneta Campus",
+                        address = "McArthur Highway, Urdaneta City, 2428, Pangasinan",
+                        phoneNumbers = listOf("+63 921-211-9138"),
+                        email = "info.up@phinmaed.com"
+                    )
+
+                    Spacer(modifier = Modifier.height(18.dp))
+
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
+                        thickness = 0.5.dp,
+                        color = Color.White
+                    )
+
+                    // Social Media Section with Clickable Icons
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        SocialMediaIcon(
+                            context = context,
+                            iconRes = R.drawable.ic_facebook,
+                            url = "https://www.facebook.com/PHINMA.UPang"
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        SocialMediaIcon(
+                            context = context,
+                            iconRes = R.drawable.ic_twitter,
+                            url = "https://twitter.com/PHINMA_UPang"
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        SocialMediaIcon(
+                            context = context,
+                            iconRes = R.drawable.ic_instagram,
+                            url = "https://www.instagram.com/phinmaupang"
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        SocialMediaIcon(
+                            context = context,
+                            iconRes = R.drawable.ic_youtube,
+                            url = "https://www.youtube.com/c/PHINMAEducation"
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
             }
         }
     }
-}
 
-
-@Composable
-fun ContactDetails(title: String, address: String, phoneNumbers: List<String>, email: String) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 4.dp),
-            color = Color(0xFFFFD000)
-        )
-
-        ContactItem(R.drawable.ic_location, address)
-        phoneNumbers.forEach { phone -> ContactItem(R.drawable.ic_phone, phone) }
-        ContactItem(R.drawable.ic_email, email)
-    }
-}
-
-@Composable
-fun ContactItem(iconRes: Int, text: String) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    @Composable
+    fun SocialMediaIcon(context: android.content.Context, iconRes: Int, url: String) {
         Icon(
             tint = Color.White,
             painter = painterResource(id = iconRes),
-            contentDescription = null,
-            modifier = Modifier.size(20.dp)
+            contentDescription = "Social Media",
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                    context.startActivity(intent)
+                }
         )
+    }
 
-        Spacer(modifier = Modifier.width(8.dp))
 
-        Text(text, color = Color.White)
+    @Composable
+    fun ExpandableCard(
+        title: String,
+        isExpanded: Boolean,
+        onExpand: () -> Unit,
+        content: @Composable () -> Unit
+    ) {
+        var expandedState by remember { mutableStateOf(isExpanded) }
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .clickable {
+                    expandedState = !expandedState
+                    onExpand()
+                },
+            shape = RoundedCornerShape(12.dp),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFF3A4F24)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Spacer(modifier = Modifier.weight(1f)) // Push title to center
+
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                        color = Color.White,
+                        modifier = Modifier.weight(5f), // Center the text
+                        textAlign = TextAlign.Center
+                    )
+
+                    Icon(
+                        painter = painterResource(
+                            if (expandedState) R.drawable.ic_expand_less
+                            else R.drawable.ic_expand_more
+                        ),
+                        contentDescription = if (expandedState) "Collapse" else "Expand",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .weight(1f) // Align icon properly
+                            .clickable {
+                                expandedState = !expandedState
+                                onExpand()
+                            }
+                    )
+                }
+                // Expandable Content
+                if (expandedState) {
+                    content()
+                }
+            }
+        }
+    }
+
+
+    @Composable
+    fun ContactDetails(title: String, address: String, phoneNumbers: List<String>, email: String) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 4.dp),
+                color = Color(0xFFFFD000)
+            )
+
+            ContactItem(R.drawable.ic_location, address)
+            phoneNumbers.forEach { phone -> ContactItem(R.drawable.ic_phone, phone) }
+            ContactItem(R.drawable.ic_email, email)
+        }
+    }
+
+    @Composable
+    fun ContactItem(iconRes: Int, text: String) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                tint = Color.White,
+                painter = painterResource(id = iconRes),
+                contentDescription = null,
+                modifier = Modifier.size(20.dp)
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Text(text, color = Color.White)
+        }
     }
 }
 
