@@ -14,6 +14,7 @@ import com.example.studenthandbookapp.R
 import com.example.studenthandbookapp.event.EventList
 import com.example.studenthandbookapp.landingpage.Login
 import com.example.studenthandbookapp.marketing.Marketing
+import com.example.studenthandbookapp.chat.ChatActivity
 import com.example.studenthandbookapp.modalities.ModalitiesActivity
 import com.example.studenthandbookapp.scholarships.ScholarshipPage1
 import com.google.android.material.navigation.NavigationView
@@ -36,12 +37,6 @@ object DrawerNavigationHelper {
         // Setup navigation items
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_profile -> {
-                    if (activity !is EditProfile) {
-                        activity.startActivity(Intent(activity, EditProfile::class.java))
-                    }
-                    true
-                }
                 R.id.nav_events -> {
                     if (activity !is EventList) {
                         activity.startActivity(Intent(activity, EventList::class.java))
@@ -66,6 +61,13 @@ object DrawerNavigationHelper {
                     }
                     true
                 }
+                R.id.nav_support -> {
+                    if (activity !is ChatActivity) {
+                        activity.startActivity(Intent(activity, ChatActivity::class.java))
+                    }
+                    true
+                }
+
                 R.id.nav_logout -> {
                     auth.signOut()
                     activity.startActivity(Intent(activity, Login::class.java))

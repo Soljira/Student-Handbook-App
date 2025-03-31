@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/nav_profile"
-        android:title="Profile"
-        android:icon="@drawable/navbar_profile" />
+
 
     <item
         android:id="@+id/nav_events"
@@ -26,10 +23,10 @@
         android:title="Modalities"
         android:icon="@drawable/navbar_modalities" />
 
-<!--    <item-->
-<!--        android:id="@+id/nav_support"-->
-<!--        android:title="Support/Contact Us"-->
-<!--        android:icon="@drawable/navbar_support" />-->
+    <item
+        android:id="@+id/nav_support"
+        android:title="Support/Contact Us"
+        android:icon="@drawable/navbar_support" />
 
 
     <item
