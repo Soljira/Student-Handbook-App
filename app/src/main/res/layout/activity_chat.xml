@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".chat.ChatActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/phinmaGreen"
+        app:titleTextAppearance="@style/CustomTopAppBarTitle"
+        android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/white"
+        app:title="FAQs"
+        app:titleTextColor="@color/phinmaYellow"
+        app:menu="@menu/top_app_bar_menu" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_messages"
         android:layout_width="match_parent"
