@@ -90,7 +90,6 @@ class Home : AppCompatActivity() {
     }
 
 
-
     // LAHAT NG RELATED TO NAVIGATION NANDITO OKAY????
     fun initializeNavigationStuff() {
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -146,10 +145,6 @@ class Home : AppCompatActivity() {
             }
         }
     }
-
-
-
-
 
 
     /**
@@ -222,7 +217,11 @@ class Home : AppCompatActivity() {
                 .verticalScroll(rememberScrollState())
         ) {
             repeat(20) { // Dummy content
-                Text("Item $it", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(8.dp))
+                Text(
+                    "Item $it",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(8.dp)
+                )
             }
         }
     }

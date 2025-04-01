@@ -13,8 +13,7 @@
         android:id="@+id/image_message_profile"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:src="@drawable/ic_email"
-        android:backgroundTint="@color/phinmaGreen"
+        android:src="@drawable/ic_robot"
         android:contentDescription="Support agent" />
 
     <LinearLayout

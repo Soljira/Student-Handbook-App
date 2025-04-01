@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
+    private lateinit var guestButton: TextView
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var rememberMeCheckbox: CheckBox
@@ -26,6 +28,7 @@ class Login : AppCompatActivity() {
     private val PREF_EMAIL = "email"
     private val PREF_PASSWORD = "password"
     private val PREF_REMEMBER = "remember"
+    private val PREF_IS_GUEST = "is_guest"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +42,14 @@ class Login : AppCompatActivity() {
             }
         })
 
-                // Initialize Firebase Auth
+        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Check if user is already logged in
+        // Check if user is already logged in or was a guest
         val currentUser = auth.currentUser
-        if (currentUser != null) {
+        val isGuest = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).getBoolean(PREF_IS_GUEST, false)
+
+        if (currentUser != null || isGuest) {
             startActivity(Intent(this, Home::class.java))
             finish()
             return
@@ -56,6 +61,7 @@ class Login : AppCompatActivity() {
         // Initialize views
         loginButton = findViewById(R.id.btnLogin)
         registerButton = findViewById(R.id.btnRegister)
+        guestButton = findViewById(R.id.btnGuest) // Make sure to add this button in your layout
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox)
@@ -88,8 +94,11 @@ class Login : AppCompatActivity() {
                         editor.putString(PREF_PASSWORD, password)
                         editor.putBoolean(PREF_REMEMBER, true)
                     } else {
-                        editor.clear()
+                        editor.remove(PREF_EMAIL)
+                        editor.remove(PREF_PASSWORD)
+                        editor.putBoolean(PREF_REMEMBER, false)
                     }
+                    editor.putBoolean(PREF_IS_GUEST, false) // Mark as not guest
                     editor.apply()
 
                     performLogin(email, password)
@@ -100,6 +109,21 @@ class Login : AppCompatActivity() {
         // Set up register button click listener
         registerButton.setOnClickListener {
             startActivity(Intent(this, Registration::class.java))
+        }
+
+        // Set up guest button click listener
+        guestButton.setOnClickListener {
+            // Mark as guest user in SharedPreferences
+            val editor = sharedPreferences.edit()
+            editor.putBoolean(PREF_IS_GUEST, true)
+            editor.remove(PREF_EMAIL)
+            editor.remove(PREF_PASSWORD)
+            editor.remove(PREF_REMEMBER)
+            editor.apply()
+
+            // Proceed to Home activity without Firebase authentication
+            startActivity(Intent(this, Home::class.java))
+            finish()
         }
     }
 

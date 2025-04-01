@@ -1,6 +1,5 @@
 package com.example.studenthandbookapp.chat
 
-import Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,7 +76,7 @@ class ChatAdapter(
                 .format(Date(message.timestamp))
             userName.text = message.senderName
             profileImage.setImageResource(
-                if (message.senderId == "support") R.drawable.ic_email
+                if (message.senderId == "support") R.drawable.ic_robot
                 else R.drawable.ic_profile_placeholder
             )
         }

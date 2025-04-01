@@ -35,7 +35,6 @@ class SchoolSelection : AppCompatActivity() {
             return
         }
 
-        enableEdgeToEdge()
         setContentView(R.layout.activity_school_selection)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -57,8 +56,11 @@ class SchoolSelection : AppCompatActivity() {
         flFragmentContainer = findViewById(R.id.flFragmentContainer)
 
         cardUpang.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-            finish()
+            val fragment = SelectUpangCampusFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragmentContainer, fragment) // Replace the FrameLayout with the Fragment
+                .addToBackStack(null) // Optional: Add to back stack for navigation
+                .commit()
         }
 
         // THESE SCHOOLS ARE BEYOND OUR SCOPE

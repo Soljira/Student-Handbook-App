@@ -15,35 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.studenthandbookapp"
         tools:targetApi="31">
+        <activity
+            android:name=".splash.SplashActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.studenthandbookapp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- School Selection Activity -->
         <activity
             android:name=".landingpage.SchoolSelection"
-            android:launchMode="standard"
-            android:exported="true"
-            android:noHistory="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
-        <!-- Login Activity -->
-        <activity
-            android:name=".landingpage.Login"
-            android:launchMode="standard"
-            android:noHistory="true"/>
-
-        <!-- Home Activity -->
+            android:exported="true">
+        </activity> <!-- Login Activity -->
+        <activity android:name=".landingpage.Login" /> <!-- Home Activity -->
         <activity
             android:name=".home.Home"
-            android:launchMode="singleTask"/>
-
-
+            android:launchMode="singleTask" />
         <activity
             android:name=".marketing.VideoPlayerActivity"
             android:exported="false" />

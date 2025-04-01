@@ -69,16 +69,18 @@
                     android:textColor="@color/black"
                     android:text="@string/full_name" />
 
-                <EditText
-                    android:id="@+id/fullNameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:textColor="#000000"
-                    tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/fullNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorHint="@color/gray"
+                tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -87,14 +89,15 @@
                     android:textColor="@color/black"
                     android:text="@string/student_number" />
 
-                <EditText
-                    android:id="@+id/studentNumberEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="##-##-#####"
-                    android:inputType="text"
-                    android:textColor="#000000"
-                    tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+            <EditText
+                android:id="@+id/studentNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="##-##-#####"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textColorHint="@color/gray"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -108,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="BS Computer Science"
+                    android:textColorHint="@color/gray"
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:textColor="#000000"
@@ -144,7 +148,7 @@
                     android:hint=".up@phinmaed.com"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
-                    android:textColorHint="#546E7A"
+                    android:textColorHint="@color/gray"
                     tools:ignore="Autofill,HardcodedText" />
 
                 <TextView
@@ -159,6 +163,7 @@
                     android:layout_width="match_parent"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray"
                     android:hint="0943-123-1234"
                     android:inputType="phone"
                     android:minHeight="48dp"
@@ -181,7 +186,7 @@
                     android:hint="01/01/2000"
                     android:inputType="none"
                     android:minHeight="48dp"
-                    android:textColorHint="#546E7A"
+                    android:textColorHint="@color/gray"
                     tools:ignore="Autofill,HardcodedText,LabelFor" />
 
                 <!-- Social Media Links Section -->
@@ -211,6 +216,7 @@
                     android:id="@+id/facebookEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray"
                     android:hint="https://facebook.com/username"
                     android:inputType="textUri"
                     android:minHeight="48dp"
@@ -231,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="https://instagram.com/username"
+                    android:textColorHint="@color/gray"
                     android:inputType="textUri"
                     android:minHeight="48dp"
                     android:textColor="#000000"
@@ -249,6 +256,7 @@
                     android:id="@+id/twitterEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray"
                     android:hint="https://twitter.com/username"
                     android:inputType="textUri"
                     android:minHeight="48dp"
@@ -270,6 +278,7 @@
                     android:layout_height="wrap_content"
                     android:hint="https://linkedin.com/in/username"
                     android:inputType="textUri"
+                    android:textColorHint="@color/gray"
                     android:minHeight="48dp"
                     android:textColor="#000000"
                     android:autoLink="web"

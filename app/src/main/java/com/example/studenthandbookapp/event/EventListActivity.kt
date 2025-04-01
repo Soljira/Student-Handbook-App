@@ -76,8 +76,6 @@ class EventListActivity : AppCompatActivity() {
 
     private fun setupTopAppBar() {
         topAppBar = findViewById(R.id.topAppBar)
-        topAppBar.title = "Add Event"
-        topAppBar.setNavigationIcon(R.drawable.ic_back)
         topAppBar.setNavigationOnClickListener {
             finish() // Just close the activity when back is clicked
         }

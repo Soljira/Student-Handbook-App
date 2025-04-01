@@ -61,8 +61,6 @@ class ScholarshipPage2 : AppCompatActivity() {
     }
 
     private fun setupTopAppBar() {
-        topAppBar.title = "Scholarships"
-        topAppBar.navigationIcon = getDrawable(R.drawable.ic_close) // Make sure you have this icon
         topAppBar.setNavigationOnClickListener {
             finish()
         }

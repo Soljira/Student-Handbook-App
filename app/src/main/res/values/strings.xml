@@ -318,5 +318,16 @@
     <string name="bs_business_administration_financial_management">BS Business Administration - Financial Management</string>
     <string name="a_program_designed_to_equip_students_with_financial_expertise_and_managerial_skills_students_will_gain_a_deep_understanding_of_financial_planning_investments_risk_management_and_corporate_finance">A program designed to equip students with financial expertise and managerial skills. Students will gain a deep understanding of financial planning, investments, risk management, and corporate finance.</string>
     <string name="remember_me">Remember me</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="guest_user">Guest User\n</string>
+    <string name="guest_email">guest@example.com\n</string>
 
 </resources>
